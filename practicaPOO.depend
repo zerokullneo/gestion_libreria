@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1427307691 source:c:\users\usuario\workspace\practicapoo\main.cpp
+	<fstream>
+	<sstream>
+	"P1/Cadena/cadena.h"
+	"P1/Fecha/fecha.h"
+
+1427309862 c:\users\usuario\workspace\practicapoo\p1\cadena\cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+
+1427307793 c:\users\usuario\workspace\practicapoo\p1\fecha\fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
