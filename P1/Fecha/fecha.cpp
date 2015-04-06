@@ -29,15 +29,25 @@ using namespace std;
 
 Fecha::Fecha(int dia, int mes, int year):d_(dia),m_(mes),a_(year)
 {
-	defecto_();
-	if(!dia || dia == 0) d_ = getd_;
-	else d_ = dia;
-
-	if(!mes || mes == 0) m_ = getm_;
-	else m_ = mes;
-
-	if(!year || year == 0) a_ = geta_;
-	else a_ = year;
+	if((!dia or dia == 0) and (!mes or mes == 0) and (!year or year == 0))
+        defecto_();
+    else if((!mes or mes == 0) and (!year or year == 0))
+    {
+        defecto_();
+        d_ = dia;
+    }
+    else if(!year or year == 0)
+    {
+        defecto_();
+        d_ = dia;
+        m_ = mes;
+    }
+	else
+    {
+        d_ = dia;
+        m_ = mes;
+        a_ = year;
+    }
 
 	comprueba_fecha(d_, m_, a_);
 }
@@ -263,7 +273,7 @@ Fecha& Fecha::restayear(int decmt_a)
 
 /*------------------OBSERVADORAS------------------------*/
 
-ostream& Fecha::observadorPublico() const
+ostream& Fecha::observadorPublico() const noexcept
 {
 	tm timeinfo = { 0, 0, 0, d_, m_ - 1, a_ - 1900, 0, 0, -1 };
 	mktime(&timeinfo);
@@ -355,7 +365,7 @@ bool Fecha::comprueba_fecha(int& dia, int& mes, int& year)
 
 bool operator ==(const Fecha& fec1, const Fecha& fec2)
 {
-	if ((fec1.visualizar_dia() == fec2.visualizar_dia()) && (fec1.visualizar_mes() == fec2.visualizar_mes()) && (fec1.visualizar_anyo() == fec2.visualizar_anyo()))
+	if ((fec1.dia() == fec2.dia()) && (fec1.mes() == fec2.mes()) && (fec1.anno() == fec2.anno()))
 		return true;
 	else
 		return false;
@@ -395,7 +405,7 @@ bool operator >=(const Fecha& fec1, const Fecha& fec2)
 
 bool operator !=(const Fecha& fec1, const Fecha& fec2)
 {
-	if ((fec1.visualizar_dia() == fec2.visualizar_dia()) && (fec1.visualizar_mes() == fec2.visualizar_mes()) && (fec1.visualizar_anyo() == fec2.visualizar_anyo()))
+	if ((fec1.dia() == fec2.dia()) && (fec1.mes() == fec2.mes()) && (fec1.anno() == fec2.anno()))
 	    return false;
 	else
 	    return true;

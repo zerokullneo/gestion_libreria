@@ -195,33 +195,53 @@ bool operator <(const Cadena& texto1,const Cadena& texto2)
 /*FIN OPERADORES*/
 
 /*SUBCADENA*/
-Cadena Cadena::subcadena(unsigned int inicio, unsigned int num_caracteres)const throw out_of_range
+Cadena Cadena::subcadena(unsigned int inicio, unsigned int num_caracteres)const throw()
 {
-	if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
-		throw out_of_range("El indice de comienzo o el numero de caracteres indicado está fuera de rango.\n");
-	else
-	{
+    try
+    {
+        //if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
 		Cadena subtxt(num_caracteres);
-		for (unsigned int i = inicio, j = 0; i < inicio + num_caracteres; i++, j++)
+		for(unsigned int i = inicio, j = 0; i < inicio + num_caracteres; i++, j++)
 			subtxt.texto_[j]= texto_[i];
+
 		return subtxt;
+    }
+	catch(const char* out_of_range) //else
+	{
+        cerr << "El indice de comienzo o el numero de caracteres indicado está fuera de rango. " << endl;
 	}
 }
 
-char Cadena::at(unsigned int i)const throw out_of_range
+char Cadena::at(unsigned int i)const throw()
 {
-	if((i >= tamano_) || (i < 0))
+	/*if((i >= tamano_) || (i < 0))
 		throw out_of_range("El índice indicado está fuera de rango.\n");
 	else
-		return texto_[i];
+		return texto_[i];*/
+    try
+    {
+        return texto_[i];
+    }
+    catch(const char* out_of_range)
+    {
+        cerr << "El índice indicado está fuera de rango. " << endl;
+    }
 }
 
-char& Cadena::at(unsigned int i) throw out_of_range
+char& Cadena::at(unsigned int i) throw()
 {
-	if((i >= tamano_) || (i<0))
+	/*if((i >= tamano_) || (i<0))
 		throw out_of_range("El índice indicado está fuera de rango.\n");
 	else
-		return texto_[i];
+		return texto_[i];*/
+    try
+    {
+        return texto_[i];
+    }
+    catch(const char* out_of_range)
+    {
+        cerr << "El índice indicado está fuera de rango. " << endl;
+    }
 }
 /*FIN SUBCADENA*/
 

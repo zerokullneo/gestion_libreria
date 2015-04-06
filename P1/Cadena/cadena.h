@@ -59,10 +59,10 @@ class Cadena
 		//Funcion que extrae una subcadena dentro de otra
 		//La variable 'inicio' indica el indice donde comenzara a contar, contando
 		//el numero de caracteres especificado en la variable 'num_caracteres'.
-		Cadena subcadena(unsigned int inicio, unsigned int num_caracteres)const throw out_of_range;
+		Cadena subcadena(unsigned int inicio, unsigned int num_caracteres)const throw();
 		const char* c_str()const{return texto_;};
-		char at(unsigned int i)const throw out_of_range;
-		char& at(unsigned int i) throw out_of_range;
+		char at(unsigned int i)const throw();
+		char& at(unsigned int i) throw();
 
 		//funciones observadoras
 		char* Cad()const{return texto_;}

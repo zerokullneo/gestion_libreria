@@ -5,13 +5,38 @@
 	"P1/Cadena/cadena.h"
 	"P1/Fecha/fecha.h"
 
+1427307691 fecha.h"
+
 1427309862 c:\users\usuario\workspace\practicapoo\p1\cadena\cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>
 	<string>
 
+1427309862 
+
 1427307793 c:\users\usuario\workspace\practicapoo\p1\fecha\fecha.h
 	"../Cadena/cadena.h"
 	<ctime>
+
+1427307793 /cadena.h"
+
+1427304090 source:/home/zerokullneo/github/codeblocks/gestion_libreria/main.cpp
+	<fstream>
+	<sstream>
+	"P1/Cadena/cadena.h"
+	"P1/Fecha/fecha.h"
+
+1428343373 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+
+1427304192 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
+1428345357 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+	"cadena.h"
 
