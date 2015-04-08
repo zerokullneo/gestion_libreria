@@ -27,17 +27,11 @@ int main()
     Cadena v;
     v = "Hola";			// asignación con conversión desde const char*
     cout << v << endl;
-    Cadena w("Casa de muchos, casa de sucios");
-    Cadena x(w, 16, 4);
-    cout << '"' << w << "\"(16, 4) = " << x << endl;
-    Cadena y("Casa de muchos, casa de sucios", 4);
-    cout << "Los 4 primeros caracteres de la Cadena \"" << w
-	 << "\" son \"" << y << "\"\n";
 
     // Pruebas de índices
     size_t i = 87;
     cout << "El elemento " << i << " de la cadena es: " << u[i] << endl;
-    u[94u] = u[54u] = 'p';
+    u[94] = u[54] = 'p';
      cout << "Y tras modificar algunos caracteres, la cadena queda:\n" << u;
     try {
 	cout << u.at(2000);		// Fuera de rango
@@ -46,9 +40,11 @@ int main()
     }
     
     // Prueba de subcadena
-    Cadena grande("Nihil novum sub solem");
+    Cadena grande("Nihil novum sub solem"); // Nada nuevo bajo el Sol
     Cadena nuevo = grande.substr(6, 5);  // nuevo <- "novum"
     cout << "substr(6, 5) de " << grande << ": \"" << nuevo << "\"" << endl;
+    if (nuevo != "novum")
+      cerr << "*** ERROR *** Debería haber impreso \"novum\"" << endl;
 
     // Prueba de comparaciones
     cout << "Cadena a = \"novum\", b = \"Nihil novum sub solem\";\n a < b: " 
@@ -60,4 +56,24 @@ int main()
     cout << "La cadena a tiene  5 caracteres: " << (nuevo.length() == 5)
 	 << "\nLa cadena b tiene 21 caracteres: " << (grande.length() == 21)
 	 << endl;
+
+    // Pruebas de E/S
+    Cadena c;
+    cout << "Escribe un par de palabras, por favor: ";
+    cin >> c;
+    cout << "Palabra 1: " << c << endl;
+    cout << "Carácter actual: '" << static_cast<char>(cin.peek())
+	 << "'" << endl;
+    cin >> c;
+    cout << "Palabra 2: " << c << endl;
+
+    // Pruebas de iteradores
+    c = "No te digo trigo por no llamarte Rodrigo";
+    for (auto i : c)
+      cout << i;
+    cout << endl;
+    for (Cadena::const_reverse_iterator r = c.rbegin(); r != c.rend(); ++r)
+      cout << *r;
+    cout << endl;
+
 } // ~

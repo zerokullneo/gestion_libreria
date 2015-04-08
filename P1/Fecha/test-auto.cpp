@@ -1,20 +1,26 @@
+// 	$Id: test-auto.cpp 215 2015-04-07 18:11:03Z gerardo $
+/*
+ * Pruebas automáticas para P1 - Fecha
+ * ©2015 Antonio G.ª Domínguez, Gerardo, y otros profesores de POO
+ */	
 #include "fecha.h"
 #include "fct.h"
 #include <ctime>
+#include <sstream>
 using namespace std;
 
 #define fecha_is_eq(f, d, m, y)\
   (f.dia() == d && f.mes() == m && f.anno() == y)
 
-#define chk_eq_fecha(f, d, m, y)\
-  fct_xchk(\
-    fecha_is_eq(f,d,m,y),\
-    "failed chk_eq_fecha:\n<%02d/%02d/%04d>!=<%02d/%02d/%04d>",\
+#define chk_eq_fecha(f, d, m, y)		\
+  fct_xchk(					\
+    fecha_is_eq(f,d,m,y),					\
+    "failed chk_eq_fecha:\n<%02d/%02d/%04d>!=<%02d/%02d/%04d>",	\
     f.dia(), f.mes(), f.anno(), d, m, y)
 
 FCT_BGN() {
   int annoSistema, mesSistema, diaSistema;
-
+  
   FCT_FIXTURE_SUITE_BGN(Fecha) {
     FCT_SETUP_BGN() {
       const time_t ahora = time(0);
@@ -24,11 +30,11 @@ FCT_BGN() {
       diaSistema = fecha->tm_mday;
     }
     FCT_SETUP_END();
-
+    
     FCT_TEARDOWN_BGN() {
     }
     FCT_TEARDOWN_END();
-
+    
     FCT_TEST_BGN(Ctor: dia - mes - anyo) {
       const Fecha f(9, 10, 1999);
       chk_eq_fecha(f, 9, 10, 1999);
@@ -123,7 +129,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Ctor: dia no valido) {
       try {
-        Fecha f(31, 6, 2009);
+        const Fecha f(31, 6, 2009);
         fct_chk(!"Se esperaba una excepción");
       } catch (Fecha::Invalida) {
         fct_chk(true);
@@ -133,7 +139,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Ctor: mes no valido) {
       try {
-        Fecha f(1, -1, 2020);
+        const Fecha f(1, -1, 2020);
         fct_chk(!"Se esperaba una excepción");
       } catch (Fecha::Invalida) {
         fct_chk(true);
@@ -143,7 +149,45 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Ctor: anno no valido) {
       try {
-        Fecha f(1, 1, -1);
+        const Fecha f(1, 1, -1);
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+ FCT_TEST_BGN(Ctor cadena: dia no valido) {
+      try {
+        const Fecha f("31/6/2009");
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+
+    FCT_TEST_BGN(Ctor cadena: mes no valido) {
+      try {
+        const Fecha f("1/13/2020");
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+
+    FCT_TEST_BGN(Ctor cadena: anno no valido) {
+      try {
+        const Fecha f("1/1/-1");
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+    FCT_TEST_BGN(Ctor: cadena incorrecta) {
+      try {
+        const Fecha f("31-1-2000");
         fct_chk(!"Se esperaba una excepción");
       } catch (Fecha::Invalida) {
         fct_chk(true);
@@ -153,7 +197,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Preincremento) {
       Fecha f(31, 3, 2010);
-      Fecha g(++f);
+      const Fecha g(++f);
       chk_eq_fecha(f, 1, 4, 2010);
       chk_eq_fecha(g, 1, 4, 2010);
     }
@@ -161,7 +205,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Preincremento - asociatividad) {
       Fecha f(31, 3, 2010);
-      Fecha g(++++f);
+      const Fecha g(++++f);
       chk_eq_fecha(f, 2, 4, 2010);
       chk_eq_fecha(g, 2, 4, 2010);
     }
@@ -169,7 +213,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Postincremento) {
       Fecha f(31, 3, 2010);
-      Fecha g(f++);
+      const Fecha g(f++);
       chk_eq_fecha(f, 1, 4, 2010);
       chk_eq_fecha(g, 31, 3, 2010);
     }
@@ -177,7 +221,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Predecremento) {
       Fecha f(1, 1, 2010);
-      Fecha g(--f);
+      const Fecha g(--f);
       chk_eq_fecha(f, 31, 12, 2009);
       chk_eq_fecha(g, 31, 12, 2009);
     }
@@ -185,7 +229,7 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Predecremento - asociatividad) {
       Fecha f(1, 1, 2010);
-      Fecha g(----f);
+      const Fecha g(----f);
       chk_eq_fecha(f, 30, 12, 2009);
       chk_eq_fecha(g, 30, 12, 2009);
     }
@@ -193,19 +237,20 @@ FCT_BGN() {
 
     FCT_TEST_BGN(Postdecremento) {
       Fecha f(1, 1, 2010);
-      Fecha g(f--);
+      const Fecha g(f--);
       chk_eq_fecha(f, 31, 12, 2009);
       chk_eq_fecha(g, 1, 1, 2010);
     }
     FCT_TEST_END();
-
-    FCT_TEST_BGN(Suma de dias - fecha + dias) {
+#if 0
+// ANULADO
+    FCT_TEST_BGN(Suma de dias - dias + fecha) {
       const Fecha f(30, 4, 2003);
-      const Fecha g(f + 10);
+      const Fecha g(10 + f);
       chk_eq_fecha(g, 10, 5, 2003);
     }
     FCT_TEST_END();
-
+#endif
     FCT_TEST_BGN(Resta de dias - fecha - dias) {
       const Fecha f(1, 4, 2008);
       const Fecha g(f - 10);
@@ -280,11 +325,12 @@ FCT_BGN() {
     }
     FCT_TEST_END();
 
-    FCT_TEST_BGN(Conversion implicita) {
+    FCT_TEST_BGN(Conversion a cadena) {
       const Fecha f(2, 4, 2006);
-      fct_chk(strstr(f, "domingo") != 0);
-      fct_chk(strstr(f, "abril") != 0);
-      fct_chk(strstr(f, "2006") != 0);
+      const char* s = f.cadena();
+      fct_chk(strstr(s, "domingo") != 0);
+      fct_chk(strstr(s, "abril") != 0);
+      fct_chk(strstr(s, "2006") != 0);
     }
     FCT_TEST_END();
 
@@ -384,7 +430,7 @@ FCT_BGN() {
       long int d1 = f1 - f2;
       long int d2 = f2 - f1;
       // Dejamos un margen de ±1
-      fct_chk((d1 >= 49672l || d1 <= 49674l) && (d2 <= -49672l || d2 >= -49674l));
+      fct_chk((d1 >= 49672l && d1 <= 49674l) && (d2 <= -49672l && d2 >= -49674l));
     }
     FCT_TEST_END();
     FCT_TEST_BGN(Diferencia en dias entre 2 fechas iguales) {
@@ -394,6 +440,58 @@ FCT_BGN() {
       fct_chk(d == 0l);
     }
     FCT_TEST_END();
+    FCT_TEST_BGN(Extraccion: fecha valida) {
+      istringstream is("01/01/2001");
+      Fecha f;
+      is >> f;
+      chk_eq_fecha(f, 1, 1, 2001);
+    }
+    FCT_TEST_END();
+
+    FCT_TEST_BGN(Extraccion: fecha no valida) {
+      try {
+        istringstream is("90/20/4000");
+        Fecha f;
+        is >> f;
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+
+    FCT_TEST_BGN(Extraccion: entrada no valida) {
+      try {
+        istringstream is("gomi");
+        Fecha f;
+        is >> f;
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+    FCT_TEST_BGN(Extraccion: desbordamiento) {
+      try {
+        istringstream is("007/007/1997");
+        Fecha f;
+        is >> f;
+        fct_chk(!"Se esperaba una excepción");
+      } catch (Fecha::Invalida) {
+        fct_chk(true);
+      }
+    }
+    FCT_TEST_END();
+
+    FCT_TEST_BGN(Insercion) {
+      const Fecha f("23/09/2015");
+      ostringstream os;
+      os << f;
+      string s = os.str();
+      fct_chk("miércoles 23 de septiembre de 2015" == s);
+    }
+    FCT_TEST_END();
+
   }
   FCT_FIXTURE_SUITE_END();
 }

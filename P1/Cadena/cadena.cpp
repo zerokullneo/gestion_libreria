@@ -61,7 +61,7 @@ Cadena::Cadena(unsigned int tamano)
 //Constructor de copia de un objeto Cadena
 Cadena::Cadena(const Cadena& frase)
 {
-	tamano_ = frase.longitud();
+	tamano_ = frase.length();
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
 		cerr << "Cadena: Cadena& fallo de memoria." << endl;
@@ -81,18 +81,62 @@ Cadena::Cadena(const char* texto)
 		cerr << "Cadena: const char* fallo de memoria." << endl;
 	else
 	{
-		//strncpy(texto_,texto,tamano_);
 		for(unsigned int i = 0; i <= tamano_; i++)
 			texto_[i] = texto[i];
 		texto_[tamano_ + 1] = '\0';
 	}
+}
+
+//Constructor de una sub-cadena de bajo nivel char*.
+Cadena::Cadena(const char* texto, size_t n)
+{
+    tamano_ = n;
+    texto_= new char[tamano_ + 1];
+    if(texto_ ==NULL)
+        cerr << "Cadena: const char* fallo de memoria." << endl;
+    else
+    {
+        for(unsigned int i = 0; i <= tamano_; i++)
+            texto_[i] = texto[i];
+        texto_[tamano_ + 1] = '\0';
+    }
+}
+
+//Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
+Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
+{
+    tamano_ = n;
+    texto_= new char[tamano_ + 1];
+    if(texto_ ==NULL)
+        cerr << "Cadena: const char* fallo de memoria." << endl;
+    else
+    {
+        for(unsigned int i = pos; i <= tamano_; i++)
+            texto_[i] = frase[i];
+        texto_[tamano_ + 1] = '\0';
+    }
+}
+
+//Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
+Cadena::Cadena(const Cadena& frase, unsigned int pos)
+{
+    tamano_ = frase.npos - pos;
+    texto_= new char[tamano_ + 1];
+    if(texto_ ==NULL)
+        cerr << "Cadena: const char* fallo de memoria." << endl;
+    else
+    {
+        for(unsigned int i = pos; i <= tamano_; i++)
+            texto_[i] = frase[i];
+        texto_[tamano_ + 1] = '\0';
+    }
 }
 /*FIN CONSTRUCTORES*/
 
 /*OPERADORES*/
 
 //se suma al 'texto_' existente la nueva 'frase'
-Cadena& Cadena::operator += (const Cadena& frase)
+Cadena& Cadena::operator +=(const Cadena& frase) noexcept
 {
 	unsigned int i, j=tamano_;
 	int tam = tamano_ + frase.tamano_ + 1;
@@ -112,7 +156,7 @@ Cadena& Cadena::operator += (const Cadena& frase)
 	return *this;
 }
 
-Cadena& Cadena::operator =(const char* texto)
+Cadena& Cadena::operator =(const char* texto) noexcept
 {
 	tamano_ = strlen(texto) + 1;
 	texto_ = (char*) realloc(texto_, tamano_);
@@ -120,7 +164,7 @@ Cadena& Cadena::operator =(const char* texto)
 	return *this;
 }
 
-Cadena& Cadena::operator =(const Cadena& frase)
+Cadena& Cadena::operator =(const Cadena& frase) noexcept
 {
 	tamano_ = strlen(frase.c_str()) + 1;
 	texto_ = (char*) realloc(texto_, tamano_);
@@ -128,12 +172,12 @@ Cadena& Cadena::operator =(const Cadena& frase)
 	return *this;
 }
 
-char Cadena::operator[](unsigned int i) const
+char& Cadena::operator[](unsigned int i) noexcept
 {
 	return *(texto_+i);
 }
 
-char& Cadena::operator[](unsigned int i)
+char Cadena::operator[](unsigned int i) const noexcept
 {
 	return *(texto_+i);
 }
@@ -195,7 +239,7 @@ bool operator <(const Cadena& texto1,const Cadena& texto2)
 /*FIN OPERADORES*/
 
 /*SUBCADENA*/
-Cadena Cadena::subcadena(unsigned int inicio, unsigned int num_caracteres)const throw()
+Cadena Cadena::substr(unsigned int inicio, unsigned int num_caracteres)const throw()
 {
     try
     {

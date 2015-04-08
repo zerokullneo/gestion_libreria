@@ -48,18 +48,24 @@ class Cadena
 		Cadena (const Cadena& frase);
 		//Constructor de copia de una cadena a bajo nivel.
 		Cadena (const char* texto);
+		//Constructor de una sub-cadena de bajo nivel char*.
+		Cadena(const char* texto, size_t n);
+		//Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
+		Cadena(const Cadena& frase, unsigned int pos, size_t n);
+		//Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
+		Cadena(const Cadena& frase, unsigned int pos);
 
 		//operadores sobrecargados
-		Cadena& operator +=(const Cadena& frase);
-		Cadena& operator =(const char* texto);
-		Cadena& operator =(const Cadena& frase);
-		char& operator[](unsigned int i);
-		char operator[](unsigned int i) const;
+		Cadena& operator +=(const Cadena& frase) noexcept;
+		Cadena& operator =(const char* texto)noexcept;
+		Cadena& operator =(const Cadena& frase)noexcept;
+		char& operator[](unsigned int i)noexcept;
+		char operator[](unsigned int i) const noexcept;
 
 		//Funcion que extrae una subcadena dentro de otra
 		//La variable 'inicio' indica el indice donde comenzara a contar, contando
 		//el numero de caracteres especificado en la variable 'num_caracteres'.
-		Cadena subcadena(unsigned int inicio, unsigned int num_caracteres)const throw();
+		Cadena substr(unsigned int inicio, unsigned int num_caracteres)const throw();
 		const char* c_str()const{return texto_;};
 		char at(unsigned int i)const throw();
 		char& at(unsigned int i) throw();
@@ -67,9 +73,9 @@ class Cadena
 		//funciones observadoras
 		char* Cad()const{return texto_;}
 		//recibe un objeto Cadena para verificar su longitud
-		unsigned int longitud(Cadena& c)const{return c.tamano_;}
+		unsigned int length(Cadena& c)const{return c.tamano_;}
 		//devuelve el atributo tamano_ del objeto cadena actual
-		unsigned int longitud()const{return tamano_;}
+		unsigned int length()const{return tamano_;}
 		//const char* imprimirP()const;
 		void imprimirP()const;
 
@@ -83,6 +89,7 @@ class Cadena
 	private:
 		char* texto_;
 		unsigned int tamano_;
+		size_t npos;
 };
 
 //operadores sobrecargados externos de mas de un elemento

@@ -27,7 +27,7 @@
 	"P1/Cadena/cadena.h"
 	"P1/Fecha/fecha.h"
 
-1428343373 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+1428517488 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -39,4 +39,7 @@
 
 1428345357 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
+
+1428346436 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
+	"fecha.h"
 
