@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1427307691 source:c:\users\usuario\workspace\practicapoo\main.cpp
+	<fstream>
+	<sstream>
+	"P1/Cadena/cadena.h"
+	"P1/Fecha/fecha.h"
+
+1427307691 fecha.h"
+
+1427309862 c:\users\usuario\workspace\practicapoo\p1\cadena\cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+
+1427309862 
+
+1427307793 c:\users\usuario\workspace\practicapoo\p1\fecha\fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
+1427307793 /cadena.h"
+
+1427304090 source:/home/zerokullneo/github/codeblocks/gestion_libreria/main.cpp
+	<fstream>
+	<sstream>
+	"P1/Cadena/cadena.h"
+	"P1/Fecha/fecha.h"
+
+1428517488 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+
+1427304192 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
+1428345357 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+	"cadena.h"
+
+1428346436 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
+	"fecha.h"
+
+1428588917 source:/home/usuario/Descargas/gestion_libreria/main.cpp
+	<fstream>
+	<sstream>
+	"P1/Cadena/cadena.h"
+	"P1/Fecha/fecha.h"
+
+1428594896 /home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+	<iterator>
+
+1428591794 /home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
+1428588917 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.cpp
+	"cadena.h"
+

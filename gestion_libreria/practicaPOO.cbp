@@ -45,6 +45,7 @@
 		<Unit filename="P1/Fecha/fecha.h" />
 		<Unit filename="P1/Fecha/test-auto.cpp" />
 		<Unit filename="P1/Fecha/test-consola.cpp" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
