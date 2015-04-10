@@ -33,8 +33,8 @@
 
 #include <ctime>
 
-#define YEAR_MINIMO 1600
-#define YEAR_MAXIMO 2200
+#define YEAR_MINIMO 1902
+#define YEAR_MAXIMO 2037
 
 class Fecha
 {

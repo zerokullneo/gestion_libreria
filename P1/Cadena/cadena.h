@@ -29,6 +29,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <iterator>
 
 using namespace std;
 
@@ -37,6 +38,11 @@ using namespace std;
 class Cadena
 {
 	public:
+        typedef char* iterator;
+		typedef const char* const_iterator;
+		typedef reverse_iterator<iterator> reverse_iterator;
+        typedef reverse_iterator<const_iterator> const_reverse_iterator;
+
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';
 		explicit Cadena (){tamano_=0;texto_=new char[tamano_];}
@@ -79,9 +85,15 @@ class Cadena
 		//const char* imprimirP()const;
 		void imprimirP()const;
 
-		//Insercción y extracción de flujo
-		friend ostream& operator <<(ostream& out,const Cadena& texto);
-		friend istream& operator >>(istream& in,Cadena& texto);
+        //funciones sobre iteradores
+        iterator begin() noexcept;
+        iterator end() noexcept;
+        const_iterator cbegin() noexcept;
+        const_iterator cend() noexcept;
+        reverse_iterator rbegin() noexcept;
+        reverse_iterator rend() noexcept;
+        const_reverse_iterator crbegin() noexcept;
+        const_reverse_iterator crend() noexcept;
 
 		//Destructor de Cadena
 		~Cadena(){delete [] texto_;};
@@ -102,6 +114,6 @@ bool operator <=(const Cadena& texto1,const Cadena& texto2);
 bool operator <(const Cadena& texto1,const Cadena& texto2);
 
 //Insercción y extracción de flujo
-//ostream& operator <<(ostream& out,const Cadena& texto);
-//istream& operator >>(istream& in,Cadena& texto);
+ostream& operator <<(ostream& out,const Cadena& texto);
+istream& operator >>(istream& in,Cadena& texto);
 #endif	/* CADENA_H_ */

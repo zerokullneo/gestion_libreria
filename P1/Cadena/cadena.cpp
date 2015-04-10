@@ -289,10 +289,52 @@ char& Cadena::at(unsigned int i) throw()
 }
 /*FIN SUBCADENA*/
 
+/*OPERACIONES SOBRE ITERADORES*/
+Cadena::iterator Cadena::begin() noexcept
+{
+    return iterator(begin());
+}
+
+Cadena::iterator Cadena::end() noexcept
+{
+    return iterator(end());
+}
+
+Cadena::const_iterator Cadena::cbegin() noexcept
+{
+    return const_iterator(begin());
+}
+
+Cadena::const_iterator Cadena::cend() noexcept
+{
+    return const_iterator(end());
+}
+
+Cadena::reverse_iterator Cadena::rbegin() noexcept
+{
+    return reverse_iterator(end());
+}
+
+Cadena::reverse_iterator Cadena::rend() noexcept
+{
+    return reverse_iterator(begin());
+}
+
+Cadena::const_reverse_iterator Cadena::crbegin() noexcept
+{
+    return const_reverse_iterator(end());
+}
+
+Cadena::const_reverse_iterator Cadena::crend() noexcept
+{
+    return const_reverse_iterator(begin());
+}
+/*FIN OPERACIONES SOBRE ITERADORES*/
+
 /*OPERADORES DE FLUJO*/
 ostream& operator <<(ostream& out,const Cadena& texto)
 {
-	out << texto.texto_;
+	out << texto.Cad();
 	return out;
 }
 
