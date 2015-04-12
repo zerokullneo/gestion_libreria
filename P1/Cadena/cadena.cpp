@@ -28,6 +28,7 @@ using namespace std;
 Cadena::Cadena(unsigned int longitud, char caracter)
 {
 	tamano_ = longitud;
+	npos = -1;
 	texto_= new char[longitud + 1];
 
 	if(texto_ == NULL)
@@ -45,6 +46,7 @@ Cadena::Cadena(unsigned int longitud, char caracter)
 Cadena::Cadena(unsigned int tamano)
 {
 	tamano_ = tamano;
+	npos = -1;
 	texto_= new char[tamano + 1];
 
 	if(texto_ == NULL)
@@ -62,6 +64,7 @@ Cadena::Cadena(unsigned int tamano)
 Cadena::Cadena(const Cadena& frase)
 {
 	tamano_ = frase.length();
+	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
 		cerr << "Cadena: Cadena& fallo de memoria." << endl;
@@ -76,6 +79,7 @@ Cadena::Cadena(const Cadena& frase)
 Cadena::Cadena(const char* texto)
 {
 	tamano_= strlen(texto);
+	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
 		cerr << "Cadena: const char* fallo de memoria." << endl;
@@ -91,14 +95,15 @@ Cadena::Cadena(const char* texto)
 Cadena::Cadena(const char* texto, size_t n)
 {
     tamano_ = n;
+    npos = -1;
     texto_= new char[tamano_ + 1];
-    if(texto_ ==NULL)
+    if(texto_ == NULL)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = 0; i <= tamano_; i++)
+        for(unsigned int i = 0; i < tamano_; i++)
             texto_[i] = texto[i];
-        texto_[tamano_ + 1] = '\0';
+        texto_[tamano_] = '\0';
     }
 }
 
@@ -106,29 +111,31 @@ Cadena::Cadena(const char* texto, size_t n)
 Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
 {
     tamano_ = n;
-    texto_= new char[tamano_ + 1];
-    if(texto_ ==NULL)
+    npos = pos + tamano_;
+    texto_= new char[tamano_+1];
+    if(texto_ == NULL)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i <= tamano_; i++)
-            texto_[i] = frase[i];
-        texto_[tamano_ + 1] = '\0';
+        for(unsigned int i = pos; i < npos; ++i)
+            texto_[i-pos] = frase[i];
+        texto_[tamano_] = '\0';
     }
 }
 
 //Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
 Cadena::Cadena(const Cadena& frase, unsigned int pos)
 {
-    tamano_ = frase.npos - pos;
+    tamano_ = frase.length() - pos;
+    npos = frase.length() - pos;
     texto_= new char[tamano_ + 1];
-    if(texto_ ==NULL)
+    if(texto_ == NULL)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i <= tamano_; i++)
-            texto_[i] = frase[i];
-        texto_[tamano_ + 1] = '\0';
+        for(unsigned int i = pos; i < frase.length(); ++i)
+            texto_[i-pos] = frase[i];
+        texto_[tamano_] = '\0';
     }
 }
 /*FIN CONSTRUCTORES*/
@@ -239,52 +246,51 @@ bool operator <(const Cadena& texto1,const Cadena& texto2)
 /*FIN OPERADORES*/
 
 /*SUBCADENA*/
-Cadena Cadena::substr(unsigned int inicio, unsigned int num_caracteres)const throw()
+Cadena Cadena::substr(unsigned int inicio, unsigned int num_caracteres)const throw(out_of_range)
 {
     try
     {
-        //if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
-		Cadena subtxt(num_caracteres);
-		for(unsigned int i = inicio, j = 0; i < inicio + num_caracteres; i++, j++)
-			subtxt.texto_[j]= texto_[i];
+        if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
+		{
+		    Cadena subtxt(num_caracteres);
+            for(unsigned int i = inicio, j = 0; i < inicio + num_caracteres; i++, j++)
+                subtxt.texto_[j]= texto_[i];
 
-		return subtxt;
+            return subtxt;
+		}
+		else
+            cerr << "ERRRROOORRR" << endl;
     }
-	catch(const char* out_of_range) //else
+	catch(const std::out_of_range& fdr)
 	{
-        cerr << "El indice de comienzo o el numero de caracteres indicado está fuera de rango. " << endl;
+        cerr << fdr.what() << endl;
 	}
 }
 
-char Cadena::at(unsigned int i)const throw()
+//at Leer caracter
+char Cadena::at(unsigned int i)const throw(out_of_range)
 {
-	/*if((i >= tamano_) || (i < 0))
-		throw out_of_range("El índice indicado está fuera de rango.\n");
-	else
-		return texto_[i];*/
     try
     {
+        cout << endl << "--" << texto_[i] << "--" << endl;
         return texto_[i];
     }
-    catch(const char* out_of_range)
+    catch(const std::out_of_range& fdr)
     {
-        cerr << "El índice indicado está fuera de rango. " << endl;
+        cerr << fdr.what() << endl;
     }
 }
 
-char& Cadena::at(unsigned int i) throw()
+//at Escribir caracter
+char& Cadena::at(unsigned int i) throw(out_of_range)
 {
-	/*if((i >= tamano_) || (i<0))
-		throw out_of_range("El índice indicado está fuera de rango.\n");
-	else
-		return texto_[i];*/
     try
     {
         return texto_[i];
     }
-    catch(const char* out_of_range)
+    catch(const std::out_of_range& fdr)
     {
-        cerr << "El índice indicado está fuera de rango. " << endl;
+        cerr << fdr.what() << endl;
     }
 }
 /*FIN SUBCADENA*/

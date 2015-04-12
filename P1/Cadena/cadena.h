@@ -31,6 +31,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <stdexcept>
 #include <vector>
 #include <iterator>
 
@@ -66,19 +67,19 @@ class Cadena
 		Cadena& operator +=(const Cadena& frase) noexcept;
 		Cadena& operator =(const char* texto) noexcept;
 		Cadena& operator =(const Cadena& frase) noexcept;
-		char& operator[](unsigned int i)noexcept;
+		char& operator[](unsigned int i) noexcept;
 		char operator[](unsigned int i) const noexcept;
 
 		//Funcion que extrae una subcadena dentro de otra
 		//La variable 'inicio' indica el indice donde comenzara a contar, contando
 		//el numero de caracteres especificado en la variable 'num_caracteres'.
-		Cadena substr(unsigned int inicio, unsigned int num_caracteres)const throw();
-		const char* c_str()const{return texto_;};
-		char at(unsigned int i)const throw();
-		char& at(unsigned int i) throw();
+		Cadena substr(unsigned int inicio, unsigned int num_caracteres) const throw(out_of_range);
+		char at(unsigned int i) const throw(out_of_range);
+		char& at(unsigned int i) throw(out_of_range);
 
 		//funciones observadoras
-		char* Cad()const{return texto_;}
+		char* Cad() const{return texto_;}
+		const char* c_str() const{return texto_;};
 		//recibe un objeto Cadena para verificar su longitud
 		unsigned int length(Cadena& c)const{return c.tamano_;}
 		//devuelve el atributo tamano_ del objeto cadena actual
@@ -102,7 +103,7 @@ class Cadena
 	private:
 		char* texto_;
 		unsigned int tamano_;
-		size_t npos;
+		size_t npos;//numero de posiciones a copiar.
 };
 
 //operadores sobrecargados externos de mas de un elemento

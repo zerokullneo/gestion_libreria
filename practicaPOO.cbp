@@ -32,19 +32,19 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-pedantic" />
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add option="-g" />
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="P1/Cadena/cadena.cpp" />
 		<Unit filename="P1/Cadena/cadena.h" />
 		<Unit filename="P1/Cadena/fct.h" />
 		<Unit filename="P1/Cadena/test-auto.cpp" />
-		<Unit filename="P1/Cadena/test-consola.cpp" />
 		<Unit filename="P1/Fecha/fct.h" />
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
-		<Unit filename="P1/Fecha/test-auto.cpp" />
-		<Unit filename="P1/Fecha/test-consola.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
