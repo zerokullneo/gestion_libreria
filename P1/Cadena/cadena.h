@@ -24,24 +24,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef CADENA_H_
+#define CADENA_H_
 //#include "../../cabeceras.h"
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <vector>
 #include <iterator>
 
 using namespace std;
 
-#ifndef CADENA_H_
-#define CADENA_H_
 class Cadena
 {
 	public:
         typedef char* iterator;
 		typedef const char* const_iterator;
-		typedef reverse_iterator<iterator> reverse_iterator;
-        typedef reverse_iterator<const_iterator> const_reverse_iterator;
+		typedef std::reverse_iterator<iterator> reverse_iterator;
+        typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';
@@ -63,8 +64,8 @@ class Cadena
 
 		//operadores sobrecargados
 		Cadena& operator +=(const Cadena& frase) noexcept;
-		Cadena& operator =(const char* texto)noexcept;
-		Cadena& operator =(const Cadena& frase)noexcept;
+		Cadena& operator =(const char* texto) noexcept;
+		Cadena& operator =(const Cadena& frase) noexcept;
 		char& operator[](unsigned int i)noexcept;
 		char operator[](unsigned int i) const noexcept;
 
@@ -86,14 +87,14 @@ class Cadena
 		void imprimirP()const;
 
         //funciones sobre iteradores
-        iterator begin() noexcept;
-        iterator end() noexcept;
+        iterator begin() const noexcept;
+        iterator end() const noexcept;
         const_iterator cbegin() noexcept;
         const_iterator cend() noexcept;
-        reverse_iterator rbegin() noexcept;
-        reverse_iterator rend() noexcept;
-        const_reverse_iterator crbegin() noexcept;
-        const_reverse_iterator crend() noexcept;
+        reverse_iterator rbegin() const noexcept;
+        reverse_iterator rend() const noexcept;
+        const_reverse_iterator crbegin() const noexcept;
+        const_reverse_iterator crend() const noexcept;
 
 		//Destructor de Cadena
 		~Cadena(){delete [] texto_;};

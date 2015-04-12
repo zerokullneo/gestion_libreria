@@ -33,12 +33,13 @@
 
 #include <ctime>
 
-#define YEAR_MINIMO 1902
-#define YEAR_MAXIMO 2037
-
 class Fecha
 {
 	public:
+	    //Limites de fecha
+        static const int AnnoMaximo = 2037;
+        static const int AnnoMinimo = 1902;
+
 		//Constructor de enteros con los 3 parámetros.
 		Fecha(int dia=0, int mes=0, int year=0);
 		//Constructor de conversión de Cadena a Fecha.
@@ -75,6 +76,7 @@ class Fecha
 				Invalida(const char* t);
 
 				const char* por_que(const char* t)const{return tp_;}
+				const char* por_que() const {return tp_;}
 			private:
 				const char* tp_;
 		};
@@ -115,6 +117,7 @@ Fecha operator + (int incremento, const Fecha& fec);
 Fecha operator + (const Fecha& fec, int incremento);
 Fecha operator - (int decremento, const Fecha& fec);
 Fecha operator - (const Fecha& fec, int decremento);
+long int operator - (const Fecha& f1, const Fecha& f2);
 
 //Sobrecarga el operador Flujo de Salida para que la fecha sea legible por pantalla.
 ostream& operator <<(ostream& os, const Fecha& fec);

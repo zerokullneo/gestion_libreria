@@ -290,42 +290,42 @@ char& Cadena::at(unsigned int i) throw()
 /*FIN SUBCADENA*/
 
 /*OPERACIONES SOBRE ITERADORES*/
-Cadena::iterator Cadena::begin() noexcept
+Cadena::iterator Cadena::begin() const noexcept
 {
-    return iterator(begin());
+    return &texto_[0]; //iterator(begin());
 }
 
-Cadena::iterator Cadena::end() noexcept
+Cadena::iterator Cadena::end() const noexcept
 {
-    return iterator(end());
+    return &texto_[tamano_]; //iterator(end());
 }
 
 Cadena::const_iterator Cadena::cbegin() noexcept
 {
-    return const_iterator(begin());
+    return &texto_[0]; //const_iterator(begin());
 }
 
 Cadena::const_iterator Cadena::cend() noexcept
 {
-    return const_iterator(end());
+    return &texto_[tamano_]; //const_iterator(end());
 }
 
-Cadena::reverse_iterator Cadena::rbegin() noexcept
+Cadena::reverse_iterator Cadena::rbegin() const noexcept
 {
     return reverse_iterator(end());
 }
 
-Cadena::reverse_iterator Cadena::rend() noexcept
+Cadena::reverse_iterator Cadena::rend() const noexcept
 {
     return reverse_iterator(begin());
 }
 
-Cadena::const_reverse_iterator Cadena::crbegin() noexcept
+Cadena::const_reverse_iterator Cadena::crbegin() const noexcept
 {
     return const_reverse_iterator(end());
 }
 
-Cadena::const_reverse_iterator Cadena::crend() noexcept
+Cadena::const_reverse_iterator Cadena::crend() const noexcept
 {
     return const_reverse_iterator(begin());
 }

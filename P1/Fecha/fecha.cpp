@@ -180,7 +180,7 @@ Fecha& Fecha::sumadias(int incmt_d)
 		}
 	}
 
-	if(a_ >	YEAR_MAXIMO)
+	if(a_ >	AnnoMaximo)
 		throw Invalida("Año Incorrecto.");//year
 
 	return *this;
@@ -229,7 +229,7 @@ Fecha& Fecha::restadias(int decmt_d)
 		}
 	}
 
-	if(a_ <	YEAR_MINIMO)
+	if(a_ <	AnnoMinimo)
 		throw Invalida("Año Incorrecto.");//year
 	return *this;
 }
@@ -301,7 +301,7 @@ void Fecha::visualizar() const
 
 bool Fecha::comprueba_fecha(int& dia, int& mes, int& year)
 {
-	if ((year < YEAR_MINIMO) || (year > YEAR_MAXIMO))
+	if ((year < AnnoMinimo) || (year > AnnoMaximo))
 	{
 		throw Invalida("Año Incorrecto.");//year
 	}
@@ -451,4 +451,9 @@ Fecha operator - (const Fecha& fec, int decremento)
 	Fecha tmp(fec);
 	tmp -= decremento;
 	return tmp;
+}
+
+long int operator - (const Fecha& f1, const Fecha& f2)
+{
+    return f1-f2;
 }

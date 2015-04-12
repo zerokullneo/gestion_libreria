@@ -1,4 +1,4 @@
-// 	$Id: test-auto.cpp 206 2015-03-13 21:19:58Z gerardo $	
+// 	$Id: test-auto.cpp 206 2015-03-13 21:19:58Z gerardo $
 /* Pruebas automáticas de la clase Cadena para P1 y ss.
  * ©Antonio G.ª Dguez.
  * ©Los profesores de POO
@@ -65,7 +65,7 @@ FCT_BGN() {
       fct_chk(strcmp(a.c_str(), "hola") == 0);
     }
     FCT_TEST_END();
- 
+
     FCT_TEST_BGN(Ctor: N primeros caracteres de cadena de C) {
       const Cadena a("No te digo trigo por no llamarte Rodrigo", 16);
       const Cadena b("Apetekawn", 0);

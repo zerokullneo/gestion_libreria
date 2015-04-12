@@ -2,7 +2,7 @@
 /*
  * Pruebas automáticas para P1 - Fecha
  * ©2015 Antonio G.ª Domínguez, Gerardo, y otros profesores de POO
- */	
+ */
 #include "fecha.h"
 #include "fct.h"
 #include <ctime>
@@ -19,8 +19,8 @@ using namespace std;
     f.dia(), f.mes(), f.anno(), d, m, y)
 
 FCT_BGN() {
-  int annoSistema, mesSistema, diaSistema;
-  
+    int annoSistema, mesSistema, diaSistema;
+
   FCT_FIXTURE_SUITE_BGN(Fecha) {
     FCT_SETUP_BGN() {
       const time_t ahora = time(0);
@@ -30,11 +30,11 @@ FCT_BGN() {
       diaSistema = fecha->tm_mday;
     }
     FCT_SETUP_END();
-    
+
     FCT_TEARDOWN_BGN() {
     }
     FCT_TEARDOWN_END();
-    
+
     FCT_TEST_BGN(Ctor: dia - mes - anyo) {
       const Fecha f(9, 10, 1999);
       chk_eq_fecha(f, 9, 10, 1999);
