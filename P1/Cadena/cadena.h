@@ -47,15 +47,17 @@ class Cadena
 
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';
-		explicit Cadena (){tamano_=0;texto_=new char[tamano_];}
+		explicit Cadena(){tamano_ = 0;texto_ = new char[tamano_];}
 		//Constructor de conversión
-		Cadena (unsigned int longitud, char caracter);
+		Cadena(unsigned int longitud, char caracter);
 		//Constructor de espacios vacíos.
 		explicit Cadena(unsigned int tamano);
 		//Constructor de copia de un objeto Cadena
-		Cadena (const Cadena& frase);
+		Cadena(const Cadena& frase);
+		//Constructor de movimiento de un objeto Cadena
+		Cadena(Cadena&& frase);
 		//Constructor de copia de una cadena a bajo nivel.
-		Cadena (const char* texto);
+		Cadena(const char* texto);
 		//Constructor de una sub-cadena de bajo nivel char*.
 		Cadena(const char* texto, size_t n);
 		//Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
@@ -66,7 +68,10 @@ class Cadena
 		//operadores sobrecargados
 		Cadena& operator +=(const Cadena& frase) noexcept;
 		Cadena& operator =(const char* texto) noexcept;
+		//Asignacion de copia
 		Cadena& operator =(const Cadena& frase) noexcept;
+        //Asignacion de movimiento
+		Cadena& operator =(Cadena&& frase) noexcept;
 		char& operator[](unsigned int i) noexcept;
 		char operator[](unsigned int i) const noexcept;
 

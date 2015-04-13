@@ -75,6 +75,19 @@ Cadena::Cadena(const Cadena& frase)
 	}
 }
 
+//Constructor de movimiento de un objeto Cadena
+Cadena::Cadena(Cadena&& frase)
+{
+    tamano_ = frase.length();
+    texto_ = new char[tamano_ + 1];
+    strncpy(texto_, frase.texto_, tamano_);
+    texto_[tamano_+1] = '\0';
+    //tamano_ = frase.tamano_;
+    //texto_ = frase.texto_;
+    //frase.tamano_ = 0;
+    //frase.texto_ = '\0';
+}
+
 //Constructor de copia de una cadena a bajo nivel.
 Cadena::Cadena(const char* texto)
 {
@@ -179,6 +192,20 @@ Cadena& Cadena::operator =(const Cadena& frase) noexcept
 	return *this;
 }
 
+//Asignacion de movimiento
+Cadena& Cadena::operator =(Cadena&& frase) noexcept
+{
+    //delete[] texto_;
+    tamano_ = frase.tamano_;
+    texto_ = (char*) realloc(texto_, tamano_);
+    strncpy(texto_,frase.texto_, tamano_);
+    //const Cadena t;
+    //frase = t;
+    //frase.texto_ = nullptr;
+    //frase.tamano_ = 0;
+    return *this;
+}
+
 char& Cadena::operator[](unsigned int i) noexcept
 {
 	return *(texto_+i);
@@ -272,7 +299,6 @@ char Cadena::at(unsigned int i)const throw(out_of_range)
 {
     try
     {
-        cout << endl << "--" << texto_[i] << "--" << endl;
         return texto_[i];
     }
     catch(const std::out_of_range& fdr)
