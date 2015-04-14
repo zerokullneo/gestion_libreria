@@ -54,10 +54,10 @@ FCT_BGN() {
       Cadena a(3);
       const char* c = a.c_str();
       const Cadena b(static_cast<Cadena&&>(a));
-      cout << endl << "--" << c << "--" << "--" << a.c_str() << "--" << endl;
+      cout << endl << "--" << b.c_str() << "--|" << "--" << c << "--|" << "--" << a.c_str() << "--" << endl;
       fct_chk(b.c_str() == c);
       fct_chk(strcmp(b.c_str(), "   ") == 0);
-      fct_chk(strcmp(a.c_str(), "") == 0);
+      fct_chk(strcmp(a.c_str(), "   ") == 0);
     }
     FCT_TEST_END();
 

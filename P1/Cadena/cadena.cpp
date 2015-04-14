@@ -79,13 +79,14 @@ Cadena::Cadena(const Cadena& frase)
 Cadena::Cadena(Cadena&& frase)
 {
     tamano_ = frase.length();
-    texto_ = new char[tamano_ + 1];
+    texto_ = new char[tamano_];
+    //for(unsigned int i = 0; i < frase.length(); i++) texto_[i] = frase.texto_[i];
     strncpy(texto_, frase.texto_, tamano_);
     texto_[tamano_+1] = '\0';
     //tamano_ = frase.tamano_;
     //texto_ = frase.texto_;
     //frase.tamano_ = 0;
-    //frase.texto_ = '\0';
+    //frase.texto_[0] = '\0';
 }
 
 //Constructor de copia de una cadena a bajo nivel.
