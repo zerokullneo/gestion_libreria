@@ -86,3 +86,40 @@
 	<math.h>
 	<ctype.h>
 
+1429117242 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/test-auto.cpp
+	"cadena.h"
+	"fct.h"
+	<cstdlib>
+	<sstream>
+	<stdexcept>
+
+1429113668 /home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.h
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<string>
+	<stdexcept>
+	<vector>
+	<iterator>
+
+1429113668 /home/usuario/Descargas/gestion_libreria/P1/Cadena/fct.h
+	<string.h>
+	<assert.h>
+	<stdarg.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<float.h>
+	<math.h>
+	<ctype.h>
+
+1429113668 source:/home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.cpp
+	"fecha.h"
+
+1429113668 /home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.h
+	"../Cadena/cadena.h"
+	<ctime>
+
+1429117208 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.cpp
+	"cadena.h"
+

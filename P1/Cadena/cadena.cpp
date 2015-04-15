@@ -76,17 +76,11 @@ Cadena::Cadena(const Cadena& frase)
 }
 
 //Constructor de movimiento de un objeto Cadena
-Cadena::Cadena(Cadena&& frase)
+Cadena::Cadena(Cadena&& frase): texto_(frase.texto_), tamano_(frase.tamano_)
 {
-    tamano_ = frase.length();
-    texto_ = new char[tamano_+1];
-    //for(unsigned int i = 0; i < frase.length(); i++) texto_[i] = frase.texto_[i];
-    strncpy(texto_, frase.texto_, tamano_);
-    texto_[tamano_+1] = '\0';
-    //tamano_ = frase.tamano_;
-    //texto_ = frase.texto_;
-    //frase.tamano_ = 0;
-    //frase.texto_[0] = '\0';
+    frase.texto_ = new char[1];
+    frase.texto_[0] = '\0';
+    frase.tamano_ = 0;
 }
 
 //Constructor de copia de una cadena a bajo nivel.
@@ -196,14 +190,11 @@ Cadena& Cadena::operator =(const Cadena& frase) noexcept
 //Asignacion de movimiento
 Cadena& Cadena::operator =(Cadena&& frase) noexcept
 {
-    //delete[] texto_;
     tamano_ = frase.tamano_;
-    texto_ = (char*) realloc(texto_, tamano_);
-    strncpy(texto_,frase.texto_, tamano_);
-    //const Cadena t;
-    //frase = t;
-    //frase.texto_ = nullptr;
-    //frase.tamano_ = 0;
+    texto_ = frase.texto_;
+    frase.texto_ = new char[1];
+    frase.texto_[0] = '\0';
+    frase.tamano_ = 0;
     return *this;
 }
 
@@ -278,16 +269,13 @@ Cadena Cadena::substr(unsigned int inicio, unsigned int num_caracteres)const thr
 {
     try
     {
-        if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
-		{
+        //if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
+		//{
 		    Cadena subtxt(num_caracteres);
-            for(unsigned int i = inicio, j = 0; i < inicio + num_caracteres; i++, j++)
+            for(unsigned int i = inicio, j = 0; ((inicio > 0) && (inicio < tamano_)) && (num_caracteres < (tamano_ - inicio)) && (num_caracteres <= tamano_) && (j < num_caracteres); i++, j++)
                 subtxt.texto_[j]= texto_[i];
 
             return subtxt;
-		}
-		else
-            cerr << "ERRRROOORRR" << endl;
     }
 	catch(const std::out_of_range& fdr)
 	{
