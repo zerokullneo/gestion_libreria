@@ -267,46 +267,37 @@ bool operator <(const Cadena& texto1,const Cadena& texto2)
 /*SUBCADENA*/
 Cadena Cadena::substr(unsigned int inicio, unsigned int num_caracteres)const throw(out_of_range)
 {
-    try
-    {
-        //if((inicio < 0) || (num_caracteres < 0) || ((inicio+num_caracteres) > tamano_) || (inicio > tamano_) || (num_caracteres > tamano_))
-		//{
-		    Cadena subtxt(num_caracteres);
-            for(unsigned int i = inicio, j = 0; ((inicio > 0) && (inicio < tamano_)) && (num_caracteres < (tamano_ - inicio)) && (num_caracteres <= tamano_) && (j < num_caracteres); i++, j++)
-                subtxt.texto_[j]= texto_[i];
-
-            return subtxt;
-    }
-	catch(const std::out_of_range& fdr)
+    if(((inicio >= 0) and (inicio <= tamano_)) and (((num_caracteres > 0) and (num_caracteres < tamano_)) and ((inicio+num_caracteres) < tamano_)))
 	{
-        cerr << fdr.what() << endl;
-	}
+	    Cadena subtxt(num_caracteres);
+        for(unsigned int i = inicio, j = 0; j < num_caracteres; i++, j++)
+            subtxt.texto_[j]= texto_[i];
+
+        return subtxt;
+    }
+
+    else
+        throw std::out_of_range("Error substr: caracteres fuera de rango.");
 }
 
 //at Leer caracter
 char Cadena::at(unsigned int i)const throw(out_of_range)
 {
-    try
-    {
+    if((i >= 0 and i <= tamano_) and (tamano_ > 0))
         return texto_[i];
-    }
-    catch(const std::out_of_range& fdr)
-    {
-        cerr << fdr.what() << endl;
-    }
+
+    else
+        throw std::out_of_range("Error read at: posicion fuera de rango.");
 }
 
 //at Escribir caracter
 char& Cadena::at(unsigned int i) throw(out_of_range)
 {
-    try
-    {
+    if((i >= 0 and i <= tamano_) and (tamano_ > 0))
         return texto_[i];
-    }
-    catch(const std::out_of_range& fdr)
-    {
-        cerr << fdr.what() << endl;
-    }
+
+    else
+        throw std::out_of_range("Error write at: posicion fuera de rango.");
 }
 /*FIN SUBCADENA*/
 
