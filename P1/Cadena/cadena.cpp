@@ -79,7 +79,7 @@ Cadena::Cadena(const Cadena& frase)
 Cadena::Cadena(Cadena&& frase)
 {
     tamano_ = frase.length();
-    texto_ = new char[tamano_];
+    texto_ = new char[tamano_+1];
     //for(unsigned int i = 0; i < frase.length(); i++) texto_[i] = frase.texto_[i];
     strncpy(texto_, frase.texto_, tamano_);
     texto_[tamano_+1] = '\0';
