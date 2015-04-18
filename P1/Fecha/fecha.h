@@ -90,7 +90,7 @@ class Fecha
 		inline void fecha_default(){d_ = info_fecha_->tm_mday, m_ = ((info_fecha_->tm_mon) + 1), a_ = ((info_fecha_->tm_year) + 1900);}
 		inline void defecto_(){unix_secs();unix_tm();fecha_default();};
 
-		bool comprueba_fecha(int& dia, int& mes, int& year);
+		bool comprueba_fecha(int& dia, int& mes, int& year) throw();
 		void observadorPrivado()const{cout << "%i/" << d_ << "%i/" << m_ << "%i" << a_ << endl;}
 };
 

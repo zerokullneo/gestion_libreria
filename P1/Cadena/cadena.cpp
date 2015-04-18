@@ -20,6 +20,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "cadena.h"
+#include <locale>
 
 using namespace std;
 
@@ -346,27 +347,33 @@ Cadena::const_reverse_iterator Cadena::crend() const noexcept
 /*OPERADORES DE FLUJO*/
 ostream& operator <<(ostream& out,const Cadena& texto)
 {
-	out << texto.Cad();
+	out << texto.c_str();
 	return out;
 }
 
+//Extraccion
 istream& operator >>(istream& in, Cadena& texto)
 {
+    std::locale l;
 	//calcular la longitud del stream "in"
-	in.seekg (0, in.end);
+	in.seekg(0, in.end);
     int length = in.tellg();
-    in.seekg (0, in.beg);
+    in.seekg(0, in.beg);
 
     // alojar memoria de "in":
     char *buffer = new char [length+1];
-	buffer[length]='\0';
+	buffer[0]='\0';
     // leer datos como un bloque:
-    in.read (buffer,length);
+    while(in.get() == ' ') in.peek();
+    in.seekg(-1, in.cur);
+    in.getline(buffer,length+1,' ');
+    in.putback(' ');
 
-	if(buffer == '\0')
-		texto=Cadena();
+    const Cadena z;
+	if(strspn(buffer, " \t\r\n\v\0") > 0)//or buffer == '\0'
+        texto=z;
 	else
-		texto=buffer;
+        texto=buffer;
 	return in;
 }
 

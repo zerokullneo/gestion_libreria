@@ -9,9 +9,12 @@ using namespace std;
 int main()
 {
     // Prueba de constructores
-    Cadena s1(20, '['), s2(20, ']'),
-    c1(" !Bravo "), c2("a "), c3("todos "),
-    s = s1 + c1;		// prueba de concatenación
+    Cadena s1(20, '[');
+    Cadena s2(20, ']');
+    Cadena c1(" !Bravo ");
+    Cadena c2("a ");
+    Cadena c3("todos ");
+    Cadena s = s1 + c1;		// prueba de concatenación
     s += c2;			// pruebas de concatenación con asignación
     s += c3;
     s += "los ";
@@ -38,7 +41,7 @@ int main()
     } catch(out_of_range& e) {
 	cerr << "ERROR CAPTURADO. Mensaje: \"" << e.what() << "\"" << endl;
     }
-    
+
     // Prueba de subcadena
     Cadena grande("Nihil novum sub solem"); // Nada nuevo bajo el Sol
     Cadena nuevo = grande.substr(6, 5);  // nuevo <- "novum"
@@ -47,9 +50,9 @@ int main()
       cerr << "*** ERROR *** Debería haber impreso \"novum\"" << endl;
 
     // Prueba de comparaciones
-    cout << "Cadena a = \"novum\", b = \"Nihil novum sub solem\";\n a < b: " 
+    cout << "Cadena a = \"novum\", b = \"Nihil novum sub solem\";\n a < b: "
 	 << boolalpha << (nuevo < grande) << "\n a > b: " << (nuevo > grande)
-	 << "\n a <= b: " << (nuevo <= grande) << "\n a >= b: " 
+	 << "\n a <= b: " << (nuevo <= grande) << "\n a >= b: "
 	 << (nuevo >= grande) << "\n a == b: " << (nuevo == grande)
 	 << "\n a != b: " << (nuevo != grande) << endl;
     // Prueba de longitud

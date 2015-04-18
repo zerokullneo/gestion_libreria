@@ -41,10 +41,10 @@
 		<Unit filename="P1/Cadena/cadena.cpp" />
 		<Unit filename="P1/Cadena/cadena.h" />
 		<Unit filename="P1/Cadena/fct.h" />
-		<Unit filename="P1/Cadena/test-auto.cpp" />
 		<Unit filename="P1/Fecha/fct.h" />
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
+		<Unit filename="P1/Fecha/test-auto.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -77,11 +77,7 @@ Fecha::Fecha(const char* string_fecha)
 	}
 }
 
-Fecha::Invalida::Invalida(const char* t)
-{
-	tp_ = t;
-	cerr << por_que(tp_);
-}
+Fecha::Invalida::Invalida(const char* t):tp_(t){}
 //FIN CONSTRUCTORES
 
 //OPERADORES
@@ -299,7 +295,7 @@ void Fecha::visualizar() const
 }
 /*------------------FIN OBSERVADORAS---------------------*/
 
-bool Fecha::comprueba_fecha(int& dia, int& mes, int& year)
+bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw()
 {
 	if ((year < AnnoMinimo) || (year > AnnoMaximo))
 	{

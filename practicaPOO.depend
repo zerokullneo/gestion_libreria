@@ -27,7 +27,7 @@
 	"P1/Cadena/cadena.h"
 	"P1/Fecha/fecha.h"
 
-1429140945 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+1429326217 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -36,17 +36,18 @@
 	<vector>
 	<iterator>
 
-1428863744 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
+1429326870 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
 	"../Cadena/cadena.h"
 	<ctime>
 
-1429141159 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+1429326299 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
+	<locale>
 
 1428863609 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
 	"fecha.h"
 
-1429139219 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/test-auto.cpp
+1429324187 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/test-auto.cpp
 	"cadena.h"
 	"fct.h"
 	<cstdlib>
@@ -69,7 +70,7 @@
 	<stdexcept>
 	"cadena.h"
 
-1428707554 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/test-auto.cpp
+1428866372 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/test-auto.cpp
 	"fecha.h"
 	"fct.h"
 	<ctime>

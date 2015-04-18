@@ -47,7 +47,7 @@ class Cadena
 
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';
-		explicit Cadena(){tamano_ = 0;texto_ = new char[tamano_];}
+		explicit Cadena(){tamano_ = 0;texto_ = new char[1];texto_[0]='\0';}
 		//Constructor de conversión
 		Cadena(unsigned int longitud, char caracter);
 		//Constructor de espacios vacíos.
