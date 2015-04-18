@@ -106,7 +106,7 @@ Cadena::Cadena(const char* texto, size_t n)
     tamano_ = n;
     npos = -1;
     texto_= new char[tamano_ + 1];
-    if(texto_ == NULL)
+    if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
@@ -122,7 +122,7 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
     tamano_ = n;
     npos = pos + tamano_;
     texto_= new char[tamano_+1];
-    if(texto_ == NULL)
+    if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
@@ -138,7 +138,7 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos)
     tamano_ = frase.length() - pos;
     npos = frase.length() - pos;
     texto_= new char[tamano_ + 1];
-    if(texto_ == NULL)
+    if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {

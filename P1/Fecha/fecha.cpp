@@ -29,18 +29,23 @@ using namespace std;
 
 Fecha::Fecha(int dia, int mes, int year):d_(dia),m_(mes),a_(year)
 {
-	if((!dia or dia == 0) and (!mes or mes == 0) and (!year or year == 0))
-        defecto_();
+    if((!dia or dia == 0) and (!mes or mes == 0) and (!year or year == 0))
+    {
+        this->default_d_();
+        this->default_m_();
+        this->default_a_();
+    }
     else if((!mes or mes == 0) and (!year or year == 0))
     {
-        defecto_();
         d_ = dia;
+        this->default_m_();
+        this->default_a_();
     }
     else if(!year or year == 0)
     {
-        defecto_();
         d_ = dia;
         m_ = mes;
+        this->default_a_();
     }
 	else
     {
@@ -57,21 +62,31 @@ Fecha::Fecha(const char* string_fecha)
 {
 	char fech[11];
 
-	if(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)==0)
+	if((string_fecha[1] != '/' and string_fecha[3] != '/')  and (string_fecha[2] != '/' and string_fecha[4] != '/') and (string_fecha[1] != '/' and string_fecha[4] != '/') and (string_fecha[2] != '/' and string_fecha[5] != '/')) //(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)<0)
 	{
-        throw Invalida("Entrada Incorrecta.");
+        //this->default_d_();
+        //this->default_m_();
+        //this->default_a_();
+        cerr << "Entrada Incorrecta.";
 	}
 	else
 	{
 		strncpy(fech, string_fecha,strlen(string_fecha));
 
 		char *fecha=fech;
-		fecha = strtok(fecha,"/-");
+		fecha = strtok(fecha,"/");
 		d_ = atoi(fecha);
-		fecha = strtok(NULL, "/-");
+		fecha = strtok(NULL, "/");
 		m_ = atoi(fecha);
-		fecha = strtok(NULL, "/-");
+		fecha = strtok(NULL, "/");
 		a_ = atoi(fecha);
+
+		if(!d_ or d_ == 0)
+            this->default_d_();
+        if(!m_ or m_ == 0)
+            this->default_m_();
+        if(!a_ or a_ == 0)
+            this->default_a_();
 
 		comprueba_fecha(d_, m_, a_);
 	}
@@ -295,63 +310,54 @@ void Fecha::visualizar() const
 }
 /*------------------FIN OBSERVADORAS---------------------*/
 
-bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw()
+bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida)
 {
 	if ((year < AnnoMinimo) || (year > AnnoMaximo))
-	{
-		throw Invalida("Año Incorrecto.");//year
-	}
+        throw(Fecha::Invalida("Año Incorrecto."));//year
 
-	if(mes > 0 && mes < 13)
+	else
 	{
-		if(dia > 31)
-			throw Invalida("Dia fuera de rango");
-		else
+		switch(mes)
 		{
-			switch(mes)
+			case 1:
+				case 3:
+					case 5:
+						case 7:
+							case 8:
+								case 10:
+									case 12:
+									{
+										if(dia < 1 || dia > 31)
+											throw(Fecha::Invalida("Dia31: Dia incorrecto del mes."));//dia
+										break;
+									}
+			case 4:
+				case 6:
+					case 9:
+						case 11:
+						{
+							if(dia < 1 || dia > 30)
+								throw(Fecha::Invalida("Dia30: Dia incorrecto del mes."));//dia
+							break;
+						}
+			case 2:
 			{
-				case 1:
-					case 3:
-						case 5:
-							case 7:
-								case 8:
-									case 10:
-										case 12:
-										{
-											if(dia < 1 || dia > 31)
-												throw Invalida("dia31");//dia
-											break;
-										}
-				case 4:
-					case 6:
-						case 9:
-							case 11:
-							{
-								if(dia < 1 || dia > 30)
-									throw Invalida("dia30");//dia
-								break;
-							}
-				case 2:
+				if((year % 4) == 0)
 				{
-					if((year % 4) == 0)
-					{
-						if (dia < 1 || dia > 29)
-							throw Invalida("dia29");//dia
-					}
-					else
-					{
-						if(dia < 0 || dia > 28)
-							throw Invalida("dia28");//dia
-					}
-					break;
+					if (dia < 1 || dia > 29)
+                        throw(Fecha::Invalida("Dia29: Febrero."));//dia
 				}
-				default:
-					throw Invalida("defmes");//mes
+				else
+				{
+					if(dia < 0 || dia > 28)
+						throw(Fecha::Invalida("Dia28: Febrero."));//dia
+				}
+				break;
 			}
+			default:
+				throw(Fecha::Invalida("Mes incorrecto."));//mes
 		}
 	}
-	else
-		throw Invalida("mes");//mes
 
 	return true;
 }
@@ -416,6 +422,7 @@ ostream& operator <<(ostream& os, const Fecha& fec)
 istream& operator >>(istream& is, Fecha& fec)
 {
 	static char fecha[11];
+	if(is)
 	is >> fecha;
 	fec=Fecha(fecha);
 	return is;
@@ -451,5 +458,9 @@ Fecha operator - (const Fecha& fec, int decremento)
 
 long int operator - (const Fecha& f1, const Fecha& f2)
 {
-    return f1-f2;
+    int bisiestos = ((f1.anno()-f2.anno()) / 4);
+    int meses = abs(f1.mes() - f2.mes()) / 2;
+    long int total_dias = ((f1.anno()-f2.anno()) * 365 + bisiestos) + (abs(f1.mes() - f2.mes()) * 30 + meses) + (abs(f1.dia() - f2.dia()));
+    cout << endl << total_dias << endl;
+    return total_dias;
 }

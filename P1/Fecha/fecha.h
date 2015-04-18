@@ -75,23 +75,22 @@ class Fecha
 			public:
 				Invalida(const char* t);
 
-				const char* por_que(const char* t)const{return tp_;}
 				const char* por_que() const {return tp_;}
+
 			private:
 				const char* tp_;
 		};
 
 	private:
 		int d_, m_, a_;
-		time_t get_fecha_;
-		struct tm * info_fecha_;
-		inline void unix_secs(){time(&get_fecha_);};
-		inline void unix_tm(){info_fecha_ = localtime(&get_fecha_);};
-		inline void fecha_default(){d_ = info_fecha_->tm_mday, m_ = ((info_fecha_->tm_mon) + 1), a_ = ((info_fecha_->tm_year) + 1900);}
-		inline void defecto_(){unix_secs();unix_tm();fecha_default();};
+		const time_t get_fecha_ = time(0);
+		const tm * info_fecha_ = localtime(&get_fecha_);
+		inline void default_d_(){d_ = info_fecha_->tm_mday;}
+		inline void default_m_(){m_ = ((info_fecha_->tm_mon) + 1);}
+		inline void default_a_(){a_ = ((info_fecha_->tm_year) + 1900);}
 
-		bool comprueba_fecha(int& dia, int& mes, int& year) throw();
-		void observadorPrivado()const{cout << "%i/" << d_ << "%i/" << m_ << "%i" << a_ << endl;}
+		bool comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida);
+		void observadorPrivado()const{cout << d_ << "/" << m_ << "/" << a_ << endl;}
 };
 
 /*operadores sobrecargados de mas de un argumento*/
