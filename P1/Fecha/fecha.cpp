@@ -67,7 +67,7 @@ Fecha::Fecha(const char* string_fecha)
         //this->default_d_();
         //this->default_m_();
         //this->default_a_();
-        cerr << "Entrada Incorrecta.";
+        throw(Fecha::Invalida("Entrada Incorrecta en Constructor de cadena ."));
 	}
 	else
 	{
@@ -422,7 +422,16 @@ ostream& operator <<(ostream& os, const Fecha& fec)
 istream& operator >>(istream& is, Fecha& fec)
 {
 	static char fecha[11];
-	if(is)
+
+    int istream_tam = is.readsome(fec.literal(),12);
+    is.seekg(0, is.beg);
+
+    if((istream_tam < 8) or (istream_tam > 11))
+        throw(Fecha::Invalida("Desbordamiento de fecha."));
+
+	if((fec.literal()[1] != '/' and fec.literal()[3] != '/')  and (fec.literal()[2] != '/' and fec.literal()[4] != '/') and (fec.literal()[1] != '/' and fec.literal()[4] != '/') and (fec.literal()[2] != '/' and fec.literal()[5] != '/'))
+        throw(Fecha::Invalida("Entrada incorrecta en extraccion."));
+
 	is >> fecha;
 	fec=Fecha(fecha);
 	return is;
@@ -458,9 +467,14 @@ Fecha operator - (const Fecha& fec, int decremento)
 
 long int operator - (const Fecha& f1, const Fecha& f2)
 {
-    int bisiestos = ((f1.anno()-f2.anno()) / 4);
+    /*int bisiestos = ((f1.anno()-f2.anno()) / 4);
     int meses = abs(f1.mes() - f2.mes()) / 2;
-    long int total_dias = ((f1.anno()-f2.anno()) * 365 + bisiestos) + (abs(f1.mes() - f2.mes()) * 30 + meses) + (abs(f1.dia() - f2.dia()));
+    long int total_dias = ((f1.anno()-f2.anno())*365+bisiestos)+(abs(f1.mes()-f2.mes())*30+meses)+(abs(f1.dia()-f2.dia()));
     cout << endl << total_dias << endl;
-    return total_dias;
+    return total_dias;*/
+
+    tm minuendo{0,0,0,f1.dia(),f1.mes()-1, f1.anno()-1900,0,0,0};
+    tm sustraendo{0,0,0,f2.dia(),f2.mes()-1, f2.anno()-1900,0,0,0};
+    long diferencia = difftime(mktime(&minuendo),mktime(&sustraendo)) / 86400;
+    return diferencia;
 }

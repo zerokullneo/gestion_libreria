@@ -64,6 +64,7 @@ class Fecha
 		ostream& observadorPublico()const noexcept;
 		const char* cadena()const;
 		void visualizar()const;
+        char* literal()const{static char cad[1]; sprintf(cad,"%d/%d/%4d",d_, m_, a_); return cad;}
 		int anno()const noexcept {return a_;}
 		int mes()const noexcept {return m_;}
 		int dia()const noexcept {return d_;}
@@ -90,7 +91,6 @@ class Fecha
 		inline void default_a_(){a_ = ((info_fecha_->tm_year) + 1900);}
 
 		bool comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida);
-		void observadorPrivado()const{cout << d_ << "/" << m_ << "/" << a_ << endl;}
 };
 
 /*operadores sobrecargados de mas de un argumento*/

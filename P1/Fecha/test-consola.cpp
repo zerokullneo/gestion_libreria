@@ -68,33 +68,38 @@ int main()
 
 // Diferencia de fechas
   cout << "6/2/2015 - 29/12/1958 = 20493 ..." ;
-  long d = Fecha(6, 2, 2015) - Fecha(29, 12, 1958); 
+  long d = Fecha(6, 2, 2015) - Fecha(29, 12, 1958);
   if (d == 20493)
     cout << "OK!";
   else
     cout << " =/= " << d;
-  cout << endl; 
+  cout << endl;
 } // FIN
 
 Fecha obtener_fecha_v1()
 {
-  while (true)
-    try {
-      cout << "Introduzca una fecha en el formato DD/MM/AAAA, por favor: ";
-      Fecha f(12, 12, 2012);
-      cin >> f;			// operador de extracción
-      return f;      // Fecha correcta: salimos.
-    } catch(const Fecha::Invalida& e) {
-	cerr << e.por_que() 
-	     << "\aInténtelo de nuevo.\n" << endl;
-    } // Fin while
+    while(true)
+    {
+        try
+        {
+            cout << "Introduzca una fecha en el formato DD/MM/AAAA, por favor: ";
+            Fecha f(12, 12, 2012);
+            cin >> f;			// operador de extracción
+            return f;      // Fecha correcta: salimos.
+        }
+        catch(const Fecha::Invalida& e)
+        {
+            cerr << e.por_que() << "\aInténtelo de nuevo.\n" << endl;
+            return Fecha();
+        }
+    }// Fin while
 }
 
 Fecha obtener_fecha_v2() // Otra alternativa. Tomamos la fecha de hoy
     try {
 	cout << "Introduzca una fecha en el formato DD/MM/AAAA, por favor: ";
 	Fecha f(12, 12, 2012);
-	cin >> f;  
+	cin >> f;
 	return f;
     } catch(const Fecha::Invalida& e) {
 	cerr << e.por_que() << "Tom\aamos la fecha de «hoy»." << endl;

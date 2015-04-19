@@ -26,9 +26,8 @@ using namespace std;
 
 /*CONSTRUCTORES*/
 //Constructor de conversión
-Cadena::Cadena(unsigned int longitud, char caracter)
+Cadena::Cadena(unsigned int longitud, char caracter):tamano_(longitud)
 {
-	tamano_ = longitud;
 	npos = -1;
 	texto_= new char[longitud + 1];
 
@@ -44,9 +43,8 @@ Cadena::Cadena(unsigned int longitud, char caracter)
 }
 
 //Constructor de espacios vacíos.
-Cadena::Cadena(unsigned int tamano)
+Cadena::Cadena(unsigned int tamano):tamano_(tamano)
 {
-	tamano_ = tamano;
 	npos = -1;
 	texto_= new char[tamano + 1];
 
@@ -62,9 +60,8 @@ Cadena::Cadena(unsigned int tamano)
 }
 
 //Constructor de copia de un objeto Cadena
-Cadena::Cadena(const Cadena& frase)
+Cadena::Cadena(const Cadena& frase):tamano_(frase.length())
 {
-	tamano_ = frase.length();
 	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
@@ -85,9 +82,8 @@ Cadena::Cadena(Cadena&& frase): texto_(frase.texto_), tamano_(frase.tamano_)
 }
 
 //Constructor de copia de una cadena a bajo nivel.
-Cadena::Cadena(const char* texto)
+Cadena::Cadena(const char* texto):	tamano_(strlen(texto))
 {
-	tamano_= strlen(texto);
 	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
@@ -101,9 +97,8 @@ Cadena::Cadena(const char* texto)
 }
 
 //Constructor de una sub-cadena de bajo nivel char*.
-Cadena::Cadena(const char* texto, size_t n)
+Cadena::Cadena(const char* texto, size_t n):tamano_(n)
 {
-    tamano_ = n;
     npos = -1;
     texto_= new char[tamano_ + 1];
     if(texto_ == NULL or tamano_ < 0)
@@ -117,9 +112,8 @@ Cadena::Cadena(const char* texto, size_t n)
 }
 
 //Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
-Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
+Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n):tamano_(n)
 {
-    tamano_ = n;
     npos = pos + tamano_;
     texto_= new char[tamano_+1];
     if(texto_ == NULL or tamano_ < 0)
@@ -133,9 +127,8 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
 }
 
 //Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
-Cadena::Cadena(const Cadena& frase, unsigned int pos)
+Cadena::Cadena(const Cadena& frase, unsigned int pos):tamano_(frase.length() - pos)
 {
-    tamano_ = frase.length() - pos;
     npos = frase.length() - pos;
     texto_= new char[tamano_ + 1];
     if(texto_ == NULL or tamano_ < 0)
@@ -166,9 +159,8 @@ Cadena& Cadena::operator +=(const Cadena& frase) noexcept
 
 	texto_aux[tam] = '\0';
 	texto_=new char[tam];
-	this->tamano_ = tam;
+	this->tamano_ = tam-1;
 	strncpy(texto_, texto_aux, tam);
-	delete texto_aux;
 	return *this;
 }
 
@@ -182,8 +174,8 @@ Cadena& Cadena::operator =(const char* texto) noexcept
 
 Cadena& Cadena::operator =(const Cadena& frase) noexcept
 {
-	tamano_ = strlen(frase.c_str()) + 1;
-	texto_ = (char*) realloc(texto_, tamano_);
+	tamano_ = frase.length();
+	texto_ = new char[tamano_ + 1];
 	strncpy(texto_, frase.texto_, tamano_);
 	return *this;
 }
@@ -354,7 +346,6 @@ ostream& operator <<(ostream& out,const Cadena& texto)
 //Extraccion
 istream& operator >>(istream& in, Cadena& texto)
 {
-    std::locale l;
 	//calcular la longitud del stream "in"
 	in.seekg(0, in.end);
     int length = in.tellg();
@@ -362,19 +353,25 @@ istream& operator >>(istream& in, Cadena& texto)
 
     // alojar memoria de "in":
     char *buffer = new char [length+1];
-	buffer[0]='\0';
+	buffer[length]='\0';
     // leer datos como un bloque:
-    while(in.get() == ' ') in.peek();
-    in.seekg(-1, in.cur);
-    in.getline(buffer,length+1,' ');
-    in.putback(' ');
+    while(in.get() == ' ') in.peek();//Se salta los espacios iniciales.
+    in.seekg(-1, in.cur);//Coloca el puntero de "in" en el primer caracter a leer despues de saltar los espacios.
+    in.getline(buffer,length+1,' ');//lee la entrada hasta el siguiente espacio
+    in.putback(' ');//deja el puntero de "in" en el espacio
 
-    const Cadena z;
-	if(strspn(buffer, " \t\r\n\v\0") > 0)//or buffer == '\0'
-        texto=z;
+
+	if(strspn(buffer, " \t\r\n\v") > 0)// or buffer == '\0')
+    {
+        const Cadena z;
+        texto = z.c_str();
+        return in;
+    }
 	else
+    {
         texto=buffer;
-	return in;
+        return in;
+    }
 }
 
 /*FIN OPERADORES DE FLUJO*/
