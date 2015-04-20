@@ -4,7 +4,7 @@
  * ©2015 Antonio G.ª Domínguez, Gerardo, y otros profesores de POO
  */
 #include "fecha.h"
-#include "fct.h"
+#include "../fct.h"
 #include <ctime>
 #include <sstream>
 using namespace std;

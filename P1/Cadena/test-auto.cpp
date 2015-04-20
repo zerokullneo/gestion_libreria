@@ -4,7 +4,7 @@
  * ©Los profesores de POO
  */
 #include "cadena.h"
-#include "fct.h"
+#include "../fct.h"
 #include <cstdlib>
 #include <sstream>
 #include <stdexcept>
