@@ -40,16 +40,16 @@
 	"../Cadena/cadena.h"
 	<ctime>
 
-1429376262 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+1429654647 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
 	<locale>
 
 1429465483 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
 	"fecha.h"
 
-1429324187 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/test-auto.cpp
+1429655313 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/test-auto.cpp
 	"cadena.h"
-	"fct.h"
+	"../fct.h"
 	<cstdlib>
 	<sstream>
 	<stdexcept>
@@ -123,4 +123,15 @@
 
 1429117208 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
+
+1428707554 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/fct.h
+	<string.h>
+	<assert.h>
+	<stdarg.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<float.h>
+	<math.h>
+	<ctype.h>
 

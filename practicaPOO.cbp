@@ -39,14 +39,11 @@
 			<Add option="-g" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="P1/Cadena/Makefile" />
 		<Unit filename="P1/Cadena/cadena.cpp" />
 		<Unit filename="P1/Cadena/cadena.h" />
 		<Unit filename="P1/Cadena/test-auto.cpp" />
-		<Unit filename="P1/Fecha/Makefile" />
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
-		<Unit filename="P1/Fecha/test-auto.cpp" />
 		<Unit filename="P1/fct.h" />
 		<Extensions>
 			<code_completion />

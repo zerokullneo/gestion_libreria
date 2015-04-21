@@ -67,10 +67,7 @@ Cadena::Cadena(const Cadena& frase):tamano_(frase.length())
 	if(texto_ == NULL)
 		cerr << "Cadena: Cadena& fallo de memoria." << endl;
 	else
-	{
-		strcpy(texto_,frase.texto_);
-		texto_[tamano_ + 1] = '\0';
-	}
+		strncpy(texto_,frase.texto_, tamano_+1);
 }
 
 //Constructor de movimiento de un objeto Cadena
@@ -89,11 +86,7 @@ Cadena::Cadena(const char* texto):	tamano_(strlen(texto))
 	if(texto_ == NULL)
 		cerr << "Cadena: const char* fallo de memoria." << endl;
 	else
-	{
-		for(unsigned int i = 0; i <= tamano_; i++)
-			texto_[i] = texto[i];
-		texto_[tamano_ + 1] = '\0';
-	}
+	    strncpy(texto_, texto, tamano_+1);
 }
 
 //Constructor de una sub-cadena de bajo nivel char*.
@@ -120,7 +113,7 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n):tamano_(n)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i < npos; ++i)
+        for(unsigned int i = pos; i < npos; i++)
             texto_[i-pos] = frase[i];
         texto_[tamano_] = '\0';
     }
@@ -135,7 +128,7 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos):tamano_(frase.length() - p
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i < frase.length(); ++i)
+        for(unsigned int i = pos; i < frase.length(); i++)
             texto_[i-pos] = frase[i];
         texto_[tamano_] = '\0';
     }
@@ -147,27 +140,21 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos):tamano_(frase.length() - p
 //se suma al 'texto_' existente la nueva 'frase'
 Cadena& Cadena::operator +=(const Cadena& frase) noexcept
 {
-	unsigned int i, j=tamano_;
-	int tam = tamano_ + frase.tamano_ + 1;
-
-	char* texto_aux = new char[tam];
-
-	for(i = 0; i <= tamano_; i++)
-		texto_aux[i] = texto_[i];
-	for(i = 0; i <= frase.tamano_; j++, i++)
-		texto_aux[j] = frase.texto_[i];
-
-	texto_aux[tam] = '\0';
-	texto_=new char[tam];
-	this->tamano_ = tam-1;
-	strncpy(texto_, texto_aux, tam);
+	char* texto_aux = new char[tamano_+1];
+	strncpy(texto_aux, texto_, tamano_+1);
+	tamano_ = this->tamano_ + frase.length();
+	delete[] texto_;
+	texto_ = new char[tamano_+1];
+	strncpy(texto_, texto_aux, strlen(texto_aux)+1);
+	strncat(texto_, frase.texto_,frase.length()+1);
 	return *this;
 }
 
 Cadena& Cadena::operator =(const char* texto) noexcept
 {
-	tamano_ = strlen(texto) + 1;
-	texto_ = (char*) realloc(texto_, tamano_);
+	tamano_ = strlen(texto)+1;
+	delete[] texto_;
+	texto_ = new char[tamano_]; //(char*) realloc(texto_, tamano_);
 	strncpy(texto_, texto, tamano_);
 	return *this;
 }
@@ -175,8 +162,9 @@ Cadena& Cadena::operator =(const char* texto) noexcept
 Cadena& Cadena::operator =(const Cadena& frase) noexcept
 {
 	tamano_ = frase.length();
+	delete[] texto_;
 	texto_ = new char[tamano_ + 1];
-	strncpy(texto_, frase.texto_, tamano_);
+	strncpy(texto_, frase.texto_, tamano_+1);
 	return *this;
 }
 
