@@ -1,10 +1,10 @@
-//           fecha.cpp
-//  vie diciembre 20 01:57:48 2013
-//  Copyright  2013  Jose M Barba Gonzalez
-//  <user@host>
+// fecha.cpp
+// lun marzo 16 17:53:48 2015
+// Copyright 2015 Jose M Barba Gonzalez
+// <user@host>
 // fecha.cpp
 //
-// Copyright (C) 2013 - Jose M Barba Gonzalez
+// Copyright (C) 2015 - Jose M Barba Gonzalez
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

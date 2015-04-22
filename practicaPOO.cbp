@@ -44,6 +44,13 @@
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
 		<Unit filename="P1/fct.h" />
+		<Unit filename="P2/articulo.cpp" />
+		<Unit filename="P2/articulo.h" />
+		<Unit filename="P2/luhn.cpp" />
+		<Unit filename="P2/tarjeta.cpp" />
+		<Unit filename="P2/tarjeta.h" />
+		<Unit filename="P2/usuario.cpp" />
+		<Unit filename="P2/usuario.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

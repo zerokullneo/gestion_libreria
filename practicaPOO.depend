@@ -27,7 +27,7 @@
 	"P1/Cadena/cadena.h"
 	"P1/Fecha/fecha.h"
 
-1429326217 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+1429731267 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>

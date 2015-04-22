@@ -1,8 +1,8 @@
 /***************************************************************************
 * articulo.h
 *
-* mar mayo 6 12:52:48 2014
-* Copyright 2014 Jose M Barba Gonzalez
+* lun abril 20 17:52:48 2015
+* Copyright 2015 Jose M Barba Gonzalez
 * <user@host>
 ****************************************************************************/
 /*
@@ -28,20 +28,20 @@
 #define ARTICULO_H
 #include "../P1/Cadena/cadena.h"
 #include "../P1/Fecha/fecha.h"
-#include "autor.h"
+//#include "autor.h"
 
-class Autor;
+//class Autor;
 
 class Articulo
 {
     public:
-        typedef set<Autor*> Autores;
+        /*typedef set<Autor*> Autores;
 
         class Autores_vacios
         {
             public:
             Autores_vacios(){};
-        };
+        };*/
 
         //Métodos observadores
         Cadena referencia()const{return referencia_;}
