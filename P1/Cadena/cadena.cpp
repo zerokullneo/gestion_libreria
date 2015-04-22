@@ -1,10 +1,10 @@
 //           cadena.cpp
-//  vie diciembre 20 01:53:35 2013
-//  Copyright  2013  Jose M Barba Gonzalez
+//  vie diciembre 20 01:53:35 2015
+//  Copyright  2015  Jose M Barba Gonzalez
 //  <user@host>
 // cadena.cpp
 //
-// Copyright (C) 2013 - Jose M Barba Gonzalez
+// Copyright (C) 2015 - Jose M Barba Gonzalez
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
