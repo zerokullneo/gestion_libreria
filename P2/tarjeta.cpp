@@ -72,7 +72,7 @@ Numero::Numero(const Cadena& n)throw (Numero::Incorrecto)
     char digitos[20];
     unsigned int i, j = 0;
 
-    for(i = 0; i <= n.longitud(); i++)
+    for(i = 0; i <= n.length(); i++)
         if (isdigit(n[i]))
         {
             digitos[j] = n[i];
@@ -140,6 +140,6 @@ ostream& operator <<(ostream& out, const Tarjeta& tjt)
 {
     out << tjt.tarjeta() << endl;
     out << tjt.titular_facial()<<endl;
-    out << "Caduca: " << setw(2) << setfill('0') << tjt.caducidad().visualizar_mes() << "/" << ((tjt.caducidad().visualizar_anyo())%100);
+    out << "Caduca: " << setw(2) << setfill('0') << tjt.caducidad().mes() << "/" << ((tjt.caducidad().anno())%100);
     return out;
 }

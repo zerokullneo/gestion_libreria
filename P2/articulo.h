@@ -49,7 +49,7 @@ class Articulo
         Fecha f_publi()const{return f_publi_;}
         double precio()const{return precio_;}
         unsigned int stock()const{return stock_;}
-        const Autores& autores()const{return autores_;}
+        //const Autores& autores()const{return autores_;}
         //Métodos modificadores
         //modifica el atributo precio_ con el nuevo valor indicado en pvp.
         double& precio(){return precio_;}
@@ -59,11 +59,11 @@ class Articulo
         virtual ~Articulo(){};
 
     protected:
-        //Constructores
-        Articulo(const Autores& aut, const Cadena& ref, const Cadena& tit, const Fecha& fec, double pvp);
+        //Constructores - const Autores& aut,
+        Articulo(const Cadena& ref, const Cadena& tit, const Fecha& fec, double pvp);
 
     private:
-        Autores autores_;
+        //Autores autores_;
         Cadena referencia_;
         Cadena titulo_;
         Fecha f_publi_;
@@ -80,7 +80,8 @@ class ArticuloAlmacenable: public Articulo
         unsigned int& stock(){return stockAA_;}
 
     protected:
-        ArticuloAlmacenable(const Autores& a,const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int s);
+        //Constructores - const Autores& a,
+        ArticuloAlmacenable(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int s);
         ~ArticuloAlmacenable() {}
 
     private:
@@ -90,8 +91,8 @@ class ArticuloAlmacenable: public Articulo
 
 class InformeDigital: public Articulo
 {
-    public:
-        InformeDigital(const Autores& a,const Cadena& r,const Cadena& t,const Fecha& f,double p,const Fecha& e);
+    public://const Autores& a,
+        InformeDigital(const Cadena& r,const Cadena& t,const Fecha& f,double p,const Fecha& e);
         //Método observador de la fecha de expiración.
         const Fecha& f_expir()const{return expiracion_;}
         //Operador de flujo de salida con el formato de fecha día de mes de aaaa.
@@ -103,8 +104,8 @@ class InformeDigital: public Articulo
 
 class Libro: public ArticuloAlmacenable
 {
-    public:
-        Libro(const Autores& a,const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int pg,unsigned int s);
+    public://const Autores& a,
+        Libro(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int pg,unsigned int s);
         //Método observador de Número de Páginas de un Libro.
         unsigned int n_pag()const{return paginas_;}
         //Operador de flujo de salida con el formato "paginas, unidades" de un Libro
@@ -116,8 +117,8 @@ class Libro: public ArticuloAlmacenable
 
 class Cederron:public ArticuloAlmacenable
 {
-    public:
-        Cederron(const Autores& a,const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned tm,unsigned int s);
+    public://const Autores& a,
+        Cederron(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned tm,unsigned int s);
         //Método observador del tamaño en MB de un CD.
         unsigned tam()const{return tamano_;}
         //Operador de flujo de salida con el formato "MB, unidades" de un CD

@@ -1,9 +1,9 @@
 // $Id: luhn.cpp 218 2015-04-10 19:17:29Z gerardo $
 // Verifica un número de tarjeta empleando el algoritmo de Luhn
-// Referencias: 
+// Referencias:
 //              http://en.wikipedia.org/wiki/Luhn_algorithm
 //
-#include "cadena.h"
+#include "../P1/Cadena/cadena.h"
 #include <cstddef>
 
 bool luhn(const Cadena& numero, size_t n)

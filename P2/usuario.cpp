@@ -31,7 +31,7 @@ Clave::Clave(const char* clav)throw(Clave::Incorrecta)
 if(strlen(clav) < 5)throw Incorrecta(CORTA);
 const char* c = crypt(clav,"@#");
 clave_ = c;
-if(!clave_.longitud())throw Incorrecta(ERROR_CRYPT);
+if(!clave_.length())throw Incorrecta(ERROR_CRYPT);
 }
 Clave::Incorrecta::Incorrecta(Razon r):r_(r)
 {
@@ -104,7 +104,7 @@ out << " Cant. Artículo\n";
 out << "=======================================================================\n";
 for(Usuario::Articulos::const_iterator it = u.compra().begin(); it != u.compra().end(); it++)
 {
-out << (*it).second << " " << "[" << it->first->referencia() << "] \"" << it->first->titulo() << "\", " << it->first->f_publi().visualizar_anyo();
+out << (*it).second << " " << "[" << it->first->referencia() << "] \"" << it->first->titulo() << "\", " << it->first->f_publi().anno();
 out << ". " << setprecision(2) << fixed << it->first->precio() << "€" << endl;
 }
 }

@@ -25,6 +25,8 @@
 */
 #ifndef USUARIO_H
 #define USUARIO_H
+#include <set>
+#include <map>
 #include "../P1/Cadena/cadena.h"
 #include "../P1/Fecha/fecha.h"
 #include "articulo.h"
