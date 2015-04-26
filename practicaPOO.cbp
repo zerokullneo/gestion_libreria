@@ -37,10 +37,14 @@
 			<Add option="-Wall" />
 			<Add option="-g" />
 			<Add option="-fexceptions" />
+			<Add directory="/home/zerokullneo/github/codeblocks/gestion_libreria/" />
 		</Compiler>
+		<Linker>
+			<Add library="crypt" />
+			<Add directory="/home/zerokullneo/github/codeblocks/gestion_libreria/" />
+		</Linker>
 		<Unit filename="P1/Cadena/cadena.cpp" />
 		<Unit filename="P1/Cadena/cadena.h" />
-		<Unit filename="P1/Cadena/test-auto.cpp" />
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
 		<Unit filename="P1/fct.h" />
@@ -49,13 +53,18 @@
 		<Unit filename="P2/luhn.cpp" />
 		<Unit filename="P2/tarjeta.cpp" />
 		<Unit filename="P2/tarjeta.h" />
+		<Unit filename="P2/test-caso1-auto.cpp" />
 		<Unit filename="P2/usuario.cpp" />
 		<Unit filename="P2/usuario.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
-			<lib_finder disable_auto="1" />
+			<lib_finder disable_auto="1">
+				<lib name="gio-2.0" />
+				<lib name="glib-2.0" />
+				<lib name="libcrypto" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

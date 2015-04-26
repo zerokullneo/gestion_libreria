@@ -22,8 +22,8 @@
 #include "articulo.h"
 
 /*CLASE ARTICULO - const Autores& aut, autores_(aut),*/
-Articulo::Articulo(const Cadena& ref, const Cadena& tit, const Fecha& fec, double pvp):
-referencia_(ref), titulo_(tit), f_publi_(fec), precio_(pvp)
+Articulo::Articulo(const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk):
+referencia_(refr), titulo_(tit), f_publi_(fec), precio_(pvp), stock_(stk)
 {
 	/*if(autores_.empty())
 		throw Autores_vacios();*/
@@ -31,13 +31,13 @@ referencia_(ref), titulo_(tit), f_publi_(fec), precio_(pvp)
 /*FIN CLASE ARTICULO*/
 
 /*CLASE ARTICULOALMACENABLE - const Autores& a,*/
-ArticuloAlmacenable::ArticuloAlmacenable(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int s):Articulo(r,t,f,p),stockAA_(s)
+/*ArticuloAlmacenable::ArticuloAlmacenable(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int s):Articulo(r,t,f,p),stockAA_(s)
 {
-}
+}*/
 /*FIN CLASE ARTICULOALMACENABLE*/
 
 /*CLASE INFORMEDIGITAL - const Autores& a,*/
-InformeDigital::InformeDigital(const Cadena& r,const Cadena& t,const Fecha& f,double p,const Fecha& e):Articulo(r,t,f,p),expiracion_(e)
+/*InformeDigital::InformeDigital(const Cadena& r,const Cadena& t,const Fecha& f,double p,const Fecha& e):Articulo(r,t,f,p),expiracion_(e)
 {
 }
 
@@ -45,11 +45,11 @@ ostream& InformeDigital::imp_esp(ostream& out) const
 {
 	out << expiracion_.observadorPublico();
 	return out;
-}
+}*/
 /*FIN CLASE INFORMEDIGITAL*/
 
 /*CLASE LIBRO - const Autores& a,*/
-Libro::Libro(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int pg,unsigned int s):ArticuloAlmacenable(r,t,f,p,s),paginas_(pg)
+/*Libro::Libro(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int pg,unsigned int s):ArticuloAlmacenable(r,t,f,p,s),paginas_(pg)
 {
 }
 
@@ -57,11 +57,11 @@ ostream& Libro::imp_esp(ostream& out) const
 {
 	out << paginas_ << " págs., " << this->stock() << " unidades.";
 	return out;
-}
+}*/
 /*FIN CLASE LIBRO*/
 
 /*CLASE CEDERRON - const Autores& a,*/
-Cederron::Cederron(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned tm,unsigned int s):ArticuloAlmacenable(r,t,f,p,s),tamano_(tm)
+/*Cederron::Cederron(const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned tm,unsigned int s):ArticuloAlmacenable(r,t,f,p,s),tamano_(tm)
 {
 }
 
@@ -69,7 +69,7 @@ ostream& Cederron :: imp_esp(ostream& out) const
 {
 	out << tamano_ << " MB, " << this->stock() << " unidades.";
 	return out;
-}
+}*/
 /*FIN CLASE CEDERRON*/
 
 ostream& operator <<(ostream& out, const Articulo& art)

@@ -22,30 +22,25 @@
 #include "tarjeta.h"
 #include "usuario.h"
 
-/*VALIDACIÓN DEL NÚMERO DE TARJETA*/ //static
-int Numero::isValidNumber(char* number) throw()
+/*VALIDACIÓN DEL NÚMERO DE TARJETA*/
+int Numero::luhn(const Cadena& numero, size_t n) noexcept
 {
-int n, i, alternate, sum;
-if(!number)
-return 0;
-n = strlen(number);
-if(n < 13 || n > 19)
-return 0;
-for(alternate = 0, sum = 0, i = n - 1; i > -1; --i)
-{
-if(!isdigit(number[i]))
-return -1;
-n = number[i] - '0';
-if(alternate)
-{
-n *= 2;
-if(n > 9)
-n = (n % 10) + 1;
-}
-alternate = !alternate;
-sum += n;
-}
-return (sum % 10 == 0);
+    size_t suma = 0;
+    bool alt = false;
+
+    for(int i = n - 1; i > -1; --i)
+    {
+        n = numero[size_t(i)] - '0';
+        if (alt)
+        {
+            n *= 2;
+            if (n > 9)
+                n = (n % 10) + 1;
+        }
+        alt = !alt;
+        suma += n;
+    }
+    return suma % 10;
 }
 /*FIN VALIDACIÓN*/
 
@@ -67,48 +62,40 @@ Tarjeta::~Tarjeta()
 /*FIN CLASE TARJETA*/
 
 /*CLASE NUMERO*/
-Numero::Numero(const Cadena& n)throw (Numero::Incorrecto)
+Numero::Numero(const Cadena& n)throw(Incorrecto)
 {
-    char digitos[20];
-    unsigned int i, j = 0;
+    Cadena digitos(n);
+    unsigned int i = 0, j = 0;
 
-    for(i = 0; i <= n.length(); i++)
-        if (isdigit(n[i]))
-        {
-            digitos[j] = n[i];
-            j++;
-        }
-
-    digitos[i+1] = '\0';
-    if(strlen(digitos) < 13 || strlen(digitos) > 19)
+    if(n.length() == 0)
         throw Incorrecto(LONGITUD);
 
-    if(isValidNumber(digitos) == -1)
-        throw Incorrecto(DIGITOS);
+    while(i <= n.length())
+    {
+        if(n.at(i) == ' ')
+            ++i;
+        else
+        {
+            if(!isdigit(n.at(i)) && (n.at(i) != '\0'))
+                throw Incorrecto(DIGITOS);
 
-    if(isValidNumber(digitos) == 0)
+            digitos[j] = n[i];
+            ++j;
+            ++i;
+        }
+    }
+cout << "-" << digitos << "-" << endl;
+    if(digitos.length() < 13 || digitos.length() > 19)
+        throw Incorrecto(LONGITUD);
+
+    if(luhn(digitos, digitos.length()) != 0)
+        numero_ = digitos.c_str();
+    else
         throw Incorrecto(NO_VALIDO);
-
-    numero_ = digitos;
 }
 
 Numero::Incorrecto::Incorrecto(Razon r):razon_(r)
-{
-    cerr << "Número: ";
-    switch(razon())
-    {
-        case 0:
-            cerr<<"LONGITUD";
-            break;
-        case 1:
-            cerr<<"DIGITOS";
-            break;
-        case 2:
-            cerr<<"NO_VALIDO";
-            break;
-    }
-    cerr << endl;
-}
+{}
 /*FIN CLASE NUMERO*/
 
 /*OPERADORES*/

@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="P2/articulo.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P2/usuario.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="115" topLine="0" />
+			<Cursor1 position="3033" topLine="90" />
 		</Cursor>
 	</File>
-	<File name="P1/Cadena/cadena.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="113" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="P1/Cadena/test-auto.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2456" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="P1/Fecha/fecha.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P1/Fecha/fecha.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="12" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="P2/tarjeta.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P1/Cadena/cadena.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="114" topLine="0" />
+			<Cursor1 position="6618" topLine="150" />
 		</Cursor>
 	</File>
-	<File name="P2/usuario.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P2/articulo.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="114" topLine="0" />
+			<Cursor1 position="2089" topLine="49" />
 		</Cursor>
 	</File>
-	<File name="P2/articulo.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P2/usuario.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="116" topLine="0" />
+			<Cursor1 position="992" topLine="23" />
 		</Cursor>
 	</File>
-	<File name="P1/Fecha/fecha.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P1/Cadena/cadena.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3950" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="P2/test-caso1-auto.cpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2954" topLine="151" />
+		</Cursor>
+	</File>
+	<File name="P2/luhn.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="248" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="P2/tarjeta.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1714" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="P1/Fecha/fecha.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="117" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="P2/usuario.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P2/articulo.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="114" topLine="0" />
+			<Cursor1 position="991" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="P1/Cadena/cadena.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P2/tarjeta.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="61" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="P2/tarjeta.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="39" topLine="0" />
+			<Cursor1 position="2272" topLine="76" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

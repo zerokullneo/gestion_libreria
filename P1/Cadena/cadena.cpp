@@ -274,7 +274,7 @@ char Cadena::at(unsigned int i)const throw(out_of_range)
 //at Escribir caracter
 char& Cadena::at(unsigned int i) throw(out_of_range)
 {
-    if((i >= 0 and i <= tamano_) and (tamano_ > 0))
+    if((i >= 0 and i <= tamano_) and (tamano_ >= 0))
         return texto_[i];
 
     else

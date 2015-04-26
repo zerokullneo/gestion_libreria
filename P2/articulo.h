@@ -42,6 +42,9 @@ class Articulo
             public:
             Autores_vacios(){};
         };*/
+   //protected:
+        //Constructores - const Autores& aut,
+       Articulo(const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk);
 
         //Métodos observadores
         Cadena referencia()const{return referencia_;}
@@ -52,15 +55,14 @@ class Articulo
         //const Autores& autores()const{return autores_;}
         //Métodos modificadores
         //modifica el atributo precio_ con el nuevo valor indicado en pvp.
+        void precio(double& pvp){precio_ = pvp;}
         double& precio(){return precio_;}
         //modifica el atributo stock_ con el nuevo valor indicado en stk.
-        unsigned int& stock(unsigned int& stk){return stock_ = stk;}
-        virtual ostream& imp_esp(ostream&) const =0;
-        virtual ~Articulo(){};
+        void stock(unsigned int& stk){stock_ = stk;}
+        unsigned int& stock(){return stock_;}
+        //ostream& imp_esp(ostream&) const;
+        ~Articulo(){};
 
-    protected:
-        //Constructores - const Autores& aut,
-        Articulo(const Cadena& ref, const Cadena& tit, const Fecha& fec, double pvp);
 
     private:
         //Autores autores_;
@@ -70,7 +72,7 @@ class Articulo
         double precio_;
         unsigned int stock_;
 };
-
+/*
 class ArticuloAlmacenable: public Articulo
 {
     public:
@@ -127,7 +129,7 @@ class Cederron:public ArticuloAlmacenable
     private:
         unsigned tamano_;
 };
-
+*/
 //Operadores sobrecargados
 ostream& operator <<(ostream& out, const Articulo& art);
 

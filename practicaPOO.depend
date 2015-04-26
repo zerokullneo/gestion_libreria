@@ -27,7 +27,7 @@
 	"P1/Cadena/cadena.h"
 	"P1/Fecha/fecha.h"
 
-1429731267 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
+1429733619 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -36,15 +36,15 @@
 	<vector>
 	<iterator>
 
-1429443112 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
+1429733619 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
 	"../Cadena/cadena.h"
 	<ctime>
 
-1429654647 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+1430072377 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
 	<locale>
 
-1429465483 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
+1429740694 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.cpp
 	"fecha.h"
 
 1429655313 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/test-auto.cpp
@@ -134,4 +134,52 @@
 	<float.h>
 	<math.h>
 	<ctype.h>
+
+1430055686 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/luhn.cpp
+	"../P1/Cadena/cadena.h"
+	<cstddef>
+
+1430085378 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
+	"tarjeta.h"
+	"usuario.h"
+
+1430074909 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
+	<iomanip>
+	<cstddef>
+	"usuario.h"
+	"../P1/Cadena/cadena.h"
+	"../P1/Fecha/fecha.h"
+
+1430003140 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.h
+	<set>
+	<map>
+	"../P1/Cadena/cadena.h"
+	"../P1/Fecha/fecha.h"
+	"articulo.h"
+	"tarjeta.h"
+
+1430054556 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.h
+	"../P1/Cadena/cadena.h"
+	"../P1/Fecha/fecha.h"
+
+1430047638 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.cpp
+	"articulo.h"
+
+1430075719 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/test-caso1-auto.cpp
+	<ctime>
+	<sstream>
+	<string>
+	<iomanip>
+	<type_traits>
+	<regex>
+	"../P1/fct.h"
+	"tarjeta.h"
+	"usuario.h"
+	"articulo.h"
+
+1430059189 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.cpp
+	<unistd.h>
+	"usuario.h"
+	"articulo.h"
+	"tarjeta.h"
 

@@ -61,47 +61,52 @@ class Clave
 
 class Usuario
 {
-public:
-typedef set<Cadena> Usuarios;
-typedef map<Numero, Tarjeta*> Tarjetas;
-typedef map<Articulo*, unsigned> Articulos;
-class Id_duplicado
-{
-public:
-//Constructor predeterminado
-Id_duplicado(const Cadena& id_d);
-//Método observador
-Cadena idd()const {return idd_;}
-private:
-Cadena idd_;
+    public:
+        typedef set<Cadena> Usuarios;
+        typedef map<Numero, Tarjeta*> Tarjetas;
+        typedef map<Articulo*, unsigned> Articulos;
+
+        class Id_duplicado
+        {
+            public:
+                //Constructor predeterminado
+                Id_duplicado(const Cadena& id_d);
+                //Método observador
+                Cadena idd()const {return idd_;}
+            private:
+                Cadena idd_;
+        };
+
+        //Constructor
+        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass)throw(Usuario::Id_duplicado,Clave::Incorrecta);
+        //Métodos observadores de los atributos.
+        Cadena id()const {return identificador_;}
+        Cadena nombre()const {return nombre_;}
+        Cadena apellidos()const {return apellidos_;}
+        Cadena direccion()const {return direccion_;}
+        Clave clave()const {return contrasenia_;}
+        size_t n_articulos()const{return articulos_.size();}
+        const Tarjetas& tarjetas()const{return tarjetas_;}
+        const Articulos& compra()const{return articulos_;}
+
+        //Métodos modificadores
+        void es_titular_de(Tarjeta& T);
+        void no_es_titular_de(Tarjeta& T);
+        void compra(Articulo& A, unsigned i=1);
+
+    private:
+        //Evitar la copia de un objeto Usuario
+        Usuario(const Usuario&);
+        Usuario& operator =(const Usuario&);
+        Cadena identificador_;
+        Cadena nombre_;
+        Cadena apellidos_;
+        Cadena direccion_;
+        Clave contrasenia_;
+        Articulos articulos_;
+        Tarjetas tarjetas_;
 };
-//Constructor
-Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass)throw(Usuario::Id_duplicado,Clave::Incorrecta);
-//Métodos observadores de los atributos.
-Cadena id()const {return identificador_;}
-Cadena nombre()const {return nombre_;}
-Cadena apellidos()const {return apellidos_;}
-Cadena direccion()const {return direccion_;}
-Clave clave()const {return contrasenia_;}
-size_t n_articulos()const{return articulos_.size();}
-const Tarjetas& tarjetas()const{return tarjetas_;}
-const Articulos& compra()const{return articulos_;}
-//Métodos modificadores
-void es_titular_de(Tarjeta& T);
-void no_es_titular_de(Tarjeta& T);
-void compra(Articulo& A, unsigned i=1);
-private:
-//Evitar la copia de un objeto Usuario
-Usuario(const Usuario&);
-Usuario& operator =(const Usuario&);
-Cadena identificador_;
-Cadena nombre_;
-Cadena apellidos_;
-Cadena direccion_;
-Clave contrasenia_;
-Articulos articulos_;
-Tarjetas tarjetas_;
-};
+
 std::ostream& operator << (std::ostream& out , const Usuario& u);
 std::ostream& mostrar_carro (std::ostream& out , const Usuario& u);
 #endif //USUARIO_H
