@@ -64,7 +64,7 @@ Tarjeta::~Tarjeta()
 /*CLASE NUMERO*/
 Numero::Numero(const Cadena& n)throw(Incorrecto)
 {
-    Cadena digitos(n);
+    Cadena digitos(18);
     unsigned int i = 0, j = 0;
 
     if(n.length() == 0)
@@ -84,7 +84,7 @@ Numero::Numero(const Cadena& n)throw(Incorrecto)
             ++i;
         }
     }
-cout << "-" << digitos << "-" << endl;
+
     if(digitos.length() < 13 || digitos.length() > 19)
         throw Incorrecto(LONGITUD);
 

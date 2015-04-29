@@ -30,7 +30,7 @@ Clave::Clave(const char* clav)throw(Clave::Incorrecta)
 {
     if(strlen(clav) < 5)throw Incorrecta(CORTA);
 
-    const char* c = crypt(clav,"@#");
+    const char* c = crypt(clav,"0123456789");
     clave_ = c;
 
     if(!clave_.length())throw Incorrecta(ERROR_CRYPT);
@@ -41,7 +41,7 @@ Clave::Incorrecta::Incorrecta(Razon r):r_(r)
 
 bool Clave::verifica(const char* pass) const
 {
-    pass = crypt(pass,"@#");
+    pass = crypt(pass,"0123456789");
 
     if(0 == strcmp(pass, clave_.c_str()))
         return true;
