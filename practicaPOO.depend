@@ -40,7 +40,7 @@
 	"../Cadena/cadena.h"
 	<ctime>
 
-1430072377 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
+1430333812 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
 	<locale>
 
@@ -140,18 +140,18 @@
 	"../P1/Cadena/cadena.h"
 	<cstddef>
 
-1430085378 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
+1430333812 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
 	"tarjeta.h"
 	"usuario.h"
 
-1430074909 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
+1430333812 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
 	<iomanip>
 	<cstddef>
 	"usuario.h"
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1430003140 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.h
+1430339578 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.h
 	<set>
 	<map>
 	"../P1/Cadena/cadena.h"
@@ -159,14 +159,15 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1430054556 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.h
+1430333812 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.h
+	<iomanip>
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1430047638 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.cpp
+1430334422 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.cpp
 	"articulo.h"
 
-1430075719 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/test-caso1-auto.cpp
+1430339954 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/test-caso1-auto.cpp
 	<ctime>
 	<sstream>
 	<string>
@@ -178,7 +179,7 @@
 	"usuario.h"
 	"articulo.h"
 
-1430059189 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.cpp
+1430339907 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.cpp
 	<unistd.h>
 	"usuario.h"
 	"articulo.h"

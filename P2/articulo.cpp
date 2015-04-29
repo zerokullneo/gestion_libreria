@@ -75,6 +75,6 @@ ostream& Cederron :: imp_esp(ostream& out) const
 ostream& operator <<(ostream& out, const Articulo& art)
 {
 	out << "[" << art.referencia() << "] \"" << art.titulo() << "\", " << art.f_publi().anno()
-	<< ". " << setprecision(2) << fixed << art.precio() << " €" << endl;
+	<< ". " << setprecision(2) << fixed << art.precio() << " €";
 	return out;
 }

@@ -162,7 +162,6 @@ FCT_BGN() {
       const Articulo& rA = *pA;
       ostringstream os;
       os << rA;
-      cout << endl << os.str() << endl;
       fct_chk(strcmp(os.str().c_str(),
                    "[1234XYZ] \"Prueba\", 2000. 20.40 €") == 0);
     }
@@ -222,6 +221,7 @@ FCT_BGN() {
                   Clave("otraclave"));
         fct_chk(!"Se esperaba una excepción");
       } catch (const Usuario::Id_duplicado& ex) {
+          cout << "-" << ex.idd() << "-" << endl;
         fct_chk(ex.idd() == sId);
       }
     }
