@@ -26,6 +26,7 @@
 
 #ifndef ARTICULO_H
 #define ARTICULO_H
+#include <iomanip>
 #include "../P1/Cadena/cadena.h"
 #include "../P1/Fecha/fecha.h"
 //#include "autor.h"

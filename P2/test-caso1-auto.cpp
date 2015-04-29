@@ -162,6 +162,7 @@ FCT_BGN() {
       const Articulo& rA = *pA;
       ostringstream os;
       os << rA;
+      cout << endl << os.str() << endl;
       fct_chk(strcmp(os.str().c_str(),
                    "[1234XYZ] \"Prueba\", 2000. 20.40 €") == 0);
     }

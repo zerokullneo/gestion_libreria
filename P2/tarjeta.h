@@ -56,7 +56,7 @@ class Numero
         //operador de conversión a cadena de bajo nivel
         operator const char*()const{return numero_.c_str();}
         //Validación del número de tarjeta, según el algoritmo de Lhun.static
-        int luhn(const Cadena& numero, size_t n) noexcept;
+        bool luhn(const Cadena& numero, size_t n) noexcept;
         friend bool operator <(const Numero&, const Numero&);
 
     private:

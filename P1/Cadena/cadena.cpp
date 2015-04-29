@@ -29,16 +29,16 @@ using namespace std;
 Cadena::Cadena(unsigned int longitud, char caracter):tamano_(longitud)
 {
 	npos = -1;
-	texto_= new char[longitud + 1];
+	texto_= new char[tamano_ + 1];
 
 	if(texto_ == NULL)
 		cerr << "Cadena: Predeterminado fallo de memoria." << endl;
 	else
 	{
-		for(unsigned int i = 0; i < longitud; i++)
+		for(unsigned int i = 0; i < tamano_; i++)
 			texto_[i]=caracter;
 
-		texto_[longitud] = '\0';
+		texto_[tamano_] = '\0';
 	}
 }
 
@@ -46,16 +46,16 @@ Cadena::Cadena(unsigned int longitud, char caracter):tamano_(longitud)
 Cadena::Cadena(unsigned int tamano):tamano_(tamano)
 {
 	npos = -1;
-	texto_= new char[tamano + 1];
+	texto_ = new char[tamano_ + 1];
 
 	if(texto_ == NULL)
 		cerr << "Cadena: unsigned int fallo de memoria." << endl;
 	else
 	{
-		for(unsigned int i = 0; i < tamano; i++)
+		for(unsigned int i = 0; i < tamano_; i++)
 			texto_[i] = ' ';
 
-		texto_[tamano]='\0';
+		texto_[tamano_]='\0';
 	}
 }
 
@@ -67,7 +67,7 @@ Cadena::Cadena(const Cadena& frase):tamano_(frase.length())
 	if(texto_ == NULL)
 		cerr << "Cadena: Cadena& fallo de memoria." << endl;
 	else
-		strncpy(texto_,frase.texto_, tamano_+1);
+		strncpy(texto_,frase.texto_, tamano_ + 1);
 }
 
 //Constructor de movimiento de un objeto Cadena
