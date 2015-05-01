@@ -73,7 +73,7 @@ class Fecha
 		class Invalida
 		{
 			public:
-				Invalida(const char* t);
+				Invalida(const char* t):tp_(t){};
 
 				const char* por_que() const {return tp_;}
 

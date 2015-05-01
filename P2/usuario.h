@@ -70,7 +70,7 @@ class Usuario
         {
             public:
                 //Constructor predeterminado
-                Id_duplicado(const Cadena& id_d);
+                Id_duplicado(const Cadena& id_d):idd_(id_d){};
                 //Método observador
                 Cadena idd()const {return idd_;}
             private:
@@ -78,7 +78,7 @@ class Usuario
         };
 
         //Constructor
-        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass)throw(Usuario::Id_duplicado,Clave::Incorrecta);
+        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) throw(Usuario::Id_duplicado);
         //Métodos observadores de los atributos.
         Cadena id()const {return identificador_;}
         Cadena nombre()const {return nombre_;}

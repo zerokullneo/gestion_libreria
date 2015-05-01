@@ -36,7 +36,7 @@
 	<vector>
 	<iterator>
 
-1429733619 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
+1430438815 /home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/fecha.h
 	"../Cadena/cadena.h"
 	<ctime>
 
@@ -140,18 +140,18 @@
 	"../P1/Cadena/cadena.h"
 	<cstddef>
 
-1430333812 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
+1430438073 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
 	"tarjeta.h"
 	"usuario.h"
 
-1430333812 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
+1430436022 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
 	<iomanip>
 	<cstddef>
 	"usuario.h"
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1430339578 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.h
+1430438678 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.h
 	<set>
 	<map>
 	"../P1/Cadena/cadena.h"
@@ -167,7 +167,7 @@
 1430334422 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/articulo.cpp
 	"articulo.h"
 
-1430339954 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/test-caso1-auto.cpp
+1430437171 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/test-caso1-auto.cpp
 	<ctime>
 	<sstream>
 	<string>
@@ -179,7 +179,7 @@
 	"usuario.h"
 	"articulo.h"
 
-1430339907 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.cpp
+1430438568 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/usuario.cpp
 	<unistd.h>
 	"usuario.h"
 	"articulo.h"

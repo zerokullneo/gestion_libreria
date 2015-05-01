@@ -91,8 +91,6 @@ Fecha::Fecha(const char* string_fecha)
 		comprueba_fecha(d_, m_, a_);
 	}
 }
-
-Fecha::Invalida::Invalida(const char* t):tp_(t){}
 //FIN CONSTRUCTORES
 
 //OPERADORES

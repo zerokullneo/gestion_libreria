@@ -76,7 +76,7 @@ class Tarjeta
                 Fecha caducada_;
         };
 
-        Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad)throw(Caducada);
+        Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad)throw(Tarjeta::Caducada);
 
         //Métodos observadores de los atributos de Tarjeta.
         Numero tarjeta()const{return tarjeta_;}
