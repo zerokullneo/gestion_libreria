@@ -25,7 +25,7 @@
 #include "articulo.h"
 #include "tarjeta.h"
 
-/*Clase clave*/
+/*CLASE CLAVE*/
 Clave::Clave(const char* clav)throw(Clave::Incorrecta)
 {
     if(strlen(clav) < 5)throw Incorrecta(CORTA);
@@ -35,9 +35,6 @@ Clave::Clave(const char* clav)throw(Clave::Incorrecta)
 
     if(!clave_.length())throw Incorrecta(ERROR_CRYPT);
 }
-
-Clave::Incorrecta::Incorrecta(Razon r):r_(r)
-{}
 
 bool Clave::verifica(const char* pass) const
 {
@@ -57,12 +54,11 @@ Usuario::Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) thr
 identificador_(id), nombre_(nom), apellidos_(apll), direccion_(dir), contrasenia_(pass)
 {
     //comprobamos si ese identificador de usuario ya existe.
-    if(id_.insert(id).second == false)
-        /*cerr << "idd" << endl;*/throw(Usuario::Id_duplicado(id));
+    if(id_.insert(identificador_).second == false)
+       /*cerr << "duplicado";*/throw(Id_duplicado(id));
+    else
+        id_.insert(identificador_).second;
 }
-
-/*Usuario::Id_duplicado::Id_duplicado(const Cadena& id_d):idd_(id_d)
-{}*/
 
 void Usuario::es_titular_de(Tarjeta& T)
 {
@@ -83,6 +79,11 @@ void Usuario::compra(Articulo& A, unsigned i)
         if(!articulos_.insert(pair<Articulo*,unsigned>(&A,i)).second)
         articulos_[&A] = i;
     }
+}
+
+Usuario::~Usuario()
+{
+    id_.erase(identificador_);
 }
 
 ostream& operator <<(ostream& out, const Usuario& u)
@@ -108,7 +109,7 @@ ostream& mostrar_carro(ostream& out, const Usuario& u)
         for(Usuario::Articulos::const_iterator it = u.compra().begin(); it != u.compra().end(); it++)
         {
             out << (*it).second << " " << "[" << it->first->referencia() << "] \"" << it->first->titulo() << "\", " << it->first->f_publi().anno();
-            out << ". " << setprecision(2) << fixed << it->first->precio() << "€" << endl;
+            out << ". " << setprecision(2) << fixed << it->first->precio() << " €" << endl;
         }
     }
 

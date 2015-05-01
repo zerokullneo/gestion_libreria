@@ -198,13 +198,15 @@ FCT_BGN() {
     }
     FCT_TEARDOWN_END();
 
-    /*FCT_TEST_BGN(USUARIO - no es copiable) {
+    FCT_TEST_BGN(USUARIO - no es copiable) {
       fct_chk(!is_copy_constructible<Usuario>::value);
       fct_chk(!is_copy_assignable<Usuario>::value);
     }
-    FCT_TEST_END();*/
+    FCT_TEST_END();
 
     FCT_TEST_BGN(USUARIO - observadores) {
+      delete pU;
+      pU = new Usuario(sId, sNombre, sApellidos, sDireccion, clave);
       const Usuario& rU = *pU;
       fct_chk(rU.id() == sId);
       fct_chk(rU.nombre() == sNombre);
@@ -216,22 +218,19 @@ FCT_BGN() {
 
     FCT_TEST_BGN(USUARIO - identificador repetido) {
       try {
-        Usuario u(sId,
-                  "otro nombre", "otros apellidos", "otra dirección",
-                  Clave("otraclave"));
+        Usuario u(sId, "otro nombre", "otros apellidos", "otra dirección", Clave("otraclave"));
         fct_chk(!"Se esperaba una excepción");
-      } catch (const Usuario::Id_duplicado& ex) {
-          cout << "-" << ex.idd() << "-" << endl;
+      } catch(const Usuario::Id_duplicado& ex) {
         fct_chk(ex.idd() == sId);
       }
     }
     FCT_TEST_END();
 
-    /*FCT_TEST_BGN(TARJETA - no es copiable) {
+    FCT_TEST_BGN(TARJETA - no es copiable) {
       fct_chk(!is_copy_constructible<Tarjeta>::value);
       fct_chk(!is_copy_assignable<Tarjeta>::value);
     }
-    FCT_TEST_END();*/
+    FCT_TEST_END();
 
     FCT_TEST_BGN(TARJETA - caducada) {
       const Fecha f(1, 1, 2000);

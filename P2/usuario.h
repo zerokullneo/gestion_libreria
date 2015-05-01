@@ -23,8 +23,10 @@
 * You should have received a copy of the GNU General Public License
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
+
 #ifndef USUARIO_H
 #define USUARIO_H
+
 #include <set>
 #include <map>
 #include "../P1/Cadena/cadena.h"
@@ -44,7 +46,7 @@ class Clave
         class Incorrecta
         {
             public:
-                Incorrecta(Razon r);
+                Incorrecta(Razon r):r_(r){};
                 Razon razon()const{return r_;}
 
             private:
@@ -66,11 +68,12 @@ class Usuario
         typedef map<Numero, Tarjeta*> Tarjetas;
         typedef map<Articulo*, unsigned> Articulos;
 
+        //Clase de excepcion Id duplicado
         class Id_duplicado
         {
             public:
                 //Constructor predeterminado
-                Id_duplicado(const Cadena& id_d):idd_(id_d){};
+                Id_duplicado(Cadena id_d):idd_(id_d){};
                 //Método observador
                 Cadena idd()const {return idd_;}
             private:
@@ -78,7 +81,13 @@ class Usuario
         };
 
         //Constructor
-        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) throw(Usuario::Id_duplicado);
+        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) throw(Id_duplicado);
+
+        //Evitar la copia de un objeto Usuario
+        Usuario(const Usuario&)=delete;
+        //Evitar la asignacion de un objeto Usuario
+        Usuario& operator =(const Usuario&)=delete;
+
         //Métodos observadores de los atributos.
         Cadena id()const {return identificador_;}
         Cadena nombre()const {return nombre_;}
@@ -94,10 +103,9 @@ class Usuario
         void no_es_titular_de(Tarjeta& T);
         void compra(Articulo& A, unsigned i=1);
 
+        ~Usuario();
+
     private:
-        //Evitar la copia de un objeto Usuario
-        Usuario(const Usuario&);
-        Usuario& operator =(const Usuario&);
         Cadena identificador_;
         Cadena nombre_;
         Cadena apellidos_;

@@ -26,6 +26,7 @@
 
 #ifndef TARJETA_H
 #define TARJETA_H
+
 #include <iomanip>
 #include <cstddef>
 #include "usuario.h"
@@ -70,13 +71,20 @@ class Tarjeta
         class Caducada
         {
             public:
+                //Constructor predeterminado
                 Caducada(const Fecha& f):caducada_(f){};
+                //Método observador
                 Fecha cuando()const{return caducada_;};
             private:
                 Fecha caducada_;
         };
 
-        Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad)throw(Tarjeta::Caducada);
+        Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada);
+
+        //Evitar la copia de una Tarjeta
+        Tarjeta(const Tarjeta&)=delete;
+        //Evitar la asignacion de una Tarjeta
+        Tarjeta& operator=(const Tarjeta&)=delete;
 
         //Métodos observadores de los atributos de Tarjeta.
         Numero tarjeta()const{return tarjeta_;}
@@ -90,10 +98,6 @@ class Tarjeta
         ~Tarjeta();
 
     private:
-        //Evitar la copia de una Tarjeta
-        Tarjeta(const Tarjeta&);
-        //Evitar la asignacion de una Tarjeta
-        Tarjeta& operator=(const Tarjeta&);
         Numero tarjeta_;
         const Usuario* titular_;
         Fecha f_caducidad_;

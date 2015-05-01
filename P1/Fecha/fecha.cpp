@@ -304,7 +304,7 @@ const char* Fecha::cadena()const
 
 void Fecha::visualizar() const
 {
-   if(d_ > 0 && d_ < 10) cout << "0"; cout << d_ << "/";if(m_ > 0 && m_ < 10) cout << "0"; cout << m_ << "/" << a_ << endl;
+   if(d_ > 0 && d_ < 10) cout << "0"; cout << d_ << "/";if(m_ > 0 && m_ < 10) cout << "0"; cout << m_ << "/" << a_ << ".";
 }
 /*------------------FIN OBSERVADORAS---------------------*/
 
@@ -381,7 +381,7 @@ bool operator <(const Fecha& fec1, const Fecha& fec2)
 
 bool operator >(const Fecha& fec1, const Fecha& fec2)
 {
-	if((fec1.dia() > fec2.dia()) || ((fec1.dia() <= fec2.dia() && (fec1.mes() > fec2.mes())) || ((fec1.mes() <= fec2.mes()) && fec1.anno() > fec2.anno())))
+    if((fec1.anno() > fec2.anno()) or ((fec1.anno() == fec2.anno() and fec1.mes() > fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() > fec2.dia())))
 	    return true;
 	else
 	    return false;

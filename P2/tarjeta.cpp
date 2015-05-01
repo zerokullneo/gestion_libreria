@@ -45,12 +45,12 @@ bool Numero::luhn(const Cadena& numero, size_t n) noexcept
 /*FIN VALIDACIÓN*/
 
 /*CLASE TARJETA*/
-Tarjeta::Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad)throw(Tarjeta::Caducada):
-tarjeta_(tjt), titular_(&usuario), f_caducidad_(cad), titular_facial_((usuario.nombre()+ " " + usuario.apellidos()))
+Tarjeta::Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada):
+tarjeta_(tjt), titular_(&usuario), f_caducidad_(cad), titular_facial_((usuario.nombre() + " " + usuario.apellidos()))
 {
     const Fecha f;
-    if(f > f_caducidad_)
-        cerr<< "caducada"<< endl;//throw(Caducada(cad));
+    if((f > cad) == true)
+        throw(Caducada(cad));
 }
 
 void Tarjeta::anula_titular()
