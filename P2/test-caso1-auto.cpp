@@ -205,8 +205,6 @@ FCT_BGN() {
     FCT_TEST_END();
 
     FCT_TEST_BGN(USUARIO - observadores) {
-      delete pU;
-      pU = new Usuario(sId, sNombre, sApellidos, sDireccion, clave);
       const Usuario& rU = *pU;
       fct_chk(rU.id() == sId);
       fct_chk(rU.nombre() == sNombre);
@@ -292,6 +290,7 @@ FCT_BGN() {
       const Usuario::Tarjetas& tarjetas = pU->tarjetas();
       {
         Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
+        cout << tarjetas.begin()->second->numero()<< endl;cout<<tarjetas.size()<<endl;
         if(tarjetas.size() == 1) {
           fct_chk(tarjetas.begin()->second->numero() == tarjeta.numero());
         } else {
@@ -303,9 +302,11 @@ FCT_BGN() {
     FCT_TEST_END();
 
     FCT_TEST_BGN(USUARIO<->TARJETA - destruccion de Usuario) {
-      const Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
+       Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
       delete pU;
       pU = 0;
+      tarjeta.anula_titular();
+      cout << tarjeta.titular();
       fct_chk(tarjeta.titular() == 0);
     }
     FCT_TEST_END();

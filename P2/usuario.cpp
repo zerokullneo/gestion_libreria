@@ -50,7 +50,7 @@ bool Clave::verifica(const char* pass) const
 /*CLASE USUARIO*/
 //Columna de identificadores de usuarios.
 static Usuario::Usuarios id_;
-Usuario::Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) throw(Usuario::Id_duplicado):
+Usuario::Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass) throw(Usuario::Id_duplicado):
 identificador_(id), nombre_(nom), apellidos_(apll), direccion_(dir), contrasenia_(pass)
 {
     //comprobamos si ese identificador de usuario ya existe.
@@ -84,6 +84,7 @@ void Usuario::compra(Articulo& A, unsigned i)
 Usuario::~Usuario()
 {
     id_.erase(identificador_);
+
 }
 
 ostream& operator <<(ostream& out, const Usuario& u)

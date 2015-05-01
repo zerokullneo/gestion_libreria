@@ -45,7 +45,7 @@ class Numero
         {
             public:
             //constructor de la clase Incorrecto.
-            Incorrecto(Razon r);
+            Incorrecto(Razon r):razon_(r){};
             //Método observador del atributo de razon_.
             Razon razon()const {return razon_;}
             private:
@@ -79,7 +79,7 @@ class Tarjeta
                 Fecha caducada_;
         };
 
-        Tarjeta(const Numero& tjt,Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada);
+        Tarjeta(const Numero& tjt,const Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada);
 
         //Evitar la copia de una Tarjeta
         Tarjeta(const Tarjeta&)=delete;

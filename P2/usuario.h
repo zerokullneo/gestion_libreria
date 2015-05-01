@@ -81,7 +81,7 @@ class Usuario
         };
 
         //Constructor
-        Usuario(Cadena id, Cadena nom, Cadena apll, Cadena dir, Clave pass) throw(Id_duplicado);
+        Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass) throw(Id_duplicado);
 
         //Evitar la copia de un objeto Usuario
         Usuario(const Usuario&)=delete;
