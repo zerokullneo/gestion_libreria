@@ -290,7 +290,6 @@ FCT_BGN() {
       const Usuario::Tarjetas& tarjetas = pU->tarjetas();
       {
         Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
-        cout << tarjetas.begin()->second->numero()<< endl;cout<<tarjetas.size()<<endl;
         if(tarjetas.size() == 1) {
           fct_chk(tarjetas.begin()->second->numero() == tarjeta.numero());
         } else {
@@ -302,11 +301,9 @@ FCT_BGN() {
     FCT_TEST_END();
 
     FCT_TEST_BGN(USUARIO<->TARJETA - destruccion de Usuario) {
-       Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
+      const Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
       delete pU;
       pU = 0;
-      tarjeta.anula_titular();
-      cout << tarjeta.titular();
       fct_chk(tarjeta.titular() == 0);
     }
     FCT_TEST_END();

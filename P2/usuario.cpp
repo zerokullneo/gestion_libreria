@@ -26,7 +26,7 @@
 #include "tarjeta.h"
 
 /*CLASE CLAVE*/
-Clave::Clave(const char* clav)throw(Clave::Incorrecta)
+Clave::Clave(const char* clav)
 {
     if(strlen(clav) < 5)throw Incorrecta(CORTA);
 
@@ -36,7 +36,7 @@ Clave::Clave(const char* clav)throw(Clave::Incorrecta)
     if(!clave_.length())throw Incorrecta(ERROR_CRYPT);
 }
 
-bool Clave::verifica(const char* pass) const
+bool Clave::verifica(const char* pass) const noexcept
 {
     pass = crypt(pass,"0123456789./");
 
@@ -50,27 +50,26 @@ bool Clave::verifica(const char* pass) const
 /*CLASE USUARIO*/
 //Columna de identificadores de usuarios.
 static Usuario::Usuarios id_;
-Usuario::Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass) throw(Usuario::Id_duplicado):
+Usuario::Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass):
 identificador_(id), nombre_(nom), apellidos_(apll), direccion_(dir), contrasenia_(pass)
 {
     //comprobamos si ese identificador de usuario ya existe.
     if(id_.insert(identificador_).second == false)
-       /*cerr << "duplicado";*/throw(Id_duplicado(id));
-    else
-        id_.insert(identificador_).second;
+       throw Id_duplicado(id);
 }
 
-void Usuario::es_titular_de(Tarjeta& T)
+void Usuario::es_titular_de(Tarjeta& T) noexcept
 {
     tarjetas_.insert(pair<Numero,Tarjeta*>(T.tarjeta(),&T));
 }
 
-void Usuario::no_es_titular_de(Tarjeta& T)
+void Usuario::no_es_titular_de(Tarjeta& T) noexcept
 {
     tarjetas_.erase(T.tarjeta());
+    T.anula_titular();
 }
 
-void Usuario::compra(Articulo& A, unsigned i)
+void Usuario::compra(Articulo& A, unsigned i) noexcept
 {
     if(i == 0)
         articulos_.erase(&A);
@@ -84,7 +83,8 @@ void Usuario::compra(Articulo& A, unsigned i)
 Usuario::~Usuario()
 {
     id_.erase(identificador_);
-
+    for(Usuario::Tarjetas::const_iterator it=tarjetas_.begin(); it!=tarjetas_.end(); it++)
+        (it->second)->anula_titular();
 }
 
 ostream& operator <<(ostream& out, const Usuario& u)

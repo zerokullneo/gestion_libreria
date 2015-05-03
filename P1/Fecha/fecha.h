@@ -61,8 +61,8 @@ class Fecha
 		Fecha& restayear(int decmt_a);
 		//funciones observadoras
 		ostream& observadorPublico()const noexcept;
-		const char* cadena()const;
-		void visualizar()const;
+		const char* cadena()const noexcept;
+		void visualizar()const noexcept;
         char* literal()const{static char cad[1]; sprintf(cad,"%d/%d/%4d",d_, m_, a_); return cad;}
 		int anno()const noexcept {return a_;}
 		int mes()const noexcept {return m_;}
@@ -89,7 +89,7 @@ class Fecha
 		inline void default_m_(){m_ = ((info_fecha_->tm_mon) + 1);}
 		inline void default_a_(){a_ = ((info_fecha_->tm_year) + 1900);}
 
-		bool comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida);
+		bool comprueba_fecha(int& dia, int& mes, int& year);
 };
 
 /*operadores sobrecargados de mas de un argumento*/
@@ -111,10 +111,15 @@ bool operator >=(const Fecha& fec1, const Fecha& fec2);
 //Sobrecarga el operador Distinto para poder comparar dos clases Fecha.
 bool operator !=(const Fecha& fec1, const Fecha& fec2);
 
+//Sobrecarga el operador suma para poder sumar dias a una clase Fecha.
 Fecha operator + (int incremento, const Fecha& fec);
 Fecha operator + (const Fecha& fec, int incremento);
+
+//Sobrecarga el operador suma para poder restar dias a una clase Fecha.
 Fecha operator - (int decremento, const Fecha& fec);
 Fecha operator - (const Fecha& fec, int decremento);
+
+//Sobrecarga el operador suma para poder restar dos clase Fecha.
 long int operator - (const Fecha& f1, const Fecha& f2);
 
 //Sobrecarga el operador Flujo de Salida para que la fecha sea legible por pantalla.

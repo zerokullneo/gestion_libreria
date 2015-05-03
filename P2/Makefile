@@ -9,7 +9,7 @@
 # de práctica: P1, P2, etc.
 # NOMBREALUMNO debería ser de la forma: Ap1_Ap2_NP 
 # (Véanse las instrucciones de entrega).
-NOMBREALUMNO   = 
+NOMBREALUMNO   = JOSE_MANUEL_BARBA_GONZALEZ
 NOMBREPRACTICA = P2
 
 # CADENADIR y FECHADIR son los directorios donde están respectivamente
@@ -22,8 +22,8 @@ FECHADIR = ../${DIRFECHACADENA}/Fecha
 TESTHDR = ..
 
 # ¿Compilador C++ de LLVM (clang++) o de GNU (g++)?
-CXX      = clang++
-#CXX	 = g++
+#CXX      = clang++
+CXX	 = g++
 
 # ¿Qué estándar seguir?
 # ansi o c++98 o c++03: estándar de 1998, corregido en 2003

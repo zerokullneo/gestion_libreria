@@ -45,15 +45,17 @@ bool Numero::luhn(const Cadena& numero, size_t n) noexcept
 /*FIN VALIDACIÓN*/
 
 /*CLASE TARJETA*/
-Tarjeta::Tarjeta(const Numero& tjt,const Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada):
-tarjeta_(tjt), titular_(&usuario), f_caducidad_(cad), titular_facial_((usuario.nombre() + " " + usuario.apellidos()))
+Tarjeta::Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad):
+tarjeta_(tjt), titular_(&usuario), f_caducidad_(f_cad), titular_facial_((usuario.nombre() + " " + usuario.apellidos()))
 {
     const Fecha f_hoy;
-    if((f_hoy > cad) == true)
-        throw(Caducada(cad));
+    if((f_hoy > f_cad) == true)
+        throw Caducada(f_cad);
+
+    titular_->es_titular_de(*this);
 }
 
-void Tarjeta::anula_titular()
+void Tarjeta::anula_titular() noexcept
 {
     titular_ = 0;
 }
@@ -62,12 +64,15 @@ Tarjeta::~Tarjeta()
 {
     Usuario *user = const_cast<Usuario*>(titular_);
     if(user)
+    {
+        this->anula_titular();
         user->no_es_titular_de(*this);
+    }
 }
 /*FIN CLASE TARJETA*/
 
 /*CLASE NUMERO*/
-Numero::Numero(const Cadena& n)throw(Incorrecto)
+Numero::Numero(const Cadena& n)
 {
     Cadena digitos((strlen(n.c_str())));
     unsigned int i = 0, j = 0;

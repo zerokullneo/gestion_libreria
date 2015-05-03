@@ -83,14 +83,14 @@ class Cadena
 		char& at(unsigned int i) throw(out_of_range);
 
 		//funciones observadoras
-		char* Cad() const{return texto_;}
-		const char* c_str() const{return texto_;};
+		char* Cad() const noexcept {return texto_;}
+		const char* c_str() const noexcept {return texto_;};
 		//recibe un objeto Cadena para verificar su longitud
-		unsigned int length(Cadena& c)const{return c.tamano_;}
+		unsigned int length(Cadena& c)const noexcept {return c.tamano_;}
 		//devuelve el atributo tamano_ del objeto cadena actual
-		unsigned int length()const{return tamano_;}
+		unsigned int length()const noexcept {return tamano_;}
 		//const char* imprimirP()const;
-		void imprimirP()const;
+		void imprimirP()const noexcept {cout << texto_;};
 
         //funciones sobre iteradores
         iterator begin() const noexcept;

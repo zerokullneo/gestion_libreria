@@ -79,7 +79,7 @@ Cadena::Cadena(Cadena&& frase): texto_(frase.texto_), tamano_(frase.tamano_)
 }
 
 //Constructor de copia de una cadena a bajo nivel.
-Cadena::Cadena(const char* texto):	tamano_(strlen(texto))
+Cadena::Cadena(const char* texto): tamano_(strlen(texto))
 {
 	npos = -1;
 	texto_ = new char[tamano_ + 1];
@@ -90,7 +90,7 @@ Cadena::Cadena(const char* texto):	tamano_(strlen(texto))
 }
 
 //Constructor de una sub-cadena de bajo nivel char*.
-Cadena::Cadena(const char* texto, size_t n):tamano_(n)
+Cadena::Cadena(const char* texto, size_t n): tamano_(n)
 {
     npos = -1;
     texto_= new char[tamano_ + 1];
@@ -105,7 +105,7 @@ Cadena::Cadena(const char* texto, size_t n):tamano_(n)
 }
 
 //Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
-Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n):tamano_(n)
+Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n): tamano_(n)
 {
     npos = pos + tamano_;
     texto_= new char[tamano_+1];
@@ -120,7 +120,7 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n):tamano_(n)
 }
 
 //Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
-Cadena::Cadena(const Cadena& frase, unsigned int pos):tamano_(frase.length() - pos)
+Cadena::Cadena(const Cadena& frase, unsigned int pos): tamano_(frase.length() - pos)
 {
     npos = frase.length() - pos;
     texto_= new char[tamano_ + 1];
@@ -154,7 +154,7 @@ Cadena& Cadena::operator =(const char* texto) noexcept
 {
 	tamano_ = strlen(texto)+1;
 	delete[] texto_;
-	texto_ = new char[tamano_]; //(char*) realloc(texto_, tamano_);
+	texto_ = new char[tamano_];
 	strncpy(texto_, texto, tamano_);
 	return *this;
 }
@@ -179,17 +179,17 @@ Cadena& Cadena::operator =(Cadena&& frase) noexcept
     return *this;
 }
 
-char& Cadena::operator[](unsigned int i) noexcept
+char& Cadena::operator [](unsigned int i) noexcept
 {
 	return *(texto_+i);
 }
 
-char Cadena::operator[](unsigned int i) const noexcept
+char Cadena::operator [](unsigned int i) const noexcept
 {
 	return *(texto_+i);
 }
 
-Cadena operator+(const Cadena& texto1,const Cadena& texto2)
+Cadena operator +(const Cadena& texto1,const Cadena& texto2)
 {
 	Cadena frase(texto1);
 	frase += texto2;
@@ -361,12 +361,4 @@ istream& operator >>(istream& in, Cadena& texto)
         return in;
     }
 }
-
 /*FIN OPERADORES DE FLUJO*/
-
-/*OBSERVADORAS*/
-void Cadena::imprimirP()const
-{
-	cout << texto_;
-}
-/*FIN OBSERVADORAS*/

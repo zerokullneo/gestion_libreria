@@ -24,9 +24,6 @@
 using namespace std;
 
 //CONSTRUCTORES
-
-//inline Fecha::Fecha(int dia, int mes, int year){ Fecha.d_ = dia; Fecha.m_ = mes; Fecha.a_ = year;}
-
 Fecha::Fecha(int dia, int mes, int year):d_(dia),m_(mes),a_(year)
 {
     if((!dia or dia == 0) and (!mes or mes == 0) and (!year or year == 0))
@@ -63,12 +60,7 @@ Fecha::Fecha(const char* string_fecha)
 	char fech[11];
 
 	if((string_fecha[1] != '/' and string_fecha[3] != '/')  and (string_fecha[2] != '/' and string_fecha[4] != '/') and (string_fecha[1] != '/' and string_fecha[4] != '/') and (string_fecha[2] != '/' and string_fecha[5] != '/')) //(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)<0)
-	{
-        //this->default_d_();
-        //this->default_m_();
-        //this->default_a_();
         throw(Fecha::Invalida("Entrada Incorrecta en Constructor de cadena ."));
-	}
 	else
 	{
 		strncpy(fech, string_fecha,strlen(string_fecha));
@@ -190,7 +182,7 @@ Fecha& Fecha::sumadias(int incmt_d)
 	}
 
 	if(a_ >	AnnoMaximo)
-		throw Invalida("Año Incorrecto.");//year
+		throw Invalida("Año Incorrecto.");
 
 	return *this;
 }
@@ -239,7 +231,7 @@ Fecha& Fecha::restadias(int decmt_d)
 	}
 
 	if(a_ <	AnnoMinimo)
-		throw Invalida("Año Incorrecto.");//year
+		throw Invalida("Año Incorrecto.");
 	return *this;
 }
 
@@ -286,12 +278,12 @@ ostream& Fecha::observadorPublico() const noexcept
 {
 	tm timeinfo = { 0, 0, 0, d_, m_ - 1, a_ - 1900, 0, 0, -1 };
 	mktime(&timeinfo);
-	const char* const weekday[7] = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sábado","Domingo"};
+	const char* const weekday[7] = {"Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"};
 	const char* const month[12] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	return cout << "Día " << weekday[timeinfo.tm_wday] << " " << d_ << " de " << month[timeinfo.tm_mon] << " del " << a_ << "." << endl;
 }
 
-const char* Fecha::cadena()const
+const char* Fecha::cadena()const noexcept
 {
 	static char f_explicita[40];
 	tm timeinfo = { 0, 0, 0, d_, m_ - 1, a_ - 1900, 0, 0, -1 };
@@ -302,16 +294,16 @@ const char* Fecha::cadena()const
 	return f_explicita;
 }
 
-void Fecha::visualizar() const
+void Fecha::visualizar() const noexcept
 {
    if(d_ > 0 && d_ < 10) cout << "0"; cout << d_ << "/";if(m_ > 0 && m_ < 10) cout << "0"; cout << m_ << "/" << a_ << ".";
 }
 /*------------------FIN OBSERVADORAS---------------------*/
 
-bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida)
+bool Fecha::comprueba_fecha(int& dia, int& mes, int& year)
 {
 	if ((year < AnnoMinimo) || (year > AnnoMaximo))
-        throw(Fecha::Invalida("Año Incorrecto."));//year
+        throw(Invalida("Año Incorrecto."));//year
 
 	else
 	{
@@ -326,7 +318,7 @@ bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida
 									case 12:
 									{
 										if(dia < 1 || dia > 31)
-											throw(Fecha::Invalida("Dia31: Dia incorrecto del mes."));//dia
+											throw(Invalida("Dia31: Dia incorrecto del mes."));//dia
 										break;
 									}
 			case 4:
@@ -335,7 +327,7 @@ bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida
 						case 11:
 						{
 							if(dia < 1 || dia > 30)
-								throw(Fecha::Invalida("Dia30: Dia incorrecto del mes."));//dia
+								throw(Invalida("Dia30: Dia incorrecto del mes."));//dia
 							break;
 						}
 			case 2:
@@ -343,17 +335,17 @@ bool Fecha::comprueba_fecha(int& dia, int& mes, int& year) throw(Fecha::Invalida
 				if((year % 4) == 0)
 				{
 					if (dia < 1 || dia > 29)
-                        throw(Fecha::Invalida("Dia29: Febrero."));//dia
+                        throw(Invalida("Dia29: Febrero."));//dia
 				}
 				else
 				{
 					if(dia < 0 || dia > 28)
-						throw(Fecha::Invalida("Dia28: Febrero."));//dia
+						throw(Invalida("Dia28: Febrero."));//dia
 				}
 				break;
 			}
 			default:
-				throw(Fecha::Invalida("Mes incorrecto."));//mes
+				throw(Invalida("Mes incorrecto."));//mes
 		}
 	}
 

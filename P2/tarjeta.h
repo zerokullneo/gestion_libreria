@@ -44,16 +44,16 @@ class Numero
         class Incorrecto
         {
             public:
-            //constructor de la clase Incorrecto.
+            //Constructor
             Incorrecto(Razon r):razon_(r){};
-            //Método observador del atributo de razon_.
+            //Método observador
             Razon razon()const {return razon_;}
             private:
                 Razon razon_;
         };
 
         //constructor del numero de tarjeta
-        Numero(const Cadena& n)throw(Incorrecto);
+        Numero(const Cadena& n);
         //operador de conversión a cadena de bajo nivel
         operator const char*()const{return numero_.c_str();}
         //Validación del número de tarjeta, según el algoritmo de Lhun.static
@@ -79,7 +79,7 @@ class Tarjeta
                 Fecha caducada_;
         };
 
-        Tarjeta(const Numero& tjt,const Usuario& usuario,const Fecha& cad) throw(Tarjeta::Caducada);
+        Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad);
 
         //Evitar la copia de una Tarjeta
         Tarjeta(const Tarjeta&)=delete;
@@ -92,14 +92,14 @@ class Tarjeta
         Fecha caducidad()const{return f_caducidad_;}
         Cadena titular_facial()const{return titular_facial_;}
         const Usuario* titular()const{return titular_;}
-        void anula_titular();
-        friend void caducar(Tarjeta& t, const Fecha& f);
+        void anula_titular() noexcept;
+        friend void caducar(Tarjeta& t, const Fecha& f) noexcept;
 
         ~Tarjeta();
 
     private:
         Numero tarjeta_;
-        const Usuario* titular_;
+        Usuario* titular_;
         Fecha f_caducidad_;
         Cadena titular_facial_;
 };

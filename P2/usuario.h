@@ -46,16 +46,18 @@ class Clave
         class Incorrecta
         {
             public:
+                //Constructor
                 Incorrecta(Razon r):r_(r){};
+                //Observadora
                 Razon razon()const{return r_;}
 
             private:
                 Razon r_;
         };
 
-        Clave(const char* clav)throw (Incorrecta);
+        Clave(const char* clav);
         Cadena clave()const{return clave_;}
-        bool verifica(const char* pass) const;
+        bool verifica(const char* pass) const noexcept;
 
     private:
         Cadena clave_;
@@ -81,7 +83,7 @@ class Usuario
         };
 
         //Constructor
-        Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass) throw(Id_duplicado);
+        Usuario(const Cadena& id, const Cadena& nom, const Cadena& apll, const Cadena& dir, const Clave& pass);
 
         //Evitar la copia de un objeto Usuario
         Usuario(const Usuario&)=delete;
@@ -99,9 +101,9 @@ class Usuario
         const Articulos& compra()const{return articulos_;}
 
         //Métodos modificadores
-        void es_titular_de(Tarjeta& T);
-        void no_es_titular_de(Tarjeta& T);
-        void compra(Articulo& A, unsigned i=1);
+        void es_titular_de(Tarjeta& T) noexcept;
+        void no_es_titular_de(Tarjeta& T) noexcept;
+        void compra(Articulo& A, unsigned i=1) noexcept;
 
         ~Usuario();
 
