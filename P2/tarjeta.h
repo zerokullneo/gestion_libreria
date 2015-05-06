@@ -29,6 +29,7 @@
 
 #include <iomanip>
 #include <cstddef>
+#include <algorithm>
 #include "usuario.h"
 #include "../P1/Cadena/cadena.h"
 #include "../P1/Fecha/fecha.h"
@@ -52,12 +53,28 @@ class Numero
                 Razon razon_;
         };
 
+        struct EsBlanco
+        {
+            EsBlanco(char c): c_(c) {}
+            bool operator() (char c) const { return isspace(c_); }
+            private:
+                char c_;
+        };
+
+        struct EsDigito
+        {
+            EsDigito(char c): c_(c) {}
+            bool operator() (char c) const { return not isdigit(c_); }
+            private:
+                char c_;
+        };
+
         //constructor del numero de tarjeta
         Numero(const Cadena& n);
         //operador de conversión a cadena de bajo nivel
         operator const char*()const{return numero_.c_str();}
         //Validación del número de tarjeta, según el algoritmo de Lhun.static
-        bool luhn(const Cadena& numero, size_t n) noexcept;
+        //bool luhn(const Cadena& numero, size_t n) noexcept;
         friend bool operator <(const Numero&, const Numero&);
 
     private:

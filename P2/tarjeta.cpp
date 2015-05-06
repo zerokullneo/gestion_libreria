@@ -22,7 +22,9 @@
 #include "tarjeta.h"
 #include "usuario.h"
 
-/*VALIDACIÓN DEL NÚMERO DE TARJETA*/
+bool luhn(const Cadena& numero, size_t n);
+
+/*VALIDACIÓN DEL NÚMERO DE TARJETA
 bool Numero::luhn(const Cadena& numero, size_t n) noexcept
 {
     size_t suma = 0;
@@ -42,7 +44,7 @@ bool Numero::luhn(const Cadena& numero, size_t n) noexcept
     }
     return suma % 10;
 }
-/*FIN VALIDACIÓN*/
+FIN VALIDACIÓN*/
 
 /*CLASE TARJETA*/
 Tarjeta::Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad):
@@ -74,13 +76,16 @@ Tarjeta::~Tarjeta()
 /*CLASE NUMERO*/
 Numero::Numero(const Cadena& n)
 {
-    Cadena digitos((strlen(n.c_str())));
-    unsigned int i = 0, j = 0;
+    //Cadena digitos((strlen(n.c_str())));
+    unsigned int i = 0;// j = 0;
 
-    if(n.length() <=1)
+    if(n.length() <=12)
         throw Incorrecto(LONGITUD);
 
-    while(i <= n.length())
+        if(find_if(n.begin(), n.end(), EsDigito(n.at(i))))
+            throw Incorrecto(DIGITOS);
+         remove_if(n.begin(), n.end(), EsBlanco(n.at(i)));
+    /*while(i <= n.length())
     {
         if(n.at(i) == ' ')
             ++i;
@@ -93,13 +98,14 @@ Numero::Numero(const Cadena& n)
             ++j;
             ++i;
         }
-    }
+    }*/
+    //digitos = n;
 
-    if(strlen(digitos.c_str()) < 13 or strlen(digitos.c_str()) > 19)
+    if(strlen(n.c_str()) < 13 or strlen(n.c_str()) > 19)
         throw Incorrecto(LONGITUD);
 
-    if(luhn(digitos, strlen(digitos.c_str()))  == false)
-        numero_ = digitos;
+    if(luhn(n, strlen(n.c_str()))  == false)
+        numero_ = n;
     else
         throw Incorrecto(NO_VALIDO);
 }

@@ -94,7 +94,7 @@
 	<sstream>
 	<stdexcept>
 
-1430323331 /home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.h
+1430929356 /home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.h
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -114,14 +114,14 @@
 	<math.h>
 	<ctype.h>
 
-1430323331 source:/home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.cpp
 	"fecha.h"
 
-1430323331 /home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.h
+1430929356 /home/usuario/Descargas/gestion_libreria/P1/Fecha/fecha.h
 	"../Cadena/cadena.h"
 	<ctime>
 
-1430326396 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P1/Cadena/cadena.cpp
 	"cadena.h"
 	<locale>
 
@@ -186,19 +186,20 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1430323331 source:/home/usuario/Descargas/gestion_libreria/P2/articulo.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P2/articulo.cpp
 	"articulo.h"
 
-1430329400 /home/usuario/Descargas/gestion_libreria/P2/articulo.h
+1430929356 /home/usuario/Descargas/gestion_libreria/P2/articulo.h
 	<iomanip>
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1430323331 source:/home/usuario/Descargas/gestion_libreria/P2/luhn.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P2/luhn.cpp
 	"../P1/Cadena/cadena.h"
+	"tarjeta.h"
 	<cstddef>
 
-1430329097 source:/home/usuario/Descargas/gestion_libreria/P2/test-caso1-auto.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P2/test-caso1-auto.cpp
 	<ctime>
 	<sstream>
 	<string>
@@ -221,14 +222,15 @@
 	<math.h>
 	<ctype.h>
 
-1430327349 /home/usuario/Descargas/gestion_libreria/P2/tarjeta.h
+1430933489 /home/usuario/Descargas/gestion_libreria/P2/tarjeta.h
 	<iomanip>
 	<cstddef>
+	<algorithm>
 	"usuario.h"
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1430323331 /home/usuario/Descargas/gestion_libreria/P2/usuario.h
+1430929356 /home/usuario/Descargas/gestion_libreria/P2/usuario.h
 	<set>
 	<map>
 	"../P1/Cadena/cadena.h"
@@ -236,7 +238,7 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1430323933 source:/home/usuario/Descargas/gestion_libreria/P2/usuario.cpp
+1430929356 source:/home/usuario/Descargas/gestion_libreria/P2/usuario.cpp
 	<unistd.h>
 	"usuario.h"
 	"articulo.h"
