@@ -84,7 +84,8 @@ Numero::Numero(const Cadena& n)
 
         if(find_if(n.begin(), n.end(), EsDigito(n.at(i))))
             throw Incorrecto(DIGITOS);
-         remove_if(n.begin(), n.end(), EsBlanco(n.at(i)));
+        remove_if(n.begin(), n.end(), EsBlanco(n.at(i)));//deja los espacios en blanco al final "  "
+        //n.end() = '\0'//se tiene que poner el final de cadena en el iterador.
     /*while(i <= n.length())
     {
         if(n.at(i) == ' ')
@@ -99,13 +100,12 @@ Numero::Numero(const Cadena& n)
             ++i;
         }
     }*/
-    //digitos = n;
 
     if(strlen(n.c_str()) < 13 or strlen(n.c_str()) > 19)
         throw Incorrecto(LONGITUD);
 
     if(luhn(n, strlen(n.c_str()))  == false)
-        numero_ = n;
+        numero_ = n.c_str();
     else
         throw Incorrecto(NO_VALIDO);
 }
