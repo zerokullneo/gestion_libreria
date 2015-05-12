@@ -75,36 +75,24 @@ Tarjeta::~Tarjeta()
 
 /*CLASE NUMERO*/
 Numero::Numero(const Cadena& n)
-{
-    //Cadena digitos((strlen(n.c_str())));
-    unsigned int i = 0;// j = 0;
+{//enum Razon{LONGITUD, DIGITOS, NO_VALIDO};
+    char* n_end = n.end();
 
     if(n.length() <=12)
         throw Incorrecto(LONGITUD);
-
-        if(find_if(n.begin(), n.end(), EsDigito(n.at(i))))
-            throw Incorrecto(DIGITOS);
-        remove_if(n.begin(), n.end(), EsBlanco(n.at(i)));//deja los espacios en blanco al final "  "
-        //n.end() = '\0'//se tiene que poner el final de cadena en el iterador.
-    /*while(i <= n.length())
+    else
     {
-        if(n.at(i) == ' ')
-            ++i;
-        else
-        {
-            if(!isdigit(n.at(i)) and (n.at(i) != '\0'))
-                throw Incorrecto(DIGITOS);
+        n_end = remove_if(n.begin(), n.end(), EsBlanco());//deja los espacios en blanco al final "  "
+        *n.end() = *n_end = '\0';//se tiene que poner el final de cadena en el iterador.
 
-            digitos[j] = n[i];
-            ++j;
-            ++i;
-        }
-    }*/
+        if(n_end != find_if(n.begin(), n.end(), EsDigito()))
+            throw Incorrecto(DIGITOS);
+    }
 
     if(strlen(n.c_str()) < 13 or strlen(n.c_str()) > 19)
         throw Incorrecto(LONGITUD);
 
-    if(luhn(n, strlen(n.c_str()))  == false)
+    if(luhn(n, strlen(n.c_str())) == false)
         numero_ = n.c_str();
     else
         throw Incorrecto(NO_VALIDO);

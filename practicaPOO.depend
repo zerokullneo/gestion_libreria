@@ -136,18 +136,20 @@
 	<math.h>
 	<ctype.h>
 
-1430687474 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/luhn.cpp
+1430687742 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/luhn.cpp
 	"../P1/Cadena/cadena.h"
 	"tarjeta.h"
 	<cstddef>
 
-1430687316 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
+1431459522 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.cpp
 	"tarjeta.h"
 	"usuario.h"
 
-1430687742 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
+1431451592 /home/zerokullneo/github/codeblocks/gestion_libreria/P2/tarjeta.h
 	<iomanip>
 	<cstddef>
+	<algorithm>
+	<locale>
 	"usuario.h"
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"

@@ -30,6 +30,7 @@
 #include <iomanip>
 #include <cstddef>
 #include <algorithm>
+#include <locale>
 #include "usuario.h"
 #include "../P1/Cadena/cadena.h"
 #include "../P1/Fecha/fecha.h"
@@ -55,18 +56,15 @@ class Numero
 
         struct EsBlanco
         {
-            EsBlanco(char c): c_(c) {}
-            bool operator() (char c) const { return isspace(c_); }
-            private:
-                char c_;
+            EsBlanco(){}
+            locale loc;
+            bool operator() (char c) const { return isspace(c,loc); }
         };
 
         struct EsDigito
         {
-            EsDigito(char c): c_(c) {}
-            bool operator() (char c) const { return not isdigit(c_); }
-            private:
-                char c_;
+            EsDigito(){}
+            bool operator() (char c) const { return not isdigit(c); }
         };
 
         //constructor del numero de tarjeta

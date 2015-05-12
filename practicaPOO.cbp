@@ -17,6 +17,9 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="crypt" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/practicaPOO" prefix_auto="1" extension_auto="1" />
@@ -28,6 +31,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="crypt" />
 				</Linker>
 			</Target>
 		</Build>
