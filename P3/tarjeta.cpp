@@ -22,29 +22,11 @@
 #include "tarjeta.h"
 #include "usuario.h"
 
+/*VALIDACIÓN DEL NÚMERO DE TARJETA*/
+
 bool luhn(const Cadena& numero, size_t n);
 
-/*VALIDACIÓN DEL NÚMERO DE TARJETA
-bool Numero::luhn(const Cadena& numero, size_t n) noexcept
-{
-    size_t suma = 0;
-    bool alt = false;
-
-    for(int i = n - 1; i > -1; --i)
-    {
-        n = numero[size_t(i)] - '0';
-        if (alt)
-        {
-            n *= 2;
-            if (n > 9)
-                n = (n % 10) + 1;
-        }
-        alt = !alt;
-        suma += n;
-    }
-    return suma % 10;
-}
-FIN VALIDACIÓN*/
+/*FIN VALIDACIÓN*/
 
 /*CLASE TARJETA*/
 Tarjeta::Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad):
@@ -76,14 +58,14 @@ Tarjeta::~Tarjeta()
 /*CLASE NUMERO*/
 Numero::Numero(const Cadena& n)
 {//enum Razon{LONGITUD, DIGITOS, NO_VALIDO};
-    char* n_end = n.end();
+    Cadena::iterator n_end = n.end();
 
     if(n.length() <=12)
         throw Incorrecto(LONGITUD);
     else
     {
         n_end = remove_if(n.begin(), n.end(), EsBlanco());//deja los espacios en blanco al final "  "
-        *n.end() = *n_end = '\0';//se tiene que poner el final de cadena en el iterador.
+        *n_end = '\0';//se tiene que poner el final de cadena en el iterador.
 
         if(n_end != find_if(n.begin(), n.end(), EsDigito()))
             throw Incorrecto(DIGITOS);
