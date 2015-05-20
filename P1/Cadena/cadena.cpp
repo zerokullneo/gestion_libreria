@@ -1,7 +1,9 @@
 // cadena.cpp
+//
 // lun marzo 16 17:53:35 2015
 // Copyright 2015 Jose M Barba Gonzalez
 // <user@host>
+//
 // cadena.cpp
 //
 // Copyright (C) 2015 - Jose M Barba Gonzalez

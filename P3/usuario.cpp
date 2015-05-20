@@ -1,7 +1,9 @@
 // usuario.cpp
+//
 // lun abril 20 17:47:48 2015
 // Copyright 2015 Jose M Barba Gonzalez
 // <user@host>
+//
 // usuario.cpp
 //
 // Copyright (C) 2015 - Jose M Barba Gonzalez

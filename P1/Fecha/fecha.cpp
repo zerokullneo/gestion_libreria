@@ -1,7 +1,9 @@
 // fecha.cpp
+//
 // lun marzo 16 17:53:48 2015
 // Copyright 2015 Jose M Barba Gonzalez
 // <user@host>
+//
 // fecha.cpp
 //
 // Copyright (C) 2015 - Jose M Barba Gonzalez

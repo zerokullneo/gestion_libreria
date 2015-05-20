@@ -1,7 +1,9 @@
 // articulo.cpp
+//
 // lun abril 20 17:52:48 2015
 // Copyright 2015 Jose M Barba Gonzalez
 // <user@host>
+//
 // articulo.cpp
 //
 // Copyright (C) 2015 - Jose M Barba Gonzalez

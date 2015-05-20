@@ -1,7 +1,9 @@
 // tarjeta.cpp
+//
 // lun abril 20 17:37:48 2015
 // Copyright 2015 Jose M Barba Gonzalez
 // <user@host>
+//
 // tarjeta.cpp
 //
 // Copyright (C) 2015 - Jose M Barba Gonzalez
