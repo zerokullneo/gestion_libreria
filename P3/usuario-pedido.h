@@ -24,7 +24,12 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "../cabeceras.h"
+#ifndef USUARIO_PEDIDO_H
+#define USUARIO_PEDIDO_H
+
+//#include "../cabeceras.h"
+#include "pedido.h"
+#include "usuario.h"
 
 class Pedido;
 class Usuario;
@@ -63,3 +68,4 @@ inline Usuario* Usuario_Pedido::cliente(Pedido& p)
 {
 	return Pedido_Usuario_[&p];
 }
+#endif /*USUARIO_PEDIDO_H*/

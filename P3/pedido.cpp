@@ -52,46 +52,51 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     for(i = A.begin(); i != A.end() && !NoHayStock; i++)
     {
         //Comprobar si se trata de un puntero a un objeto a InformeDigital
-        if(dynamic_cast<InformeDigital*>(i->first) != 0)
-        {
-            if(static_cast<InformeDigital*>(i->first)->f_expir()>fecha_)
-            {
+        //if(dynamic_cast<InformeDigital*>(i->first) != 0)
+        //{
+            //if(static_cast<InformeDigital*>(i->first)->f_expir()>fecha_)
+            //{
                 //añadir el precio del articulo al total_
                 total_ += (*(i->first)).precio() * (*i).second;
                 //Asociar Pedido con Articulo
                 P_A.pedir(*(i->first),*this,(i->first)->precio(),(*i).second);
-            }
-            else
-            U.compra(*(i->first),0);
-        }
-        else
-        {
-            if((*i).second > static_cast<ArticuloAlmacenable*>(i->first)->stock())
-                NoHayStock=true;
-            else
-            {
+            //}
+            //else
+            //U.compra(*(i->first),0);
+        //}
+        //else
+        //{
+            //if((*i).second > static_cast<ArticuloAlmacenable*>(i->first)->stock())
+                //NoHayStock=true;
+            //else
+            //{
                 //Actualizacion de el stock
-                static_cast<ArticuloAlmacenable*>(i->first)->stock() -= (*i).second;
-//añadir el precio del articulo al total_
-total_ += (*(i->first)).precio() * (*i).second;
-//Asociar Pedido con Articulo
-P_A.pedir(*(i->first),*this,(i->first)->precio(),(*i).second);
-}
-}
-}
-if(!U.n_articulos())
-throw(Vacio(U));
-//Vaciar el Carrito
-for(Usuario::Articulos::iterator j = A.begin(); j != A.end(); j++)
-U.compra(*(j->first),0);
-//Puntero Art_ptr apunta a A.end() o bien al primer articulo sin stock
-Articulo* Art_ptr = (--i)->first;
-//Lanzar La excepcion SinStock
-if(NoHayStock)
-throw(SinStock(*Art_ptr));
-num_ = ++N_pedidos;
-//Asociar usuario con Pedido
-U_P.asocia(U,*this);
+                //static_cast<ArticuloAlmacenable*>(i->first)->stock() -= (*i).second;
+                //añadir el precio del articulo al total_
+                //total_ += (*(i->first)).precio() * (*i).second;
+                //Asociar Pedido con Articulo
+                //P_A.pedir(*(i->first),*this,(i->first)->precio(),(*i).second);
+            //}
+        //}
+    }
+    if(!U.n_articulos())
+        throw(Vacio(U));
+
+    //Vaciar el Carrito
+    for(Usuario::Articulos::iterator j = A.begin(); j != A.end(); j++)
+        U.compra(*(j->first),0);
+
+    //Puntero Art_ptr apunta a A.end() o bien al primer articulo sin stock
+    Articulo* Art_ptr = (--i)->first;
+
+    //Lanzar La excepcion SinStock
+    if(NoHayStock)
+        throw(SinStock(*Art_ptr));
+
+    num_ = ++N_pedidos;
+
+    //Asociar usuario con Pedido
+    U_P.asocia(U,*this);
 }
 ostream& operator <<(ostream& out,const Pedido& P)
 {

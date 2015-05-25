@@ -61,7 +61,7 @@
 		<Unit filename="P3/pedido.h" />
 		<Unit filename="P3/tarjeta.cpp" />
 		<Unit filename="P3/tarjeta.h" />
-		<Unit filename="P3/test-caso1-auto.cpp" />
+		<Unit filename="P3/test-caso3-auto.cpp" />
 		<Unit filename="P3/usuario-pedido.h" />
 		<Unit filename="P3/usuario.cpp" />
 		<Unit filename="P3/usuario.h" />
