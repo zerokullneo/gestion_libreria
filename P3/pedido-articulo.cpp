@@ -30,7 +30,7 @@ LineaPedido::LineaPedido(double p, unsigned c):precio_venta_(p),cantidad_(c)
 
 ostream& operator <<(ostream& out,const LineaPedido& L)
 {
-	out << setprecision(2) << fixed << L.precio_venta() << "€\t" << L.cantidad();
+	out << setprecision(2) << fixed << L.precio_venta() << " €\t" << L.cantidad();
 	return out;
 }
 
@@ -54,6 +54,7 @@ void Pedido_Articulo::pedir(Pedido& pedido, Articulo& articulo, double precio, u
 {
 	Pedido_Articulo_[&pedido].insert(std::make_pair(&articulo,LineaPedido(precio,cantidad)));
 	Articulo_Pedido_[&articulo].insert(std::make_pair(&pedido,LineaPedido(precio,cantidad)));
+	articulo.stock() -= 1;
 }
 
 void Pedido_Articulo::pedir(Articulo& articulo, Pedido& pedido, double precio, unsigned cantidad)
@@ -107,12 +108,12 @@ ostream& operator <<(ostream& out, const Pedido_Articulo::Pedidos& P)
 
 		for(Pedido_Articulo::Pedidos::const_iterator i = P.begin(); i!=P.end(); ++i)
 		{
-			out << i->second.precio_venta() << "€ " << "\t" << i->second.cantidad() << "\t" << i->first->fecha() << endl;
+			out << i->second.precio_venta() << " € " << "\t" << i->second.cantidad() << "\t" << i->first->fecha() << endl;
 			precio_total += (i->second).precio_venta() * i->second.cantidad();
 			cantidad_total += i->second.cantidad();
 		}
 		out << "=============================================================================\n";
-		out << "Precio Total: " << setprecision(2) << fixed << precio_total << "€\tCantidad Total: " << cantidad_total;
+		out << "Precio Total: " << setprecision(2) << fixed << precio_total << " €\tCantidad Total: " << cantidad_total;
 	}
 	return out;
 }
@@ -128,14 +129,14 @@ void Pedido_Articulo::mostrarDetallePedidos(ostream& out)const
 		total_ventas += (i->first)->total();
 	}
 	if(!Pedido_Articulo_.empty())
-		out << "TOTAL VENTA:\t" << total_ventas << "€";
+		out << "TOTAL VENTA:\t" << total_ventas << " €";
 }
 
 void Pedido_Articulo::mostrarVentasArticulos(ostream& out)const
 {
 	for(map<Articulo*,Pedidos>::const_iterator i = Articulo_Pedido_.begin(); i != Articulo_Pedido_.end(); ++i)
 	{
-		out << "Ventas de " << "[" << i->first->referencia() << "] \"" << i->first->titulo() << "\"\t" << i->first->precio() << "€ ";
+		out << "Ventas de " << "[" << i->first->referencia() << "] \"" << i->first->titulo() << "\"\t" << i->first->precio() << " € ";
 		out	<< i->second << endl << endl;
 	}
 }

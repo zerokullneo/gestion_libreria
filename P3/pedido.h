@@ -42,13 +42,6 @@ class Usuario_Pedido;
 
 class Pedido
 {
-	private:
-		static int N_pedidos;
-		int num_;
-		double total_;
-		Tarjeta* tarjeta_;
-		Fecha fecha_;
-
 	public:
 		// Excepcion no hay articulos en el carro
 		class Vacio
@@ -81,7 +74,7 @@ class Pedido
 		};
 
 		//Constructor
-		Pedido(Usuario_Pedido& U_P,Pedido_Articulo& P_A,Usuario& U,const Tarjeta& T,const Fecha& F=Fecha())throw(Vacio,Impostor,SinStock,Tarjeta::Caducada);
+		Pedido(Usuario_Pedido& U_P,Pedido_Articulo& P_A,Usuario& U,const Tarjeta& T,const Fecha& F=Fecha());
 
 		//Metodos Observadores
 		static int n_total_pedidos()throw(){return N_pedidos;}
@@ -92,7 +85,14 @@ class Pedido
 		//El precio total del pedido
 		double total()const{return total_;}
 		//Fecha del pedido
-		Fecha fecha()const{return fecha_;}
+		Fecha fecha()const{return fecha_pedido_;}
+
+	private:
+		static int N_pedidos;
+		int num_;
+		double total_;
+		Tarjeta* tarjeta_;
+		Fecha fecha_pedido_;
 };
 
 ostream& operator <<(ostream& out, const Pedido& P);

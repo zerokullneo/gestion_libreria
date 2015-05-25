@@ -607,7 +607,7 @@ FCT_BGN() {
     FCT_TEST_END();
 
     FCT_TEST_BGN(PEDIDO - tarjeta caducada) {
-      pU->compra(articulo1, 4649);
+      pU->compra(articulo1, 3);//4649
       caducar(*pTarjetaU, fAyer);
       try {
         Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo,

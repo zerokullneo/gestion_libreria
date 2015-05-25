@@ -78,7 +78,7 @@ void Usuario::compra(Articulo& A, unsigned i) noexcept
     else
     {
         if(!articulos_.insert(pair<Articulo*,unsigned>(&A,i)).second)
-        articulos_[&A] = i;
+            articulos_[&A] = i;
     }
 }
 

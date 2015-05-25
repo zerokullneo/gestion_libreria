@@ -28,23 +28,25 @@
 
 int Pedido::N_pedidos = 0;
 
-Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F)throw(Vacio,Impostor,SinStock,Tarjeta::Caducada):tarjeta_(const_cast<Tarjeta *>(&T)),fecha_(F)
+Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F):tarjeta_(const_cast<Tarjeta *>(&T)),fecha_pedido_(F)
 {
-    if(tarjeta_->caducidad() < fecha_)
-        throw(Tarjeta::Caducada(fecha_));
-
     if(!U.n_articulos())
         throw(Vacio(U));
-
-    Usuario::Tarjetas t(U.tarjetas());
 
     if(tarjeta_->titular() != &U)
         throw Impostor(U);
 
-    total_ = 0.0;
+    if((U.compra().begin()->second) > (U.compra().begin()->first->stock()))
+        throw SinStock(*(U.compra().begin()->first));
+
+    //if((tarjeta_->caducidad() < F) == true)
+        //throw Tarjeta::Caducada(tarjeta_->caducidad());
+
+    Usuario::Tarjetas t(U.tarjetas());
 
     Usuario::Articulos A(U.compra());
 
+    total_ = 0.0;
     bool NoHayStock = false;
 
     Usuario::Articulos::iterator i;
@@ -98,11 +100,12 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     //Asociar usuario con Pedido
     U_P.asocia(U,*this);
 }
+
 ostream& operator <<(ostream& out,const Pedido& P)
 {
-out << "Núm. pedido:\t" << P.numero() << endl;
-out << "Fecha:\t"<< P.fecha().observadorPublico() << endl;
-out << "Pagado con:\t" << P.tarjeta()->tarjeta() << endl;
-out << "Importe:\t" << P.total() << "€";
-return out;
+    out << "Núm. pedido:\t" << P.numero() << endl;
+    out << "Fecha:\t"<< P.fecha().observadorPublico() << endl;
+    out << "Pagado con:\t" << P.tarjeta()->tarjeta() << endl;
+    out << "Importe:\t" << P.total() << "€";
+    return out;
 }

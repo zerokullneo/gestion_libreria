@@ -10,7 +10,7 @@
 # NOMBREALUMNO debería ser de la forma: Ap1_Ap2_NP 
 # (Véanse las instrucciones de entrega).
 NOMBREALUMNO   = JOSE_MANUEL_BARBA_GONZALEZ
-NOMBREPRACTICA = P2
+NOMBREPRACTICA = P3
 
 # CADENADIR y FECHADIR son los directorios donde están respectivamente
 # los Makefile, módulos objeto y cabeceras de Cadena y Fecha: 
@@ -48,12 +48,12 @@ VPATH     = .:${CADENADIR}:${FECHADIR}
 COMM_HDRS = usuario.h tarjeta.h articulo.h
 COMM_SRCS = usuario.cpp tarjeta.cpp articulo.cpp luhn.cpp Makefile
 COMM_OBJS = usuario.o tarjeta.o articulo.o luhn.o
-MAIN_SRCS = $(COMM_SRCS) test-caso1-consola.cpp
-MAIN_OBJS = $(COMM_OBJS) test-caso1-consola.o
-MAIN_EXE  = test-caso1-consola
-MAIN_SRCS = $(COMM_SRCS) test-caso1-auto.cpp
-TEST_OBJS = $(COMM_OBJS) test-caso1-auto.o
-TEST_EXE  = test-caso1-auto
+MAIN_SRCS = $(COMM_SRCS) test-caso1-consola.cpp test-caso3-consola.cpp
+MAIN_OBJS = $(COMM_OBJS) test-caso1-consola.o test-caso3-consola.o
+MAIN_EXE  = test-caso1-consola test-caso3-consola
+MAIN_SRCS = $(COMM_SRCS) test-caso1-auto.cpp test-caso3-auto.cpp
+TEST_OBJS = $(COMM_OBJS) test-caso1-auto.o test-caso3-auto.o
+TEST_EXE  = test-caso1-auto test-caso3-auto
 SRCS      = $(MAIN_SRCS)
 HDRS      = $(COMM_HDRS)
 
