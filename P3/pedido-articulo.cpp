@@ -54,7 +54,7 @@ void Pedido_Articulo::pedir(Pedido& pedido, Articulo& articulo, double precio, u
 {
 	Pedido_Articulo_[&pedido].insert(std::make_pair(&articulo,LineaPedido(precio,cantidad)));
 	Articulo_Pedido_[&articulo].insert(std::make_pair(&pedido,LineaPedido(precio,cantidad)));
-	articulo.stock() -= 1;
+	articulo.stock() -= cantidad;
 }
 
 void Pedido_Articulo::pedir(Articulo& articulo, Pedido& pedido, double precio, unsigned cantidad)
@@ -89,7 +89,7 @@ ostream& operator <<(ostream& out, const Pedido_Articulo::ItemsPedido& I)
 		}
 
 		out << "=============================================================================\n";
-		out << "Total:\t" << precio_total << "€\n";
+		out << "Total:\t" << precio_total << " €\n";
 	}
 
 	return out;
@@ -124,7 +124,7 @@ void Pedido_Articulo::mostrarDetallePedidos(ostream& out)const
 
 	for(map<Pedido*,ItemsPedido,OrdenaPedidos>::const_iterator i = Pedido_Articulo_.begin(); i != Pedido_Articulo_.end(); ++i)
 	{
-		out << "Pedido núm.\t" << (i->first)->numero() << " Cliente:\t" << (i->first)->tarjeta()->titular_facial() << "\tFecha:\t" << (i->first)->fecha().observadorPublico() << endl;
+		out << "Pedido núm.\t" << (i->first)->numero() << " Cliente:\t" << (i->first)->tarjeta()->titular_facial() << "\tFecha:\t" << (i->first)->fecha().cadena() << endl;
 		out << i->second;
 		total_ventas += (i->first)->total();
 	}

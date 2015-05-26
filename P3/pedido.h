@@ -74,7 +74,7 @@ class Pedido
 		};
 
 		//Constructor
-		Pedido(Usuario_Pedido& U_P,Pedido_Articulo& P_A,Usuario& U,const Tarjeta& T,const Fecha& F=Fecha());
+		Pedido(Usuario_Pedido& U_P,Pedido_Articulo& P_A,Usuario& U, const Tarjeta& T, const Fecha& F=Fecha());
 
 		//Metodos Observadores
 		static int n_total_pedidos()throw(){return N_pedidos;}
@@ -91,7 +91,7 @@ class Pedido
 		static int N_pedidos;
 		int num_;
 		double total_;
-		Tarjeta* tarjeta_;
+		const Tarjeta* tarjeta_;
 		Fecha fecha_pedido_;
 };
 

@@ -280,7 +280,7 @@ ostream& Fecha::observadorPublico() const noexcept
 {
 	tm timeinfo = { 0, 0, 0, d_, m_ - 1, a_ - 1900, 0, 0, -1 };
 	mktime(&timeinfo);
-	const char* const weekday[7] = {"Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"};
+	const char* const weekday[7] = {"Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"};
 	const char* const month[12] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	return cout << "Día " << weekday[timeinfo.tm_wday] << " " << d_ << " de " << month[timeinfo.tm_mon] << " del " << a_ << "." << endl;
 }

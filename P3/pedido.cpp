@@ -28,9 +28,9 @@
 
 int Pedido::N_pedidos = 0;
 
-Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F):tarjeta_(const_cast<Tarjeta *>(&T)),fecha_pedido_(F)
+Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F):tarjeta_(&T),fecha_pedido_(F)
 {
-    if(!U.n_articulos())
+    if(U.compra().empty())// !U.n_articulos())
         throw(Vacio(U));
 
     if(tarjeta_->titular() != &U)
@@ -68,11 +68,12 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
         //}
         //else
         //{
-            //if((*i).second > static_cast<ArticuloAlmacenable*>(i->first)->stock())
-                //NoHayStock=true;
+            if((*i).second > (*i->first).stock())//static_cast<ArticuloAlmacenable*>(i->first)->stock())
+                NoHayStock=true;
             //else
             //{
                 //Actualizacion de el stock
+                //(*i->first).stock() -= (*i).second;
                 //static_cast<ArticuloAlmacenable*>(i->first)->stock() -= (*i).second;
                 //añadir el precio del articulo al total_
                 //total_ += (*(i->first)).precio() * (*i).second;
@@ -95,7 +96,7 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     if(NoHayStock)
         throw(SinStock(*Art_ptr));
 
-    num_ = ++N_pedidos;
+    num_ = N_pedidos++;
 
     //Asociar usuario con Pedido
     U_P.asocia(U,*this);
@@ -104,8 +105,8 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
 ostream& operator <<(ostream& out,const Pedido& P)
 {
     out << "Núm. pedido:\t" << P.numero() << endl;
-    out << "Fecha:\t"<< P.fecha().observadorPublico() << endl;
+    out << "Fecha:\t"<< P.fecha().cadena() << endl;
     out << "Pagado con:\t" << P.tarjeta()->tarjeta() << endl;
-    out << "Importe:\t" << P.total() << "€";
+    out << "Importe:\t" << P.total() << " €";
     return out;
 }
