@@ -3,6 +3,8 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="practicaPOO" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="P3" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -52,6 +54,7 @@
 		<Unit filename="P1/Fecha/fecha.cpp" />
 		<Unit filename="P1/Fecha/fecha.h" />
 		<Unit filename="P1/fct.h" />
+		<Unit filename="P3/Makefile" />
 		<Unit filename="P3/articulo.cpp" />
 		<Unit filename="P3/articulo.h" />
 		<Unit filename="P3/luhn.cpp" />
@@ -61,7 +64,15 @@
 		<Unit filename="P3/pedido.h" />
 		<Unit filename="P3/tarjeta.cpp" />
 		<Unit filename="P3/tarjeta.h" />
-		<Unit filename="P3/test-caso3-consola.cpp" />
+		<Unit filename="P3/test-auto.cpp" />
+		<Unit filename="P3/test-auto.h" />
+		<Unit filename="P3/test-caso0-cadena-auto.cpp" />
+		<Unit filename="P3/test-caso0-fecha-auto.cpp" />
+		<Unit filename="P3/test-caso1-auto.cpp" />
+		<Unit filename="P3/test-caso1-consola.cpp" />
+		<Unit filename="P3/test-caso3-auto.cpp" />
+		<Unit filename="P3/test-caso4-auto.cpp" />
+		<Unit filename="P3/test-caso4-consola.cpp" />
 		<Unit filename="P3/usuario-pedido.h" />
 		<Unit filename="P3/usuario.cpp" />
 		<Unit filename="P3/usuario.h" />

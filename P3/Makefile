@@ -45,15 +45,15 @@ EXTLIBS   = -lcrypt
 LIBS      = ${LOCALLIBS} ${EXTLIBS}
 VPATH     = .:${CADENADIR}:${FECHADIR}
 
-COMM_HDRS = usuario.h tarjeta.h articulo.h pedido.h pedido-articulo.h usuario-pedido.h
+COMM_HDRS = usuario.h tarjeta.h articulo.h pedido.h pedido-articulo.h usuario-pedido.h test-auto.h
 COMM_SRCS = usuario.cpp tarjeta.cpp articulo.cpp pedido.cpp pedido-articulo.cpp luhn.cpp Makefile
 COMM_OBJS = usuario.o tarjeta.o articulo.o pedido.o pedido-articulo.o luhn.o
-MAIN_SRCS = $(COMM_SRCS) test-caso3-consola.cpp
-MAIN_OBJS = $(COMM_OBJS) test-caso3-consola.o
-MAIN_EXE  = test-caso3-consola
-MAIN_SRCS = $(COMM_SRCS) test-caso3-auto.cpp
-TEST_OBJS = $(COMM_OBJS) test-caso3-auto.o
-TEST_EXE  = test-caso3-auto
+MAIN_SRCS = $(COMM_SRCS) test-caso4-consola.cpp
+MAIN_OBJS = $(COMM_OBJS) test-caso4-consola.o
+MAIN_EXE  = test-caso4-consola
+MAIN_SRCS = $(COMM_SRCS) test-auto.cpp test-caso3-auto.cpp test-caso4-auto.cpp
+TEST_OBJS = $(COMM_OBJS) test-auto.o test-caso3-auto.o test-caso4-auto.o
+TEST_EXE  = test-caso3-auto test-caso4-auto
 SRCS      = $(MAIN_SRCS)
 HDRS      = $(COMM_HDRS)
 
@@ -62,7 +62,7 @@ NOMBREDIR = ${NOMBREALUMNO}/${NOMBREPRACTICA}
 
 all: ${MAIN_EXE} ${TEST_EXE}
 
-Debug: ${MAIN_EXE}
+Debug: ${TEST_EXE}
 	./$<
 
 test-consola: ${MAIN_EXE}
