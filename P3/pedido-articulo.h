@@ -69,8 +69,8 @@ class Pedido_Articulo
 	public:
 		typedef map<Articulo*,LineaPedido,OrdenaArticulos> ItemsPedido;
 		typedef map<Pedido*,LineaPedido,OrdenaPedidos> Pedidos;
-		void pedir(Pedido& pedido,Articulo& articulo,double precio, unsigned cantidad =1);
-		void pedir(Articulo& articulo,Pedido& pedido,double precio, unsigned cantidad =1);
+		void pedir(Pedido& pedido,Articulo& articulo,double precio, unsigned cantidad = 1);
+		void pedir(Articulo& articulo,Pedido& pedido,double precio, unsigned cantidad = 1);
 		ItemsPedido& detalle(Pedido& P);
 		Pedidos& ventas(Articulo& A);
 		void mostrarDetallePedidos(ostream& out)const;

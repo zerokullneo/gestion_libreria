@@ -36,8 +36,12 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     if(tarjeta_->titular() != &U)
         throw Impostor(U);
 
-    if((U.compra().begin()->second) > (U.compra().begin()->first->stock()))
-        throw SinStock(*(U.compra().begin()->first));
+    for(auto stk = U.compra().begin(); stk != U.compra().end(); stk++)
+        if(stk->second > stk->first->stock())
+        {
+            U.compra(*stk->first,0);
+            throw SinStock((*stk->first));
+        }
 
     //if((tarjeta_->caducidad() < F) == true)
         //throw Tarjeta::Caducada(tarjeta_->caducidad());
@@ -73,7 +77,7 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
             //else
             //{
                 //Actualizacion de el stock
-                //(*i->first).stock() -= (*i).second;
+                //(*i->first).stock() = (*i->first).stock() - (*i).second;
                 //static_cast<ArticuloAlmacenable*>(i->first)->stock() -= (*i).second;
                 //añadir el precio del articulo al total_
                 //total_ += (*(i->first)).precio() * (*i).second;

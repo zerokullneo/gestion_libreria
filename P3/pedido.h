@@ -47,37 +47,37 @@ class Pedido
 		class Vacio
 		{
 			public:
-				Vacio(const Usuario& u):u(const_cast<Usuario *>(&u)){}
+				Vacio(const Usuario& u):u(&u){}
 				const Usuario& usuario()const{return *u;}
 			private:
-				Usuario* u;
+				const Usuario* u;
 		};
 
 		//Excepcion tarjeta de pago y tarjeta de usuario no coinciden
 		class Impostor
 		{
 			public:
-				Impostor(const Usuario& u):u(const_cast<Usuario *>(&u)){}
+				Impostor(const Usuario& u):u(&u){}
 				const Usuario& usuario()const{return *u;}
 			private:
-				Usuario* u;
+				const Usuario* u;
 		};
 
 		//Excepcion Articulo sin stock
 		class SinStock
 		{
 			public:
-				SinStock(const Articulo& a):a(const_cast<Articulo *>(&a)){}
+				SinStock(const Articulo& a):a(&a){}
 				const Articulo& articulo()const{return *a;}
 			private:
-				Articulo* a;
+				const Articulo* a;
 		};
 
 		//Constructor
 		Pedido(Usuario_Pedido& U_P,Pedido_Articulo& P_A,Usuario& U, const Tarjeta& T, const Fecha& F=Fecha());
 
 		//Metodos Observadores
-		static int n_total_pedidos()throw(){return N_pedidos;}
+		static int n_total_pedidos(){return N_pedidos;}
 		//El numero del pedido
 		int numero()const{return num_;}
 		//Tarjeta de pago del pedido
@@ -86,6 +86,8 @@ class Pedido
 		double total()const{return total_;}
 		//Fecha del pedido
 		Fecha fecha()const{return fecha_pedido_;}
+
+		~Pedido(){};
 
 	private:
 		static int N_pedidos;

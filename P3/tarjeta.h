@@ -107,7 +107,6 @@ class Tarjeta
         Cadena titular_facial()const{return titular_facial_;}
         const Usuario* titular()const{return titular_;}
         void anula_titular() noexcept;
-        friend void caducar(Tarjeta& t, const Fecha& f);
 
         ~Tarjeta();
 

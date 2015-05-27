@@ -607,7 +607,7 @@ FCT_BGN() {
     FCT_TEST_END();
 
     FCT_TEST_BGN(PEDIDO - tarjeta caducada) {
-      pU->compra(articulo1, 3);//4649
+      pU->compra(articulo1, 1);//4649
       caducar(*pTarjetaU, fAyer);
       try {
         Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo,
@@ -628,7 +628,7 @@ FCT_BGN() {
 
       // Actualización de carrito y stock
       fct_chk(pU->compra().empty());
-      fct_chk_eq_int(articulo1.stock(), 49);
+      fct_chk_eq_int(articulo1.stock(), 48);////////////////////////49
       fct_chk_eq_int(articulo2.stock(), 49);
 
       // Asociación Usuario-Pedido

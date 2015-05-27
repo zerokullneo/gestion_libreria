@@ -308,10 +308,10 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1432244334 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/articulo.cpp
+1432666843 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/articulo.cpp
 	"articulo.h"
 
-1432244334 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/articulo.h
+1432666885 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/articulo.h
 	<iomanip>
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
@@ -321,7 +321,7 @@
 	"tarjeta.h"
 	<cstddef>
 
-1432576851 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/tarjeta.h
+1432669799 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/tarjeta.h
 	<iomanip>
 	<cstddef>
 	<algorithm>
@@ -330,7 +330,7 @@
 	"../P1/Cadena/cadena.h"
 	"../P1/Fecha/fecha.h"
 
-1432244334 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario.h
+1432668237 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario.h
 	<set>
 	<map>
 	"../P1/Cadena/cadena.h"
@@ -338,24 +338,24 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1432654259 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.cpp
+1432670779 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.cpp
 	"pedido.h"
 	"usuario-pedido.h"
 	"pedido-articulo.h"
 	"articulo.h"
 
-1432648869 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.h
+1432672773 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.h
 	"../P1/Fecha/fecha.h"
 	"../P1/Cadena/cadena.h"
 	"usuario.h"
 	"tarjeta.h"
 	"articulo.h"
 
-1432246570 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario-pedido.h
+1432667005 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario-pedido.h
 	"pedido.h"
 	"usuario.h"
 
-1432246570 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido-articulo.h
+1432667262 /home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido-articulo.h
 	"pedido.h"
 	"articulo.h"
 	"tarjeta.h"
@@ -364,7 +364,7 @@
 	"tarjeta.h"
 	"usuario.h"
 
-1432653724 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/test-caso3-auto.cpp
+1432670277 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/test-caso3-auto.cpp
 	<ctime>
 	<sstream>
 	<string>
@@ -383,12 +383,12 @@
 	"usuario-pedido.h"
 	"pedido-articulo.h"
 
-1432652355 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario.cpp
+1432667672 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/usuario.cpp
 	<unistd.h>
 	"usuario.h"
 	"articulo.h"
 	"tarjeta.h"
 
-1432653195 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido-articulo.cpp
+1432668294 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido-articulo.cpp
 	"pedido-articulo.h"
 

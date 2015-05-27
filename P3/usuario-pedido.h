@@ -56,7 +56,7 @@ inline void Usuario_Pedido::asocia(Usuario& u, Pedido& p)
 
 inline void Usuario_Pedido::asocia(Pedido& p, Usuario& u)
 {
-	this->asocia(u,p);
+	asocia(u,p);
 }
 
 inline Usuario_Pedido::Pedidos Usuario_Pedido::pedidos(Usuario& u)

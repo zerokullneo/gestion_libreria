@@ -46,7 +46,7 @@ class Articulo
         };*/
    //protected:
         //Constructores - const Autores& aut,
-       Articulo(const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk);
+       Articulo(const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk=1);
 
         //Métodos observadores
         Cadena referencia()const{return referencia_;}

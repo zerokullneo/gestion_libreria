@@ -19,7 +19,7 @@ NOMBREPRACTICA = P3
 DIRFECHACADENA=P1
 CADENADIR= ../${DIRFECHACADENA}/Cadena
 FECHADIR = ../${DIRFECHACADENA}/Fecha
-TESTHDR = ..
+TESTHDR = ../${DIRFECHACADENA}
 
 # ¿Compilador C++ de LLVM (clang++) o de GNU (g++)?
 #CXX      = clang++
@@ -45,15 +45,15 @@ EXTLIBS   = -lcrypt
 LIBS      = ${LOCALLIBS} ${EXTLIBS}
 VPATH     = .:${CADENADIR}:${FECHADIR}
 
-COMM_HDRS = usuario.h tarjeta.h articulo.h
-COMM_SRCS = usuario.cpp tarjeta.cpp articulo.cpp luhn.cpp Makefile
-COMM_OBJS = usuario.o tarjeta.o articulo.o luhn.o
-MAIN_SRCS = $(COMM_SRCS) test-caso1-consola.cpp test-caso3-consola.cpp
-MAIN_OBJS = $(COMM_OBJS) test-caso1-consola.o test-caso3-consola.o
-MAIN_EXE  = test-caso1-consola test-caso3-consola
-MAIN_SRCS = $(COMM_SRCS) test-caso1-auto.cpp test-caso3-auto.cpp
-TEST_OBJS = $(COMM_OBJS) test-caso1-auto.o test-caso3-auto.o
-TEST_EXE  = test-caso1-auto test-caso3-auto
+COMM_HDRS = usuario.h tarjeta.h articulo.h pedido.h pedido-articulo.h usuario-pedido.h
+COMM_SRCS = usuario.cpp tarjeta.cpp articulo.cpp pedido.cpp pedido-articulo.cpp luhn.cpp Makefile
+COMM_OBJS = usuario.o tarjeta.o articulo.o pedido.o pedido-articulo.o luhn.o
+MAIN_SRCS = $(COMM_SRCS) test-caso3-consola.cpp
+MAIN_OBJS = $(COMM_OBJS) test-caso3-consola.o
+MAIN_EXE  = test-caso3-consola
+MAIN_SRCS = $(COMM_SRCS) test-caso3-auto.cpp
+TEST_OBJS = $(COMM_OBJS) test-caso3-auto.o
+TEST_EXE  = test-caso3-auto
 SRCS      = $(MAIN_SRCS)
 HDRS      = $(COMM_HDRS)
 
