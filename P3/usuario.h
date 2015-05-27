@@ -29,8 +29,8 @@
 
 #include <set>
 #include <map>
-#include "../P1/Cadena/cadena.h"
-#include "../P1/Fecha/fecha.h"
+#include "cadena.h"
+#include "fecha.h"
 #include "articulo.h"
 #include "tarjeta.h"
 

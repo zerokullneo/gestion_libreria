@@ -27,7 +27,6 @@
 #ifndef USUARIO_PEDIDO_H
 #define USUARIO_PEDIDO_H
 
-//#include "../cabeceras.h"
 #include "pedido.h"
 #include "usuario.h"
 

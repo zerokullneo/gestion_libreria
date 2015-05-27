@@ -359,47 +359,32 @@ bool Fecha::comprueba_fecha(int& dia, int& mes, int& year)
 
 bool operator ==(const Fecha& fec1, const Fecha& fec2)
 {
-	if ((fec1.dia() == fec2.dia()) && (fec1.mes() == fec2.mes()) && (fec1.anno() == fec2.anno()))
-		return true;
-	else
-		return false;
+	return ((fec1.dia() == fec2.dia()) and (fec1.mes() == fec2.mes()) and (fec1.anno() == fec2.anno()));
 }
 
 bool operator <(const Fecha& fec1, const Fecha& fec2)
 {
-	if((fec1.dia() < fec2.dia()) || ((fec1.dia() >= fec2.dia() && (fec1.mes() < fec2.mes())) || ((fec1.mes() >= fec2.mes()) && fec1.anno() < fec2.anno())))
-	    return true;
-	else
-	    return false;
+	return (fec1.anno() < fec2.anno() or ((fec1.anno() == fec2.anno() and fec1.mes() < fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() < fec2.dia())));
 }
 
 bool operator >(const Fecha& fec1, const Fecha& fec2)
 {
-    if((fec1.anno() > fec2.anno()) or ((fec1.anno() == fec2.anno() and fec1.mes() > fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() > fec2.dia())))
-	    return true;
-	else
-	    return false;
+    return ((fec1.anno() > fec2.anno()) or ((fec1.anno() == fec2.anno() and fec1.mes() > fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() > fec2.dia())));
 }
 
 bool operator <=(const Fecha& fec1, const Fecha& fec2)
 {
-	if((fec1.dia() <= fec2.dia()) || ((fec1.dia() > fec2.dia() && (fec1.mes() <= fec2.mes())) || ((fec1.mes() > fec2.mes()) && fec1.anno() <= fec2.anno())))
-	    return true;
-	else
-	    return false;
+	return ((fec1.dia() <= fec2.dia()) or ((fec1.dia() > fec2.dia() and (fec1.mes() <= fec2.mes())) or ((fec1.mes() > fec2.mes()) and fec1.anno() <= fec2.anno())));
 }
 
 bool operator >=(const Fecha& fec1, const Fecha& fec2)
 {
-	if((fec1.dia() >= fec2.dia()) || ((fec1.dia() < fec2.dia() && (fec1.mes() >= fec2.mes())) || ((fec1.mes() < fec2.mes()) && fec1.anno() >= fec2.anno())))
-	    return true;
-	else
-	    return false;
+	return ((fec1.dia() >= fec2.dia()) or ((fec1.dia() < fec2.dia() and (fec1.mes() >= fec2.mes())) or ((fec1.mes() < fec2.mes()) and fec1.anno() >= fec2.anno())));
 }
 
 bool operator !=(const Fecha& fec1, const Fecha& fec2)
 {
-	if ((fec1.dia() == fec2.dia()) && (fec1.mes() == fec2.mes()) && (fec1.anno() == fec2.anno()))
+	if ((fec1.dia() == fec2.dia()) and (fec1.mes() == fec2.mes()) and (fec1.anno() == fec2.anno()))
 	    return false;
 	else
 	    return true;

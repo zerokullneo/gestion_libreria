@@ -27,9 +27,8 @@
 #ifndef PEDIDO_H
 #define PEDIDO_H
 
-//#include "../cabeceras.h"
-#include "../P1/Fecha/fecha.h"
-#include "../P1/Cadena/cadena.h"
+#include "fecha.h"
+#include "cadena.h"
 #include "usuario.h"
 #include "tarjeta.h"
 #include "articulo.h"

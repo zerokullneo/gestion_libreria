@@ -4,16 +4,16 @@
 #
 #--- Parte configurable
 # NOMBREALUMNO es el nombre del directorio donde el alumno guarda las prácticas
-# de POO (C++). Dentro de ese directorio debe haber uno para cada práctica 
-# llamado NOMBREPRACTICA, que será de la forma P<n>, siendo <n> el número 
+# de POO (C++). Dentro de ese directorio debe haber uno para cada práctica
+# llamado NOMBREPRACTICA, que será de la forma P<n>, siendo <n> el número
 # de práctica: P1, P2, etc.
-# NOMBREALUMNO debería ser de la forma: Ap1_Ap2_NP 
+# NOMBREALUMNO debería ser de la forma: Ap1_Ap2_NP
 # (Véanse las instrucciones de entrega).
 NOMBREALUMNO   = JOSE_MANUEL_BARBA_GONZALEZ
 NOMBREPRACTICA = P3
 
 # CADENADIR y FECHADIR son los directorios donde están respectivamente
-# los Makefile, módulos objeto y cabeceras de Cadena y Fecha: 
+# los Makefile, módulos objeto y cabeceras de Cadena y Fecha:
 # Makefile, cadena.{oh} y fecha.{oh}.
 # TESTHDR es el directorio donde está la cabecera del test automático, fct.h
 DIRFECHACADENA=P1
@@ -61,6 +61,9 @@ NOMBRETAR = ../../${NOMBREALUMNO}.tar.gz
 NOMBREDIR = ${NOMBREALUMNO}/${NOMBREPRACTICA}
 
 all: ${MAIN_EXE} ${TEST_EXE}
+
+Debug: ${MAIN_EXE}
+	./$<
 
 test-consola: ${MAIN_EXE}
 	./$<

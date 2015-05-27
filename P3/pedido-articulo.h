@@ -27,7 +27,6 @@
 #ifndef PEDIDO_ARTICULO_H
 #define PEDIDO_ARTICULO_H
 
-//#include "../cabeceras.h"
 #include "pedido.h"
 #include "articulo.h"
 #include "tarjeta.h"

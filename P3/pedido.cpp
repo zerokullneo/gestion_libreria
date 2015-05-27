@@ -28,9 +28,9 @@
 
 int Pedido::N_pedidos = 0;
 
-Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F):tarjeta_(&T),fecha_pedido_(F)
+Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarjeta& T,const Fecha& F):num_(N_pedidos+1),total_(0.0),tarjeta_(&T),fecha_pedido_(F)
 {
-    if(U.compra().empty())// !U.n_articulos())
+    if(U.compra().empty())
         throw(Vacio(U));
 
     if(tarjeta_->titular() != &U)
@@ -43,14 +43,13 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
             throw SinStock((*stk->first));
         }
 
-    //if((tarjeta_->caducidad() < F) == true)
-        //throw Tarjeta::Caducada(tarjeta_->caducidad());
+    if(tarjeta_->caducidad() < fecha_pedido_)
+        throw Tarjeta::Caducada(tarjeta_->caducidad());
 
     Usuario::Tarjetas t(U.tarjetas());
 
     Usuario::Articulos A(U.compra());
 
-    total_ = 0.0;
     bool NoHayStock = false;
 
     Usuario::Articulos::iterator i;
@@ -100,10 +99,12 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     if(NoHayStock)
         throw(SinStock(*Art_ptr));
 
-    num_ = N_pedidos++;
+    //num_ = N_pedidos++;
 
     //Asociar usuario con Pedido
     U_P.asocia(U,*this);
+
+    ++N_pedidos;
 }
 
 ostream& operator <<(ostream& out,const Pedido& P)

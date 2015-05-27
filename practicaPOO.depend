@@ -70,7 +70,7 @@
 	<stdexcept>
 	"cadena.h"
 
-1429567304 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/test-auto.cpp
+1432244334 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P1/Fecha/test-auto.cpp
 	"fecha.h"
 	"../fct.h"
 	<ctime>
@@ -338,7 +338,7 @@
 	"articulo.h"
 	"tarjeta.h"
 
-1432670779 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.cpp
+1432741053 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido.cpp
 	"pedido.h"
 	"usuario-pedido.h"
 	"pedido-articulo.h"
@@ -364,7 +364,7 @@
 	"tarjeta.h"
 	"usuario.h"
 
-1432670277 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/test-caso3-auto.cpp
+1432740068 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/test-caso3-auto.cpp
 	<ctime>
 	<sstream>
 	<string>
@@ -390,5 +390,17 @@
 	"tarjeta.h"
 
 1432668294 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/pedido-articulo.cpp
+	"pedido-articulo.h"
+
+1432667798 source:/home/zerokullneo/github/codeblocks/gestion_libreria/P3/test-caso3-consola.cpp
+	<cstdlib>
+	<exception>
+	<ostream>
+	<locale>
+	"usuario.h"
+	"tarjeta.h"
+	"articulo.h"
+	"pedido.h"
+	"usuario-pedido.h"
 	"pedido-articulo.h"
 

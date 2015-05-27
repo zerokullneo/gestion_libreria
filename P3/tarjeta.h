@@ -32,8 +32,8 @@
 #include <algorithm>
 #include <locale>
 #include "usuario.h"
-#include "../P1/Cadena/cadena.h"
-#include "../P1/Fecha/fecha.h"
+#include "cadena.h"
+#include "fecha.h"
 
 class Usuario;
 
