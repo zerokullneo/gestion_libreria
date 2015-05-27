@@ -12,7 +12,7 @@
 #include <locale>
 #include <regex.h>		// <regex> aún no funciona bien
 
-#include "fct.h"
+#include "../P2/fct.h"
 #include "test-auto.h"
 
 #include "tarjeta.h"

@@ -8,7 +8,7 @@
 #include <sstream>
 #include <type_traits>
 
-#include "fct.h"
+#include "../P2/fct.h"
 #include "test-auto.h"
 
 #include "articulo.h"

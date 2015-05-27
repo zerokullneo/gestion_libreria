@@ -7,9 +7,8 @@
 #include <cmath>
 #include <iostream>
 #include <memory>
-using namespace std;
 
-#include "fct.h"
+#include "../P2/fct.h"
 #include "test-auto.h"
 
 #include "tarjeta.h"
@@ -18,6 +17,8 @@ using namespace std;
 #include "pedido.h"
 #include "usuario-pedido.h"
 #include "pedido-articulo.h"
+
+using namespace std;
 
 namespace {
     const Cadena referencia("1234XYZ");
@@ -34,23 +35,23 @@ namespace {
     const Fecha  fHoy;
     const Fecha  fUnaSemana = fHoy + 7;
     const Fecha  fSiguienteAnno(1, 1, fHoy.anno() + 1);
-    
+
     Autor autor("Harry", "Potter", "Hogwarts");
     Articulo::Autores autores = crea_autores(autor);
-    
+
     Libro articulo1(autores, "111", "The Standard Template Library",
 		    fHoy, 42.10, 200, 50);
     Cederron articulo2(autores, "110", "Fundamentos de C++",
 		       fHoy, 35.95, 100, 50);
     Usuario* pU;
-    
+
     Usuario_Pedido  *pAsocUsuarioPedido;
     Pedido_Articulo *pAsocPedidoArticulo;
     Usuario         *pU2;
     Tarjeta         *pTarjetaU;
     const Tarjeta   *pTarjetaU2;
     const Fecha     fAyer = fHoy - 1;
-    
+
     const Pedido *pPed1, *pPed2;
     const unsigned cantidad_A1_P1 = 1;
     const unsigned cantidad_A1_P2 = 3;
@@ -166,7 +167,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
     pU->compra(articulo1, cantidad);
     pU->compra(articulo2, cantidad);
     const auto_ptr<const Pedido> pPed(
-      new Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo, 
+      new Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo,
 		 *pU, *pTarjetaU, fHoy));
 
     // Actualización de carrito y stock
@@ -175,7 +176,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
     fct_chk_eq_int(articulo2.stock(), 49);
 
     // Asociación Usuario-Pedido
-    fct_chk(pAsocUsuarioPedido->cliente(*const_cast<Pedido*>(pPed.get())) 
+    fct_chk(pAsocUsuarioPedido->cliente(*const_cast<Pedido*>(pPed.get()))
 	    == pU);
     if (pAsocUsuarioPedido->pedidos(*pU).size() == 1) {
       fct_chk(*pAsocUsuarioPedido->pedidos(*pU).begin() == pPed.get());
@@ -207,8 +208,8 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
     pU->compra(articulo1, 1);
     pU->compra(articulo2, 1);
     const double totalEsperado = articulo1.precio() + articulo2.precio();
-    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido, 
-						   *pAsocPedidoArticulo, 
+    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido,
+						   *pAsocPedidoArticulo,
 						   *pU, *pTarjetaU, fHoy));
 
     fct_chk_eq_int(pPed->numero(), 2);
@@ -222,8 +223,8 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
     pU->compra(articulo1, 1);
     pU->compra(articulo2, 1);
     const double totalEsperado = articulo1.precio() + articulo2.precio();
-    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido, 
-						   *pAsocPedidoArticulo, 
+    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido,
+						   *pAsocPedidoArticulo,
 						   *pU, *pTarjetaU, fHoy));
 
     const string sPed = toString(*pPed);
@@ -240,8 +241,8 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
 
   FCT_TEST_BGN(ARTICULO<->PEDIDO - detalle de un pedido) {
     pU->compra(articulo1, 1);
-    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido, 
-						   *pAsocPedidoArticulo, 
+    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido,
+						   *pAsocPedidoArticulo,
 						   *pU, *pTarjetaU, fHoy));
     const Pedido_Articulo::ItemsPedido detalle
       = pAsocPedidoArticulo->detalle(*const_cast<Pedido*>(pPed.get()));
@@ -261,8 +262,8 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
   FCT_TEST_BGN(ARTICULO<->PEDIDO - insercion en flujo de ItemsPedido) {
     const unsigned cantidad = 1;
     pU->compra(articulo1, cantidad);
-    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido, 
-						   *pAsocPedidoArticulo, 
+    const unique_ptr<const Pedido> pPed(new Pedido(*pAsocUsuarioPedido,
+						   *pAsocPedidoArticulo,
 						   *pU, *pTarjetaU, fHoy));
     const Pedido_Articulo::ItemsPedido detalle
       = pAsocPedidoArticulo->detalle(*const_cast<Pedido*>(pPed.get()));
@@ -289,7 +290,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_informes) {
 
     // Primera venta
     pU->compra(articulo1, cantidad_A1_P1);
-    pPed1 = new Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo, 
+    pPed1 = new Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo,
 		       *pU, *pTarjetaU, fHoy);
 
     // Segunda venta, de otro usuario
@@ -313,10 +314,10 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_informes) {
   FCT_TEARDOWN_END();
 
   FCT_TEST_BGN(ARTICULO<->PEDIDO - ventas de un articulo) {
-    const Pedido_Articulo::Pedidos& pedArticulo1 = 
+    const Pedido_Articulo::Pedidos& pedArticulo1 =
 	pAsocPedidoArticulo->ventas(articulo1);
     if (pedArticulo1.size() == 2) {
-      Pedido_Articulo::Pedidos::const_iterator it = 
+      Pedido_Articulo::Pedidos::const_iterator it =
 	  pedArticulo1.find(const_cast<Pedido*>(pPed1));
       fct_chk_eq_dbl(it->second.precio_venta(), articulo1.precio());
       fct_chk_eq_int(it->second.cantidad(), cantidad_A1_P1);
@@ -332,7 +333,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_informes) {
   FCT_TEST_END();
 
   FCT_TEST_BGN(ARTICULO<->PEDIDO - insercion en flujo de Pedidos) {
-    const Pedido_Articulo::Pedidos& pedArticulo1 = 
+    const Pedido_Articulo::Pedidos& pedArticulo1 =
 	pAsocPedidoArticulo->ventas(articulo1);
     const string sPedidos = toString(pedArticulo1);
 
@@ -342,7 +343,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_informes) {
     chk_incl_str(sPedidos, toString(cantidad_A1_P2));
     chk_incl_cstr(sPedidos, pPed2->fecha().cadena());
 
-    const double totalEsperado = (cantidad_A1_P1 + cantidad_A1_P2) * 
+    const double totalEsperado = (cantidad_A1_P1 + cantidad_A1_P2) *
 	articulo1.precio();
     chk_incl_str(sPedidos, toEuros(totalEsperado));
   }
@@ -406,7 +407,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_informes) {
   FCT_TEST_END();
 
   FCT_TEST_BGN(PEDIDO<->USUARIO - pedidos de un usuario) {
-    const Usuario_Pedido::Pedidos& pedidosU2 = 
+    const Usuario_Pedido::Pedidos& pedidosU2 =
       pAsocUsuarioPedido->pedidos(*pU2);
     if (pedidosU2.size() == 1)
       fct_chk(*pedidosU2.begin() == pPed2);

@@ -26,7 +26,6 @@
 
 #ifndef CADENA_H_
 #define CADENA_H_
-//#include "../../cabeceras.h"
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -44,6 +43,7 @@ class Cadena
 		typedef const char* const_iterator;
 		typedef std::reverse_iterator<iterator> reverse_iterator;
         typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+		static size_t npos;//numero de posiciones a copiar.
 
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';
@@ -108,7 +108,6 @@ class Cadena
 	private:
 		char* texto_;
 		unsigned int tamano_;
-		size_t npos;//numero de posiciones a copiar.
 };
 
 //operadores sobrecargados externos de mas de un elemento

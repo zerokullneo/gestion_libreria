@@ -5,10 +5,10 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
-#include "fct.h"
-using namespace std;
-
+#include "../P2/fct.h"
 #include "cadena.h"
+
+using namespace std;
 
 namespace {
   bool bPrimera = true;
@@ -50,7 +50,7 @@ FCTMF_SUITE_BGN(test_cadena) {
   FCT_TEST_BGN(Ctor: por copia de otra sub-Cadena) {
     const Cadena a("Casa de muchos, casa de sucios"); // fuente de copias
     const Cadena b(a, 16, 4);				// normal
-    const Cadena c(a, 16, Cadena::npos);		// ¿Existe npos público?
+    const Cadena c(a, 16, 4);//Cadena::npos);		// ¿Existe npos público?
     const Cadena d(a, 0);				// 2 parámetros [npos]
     const Cadena e(a, 0, 0);				// SubCadena vacía
     const Cadena f(a, 16, 40);			// tamaño muy grande
@@ -67,7 +67,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     }
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Ctor: de movimiento) {
     Cadena a(3);
     const char* c = a.c_str();
@@ -102,7 +102,7 @@ FCTMF_SUITE_BGN(test_cadena) {
   }
   FCT_TEST_END();
 
- 
+
   FCT_TEST_BGN(Asignar una cadena a otra: movimiento) {
     Cadena a("hola"), b("adios");
     const char* c = b.c_str();
@@ -147,7 +147,7 @@ FCTMF_SUITE_BGN(test_cadena) {
 	    c.length() == a.length() + b.length());
   }
   FCT_TEST_END();
- 
+
   FCT_TEST_BGN(Comparacion: igualdad) {
     fct_chk(Cadena("hola") == "hola");
     fct_chk(!("hola" == Cadena("adios")));
@@ -155,7 +155,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(!(Cadena("holas") == Cadena("hola")));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Comparacion: desigualdad) {
     fct_chk(!("hola" != Cadena("hola")));
     fct_chk(Cadena("hola")  != "adios");
@@ -163,7 +163,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(Cadena("holas") != Cadena("hola"));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Comparacion: menor que) {
     fct_chk(Cadena("") < "x");
     fct_chk("a" < Cadena("b"));
@@ -171,7 +171,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(!(Cadena("ca") < Cadena("aa")));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Comparacion: menor o igual que) {
     fct_chk("" <= Cadena("x"));
     fct_chk(Cadena("a") <= "b");
@@ -179,7 +179,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(!(Cadena("ca") <= Cadena("aa")));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Comparacion: mayor que) {
     fct_chk(!(Cadena("") > "x"));
     fct_chk(!("a" > Cadena("b")));
@@ -187,7 +187,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(Cadena("ca") > Cadena("aa"));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Comparacion: mayor o igual que) {
     fct_chk(!("" >= Cadena("x")));
     fct_chk(!(Cadena("a") >= "b"));
@@ -195,7 +195,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(Cadena("ca") >= Cadena("aa"));
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Leer caracter: [] y posicion valida) {
     const Cadena a("abcd");
     fct_chk(a.operator[](0) == 'a');
@@ -353,7 +353,7 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(os.str() == s);
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Iterador: begin()) {
     Cadena a("hola");
     *a.begin() = ' ';
@@ -361,19 +361,19 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(a[0] == ' ');
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Iterador: end()) {
     Cadena a("hola");
     fct_chk(a.end() == a.c_str() + 4);
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Iterador: begin() const) {
     const Cadena a("hola");
     fct_chk(a.begin() == a.c_str());
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Iterador: end() const) {
     const Cadena a("hola");
     fct_chk(a.end() == a.c_str() + 4);
@@ -413,6 +413,6 @@ FCTMF_SUITE_BGN(test_cadena) {
     fct_chk(os.str() == "bmpialohaloh");
   }
   FCT_TEST_END();
-  
+
 }
 FCTMF_SUITE_END()

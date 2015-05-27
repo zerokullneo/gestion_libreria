@@ -4,8 +4,8 @@
 //              http://en.wikipedia.org/wiki/Luhn_algorithm
 //
 
-#include "../P1/Cadena/cadena.h"
-#include "tarjeta.h"
+#include "cadena.h"
+#include "../P4/tarjeta.h"
 #include <cstddef>
 
 bool luhn(const Cadena& numero, size_t n)

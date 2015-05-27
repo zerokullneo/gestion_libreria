@@ -5,7 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include <sstream>
-#include "fct.h"
+#include "../P2/fct.h"
 
 #include "fecha.h"
 
@@ -30,7 +30,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_fecha) {
     bPrimera = false;
     cerr << "\n---------- PRÁCTICA 1: FECHA ----------\n" << endl;
   }
-  
+
   FCT_SETUP_BGN() {
     // 1.º establecemos la zona horaria a UTC para evitar cosas raras
     setenv("TZ", "", 1);
@@ -113,7 +113,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_fecha) {
     chk_eq_fecha(f, 1, 5, 2010);
   }
   FCT_TEST_END();
-  
+
   FCT_TEST_BGN(Ctor: cadena 1/1/0) {
     const Fecha f = "1/5/0";
     chk_eq_fecha(f, 1, 5, annoSistema);
