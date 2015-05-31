@@ -25,6 +25,11 @@
 
 using namespace std;
 
+bool bisiesto(int a)
+{
+	return !(a%4) && ((a%100) || !(a%400));
+}
+
 //CONSTRUCTORES
 Fecha::Fecha(int dia, int mes, int year):d_(dia),m_(mes),a_(year)
 {
@@ -61,13 +66,10 @@ Fecha::Fecha(const char* string_fecha)
 {
 	char fech[11];
 
-	//if((string_fecha[1] != '/' and string_fecha[3] != '/')  and (string_fecha[2] != '/' and string_fecha[4] != '/') and (string_fecha[1] != '/' and string_fecha[4] != '/') and (string_fecha[2] != '/' and string_fecha[5] != '/'))
-        if(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)<0)
-        throw(Fecha::Invalida("Entrada Incorrecta en Constructor de cadena ."));
-	else
+	if((string_fecha[1] == '/' and string_fecha[3] == '/') or (string_fecha[2] == '/' and string_fecha[4] == '/') or (string_fecha[1] == '/' and string_fecha[4] == '/')
+    or (string_fecha[2] == '/' and string_fecha[5] == '/'))
 	{
 		strncpy(fech, string_fecha,strlen(string_fecha));
-
 		char *fecha=fech;
 		fecha = strtok(fecha,"/");
 		d_ = atoi(fecha);
@@ -76,15 +78,26 @@ Fecha::Fecha(const char* string_fecha)
 		fecha = strtok(NULL, "/");
 		a_ = atoi(fecha);
 
-		if(!d_ or d_ == 0)
-            this->default_d_();
-        if(!m_ or m_ == 0)
-            this->default_m_();
         if(!a_ or a_ == 0)
             this->default_a_();
+        if(!m_ or m_ == 0)
+            this->default_m_();
+		if(!d_ or d_ == 0)
+        {
+            this->default_d_();
+            if(((m_ == 4) or (m_ == 6) or (m_ == 9) or (m_ == 11)) and (d_ > 30))
+                d_ = 30;
+            if((m_ == 2) and bisiesto(a_))
+                d_ = 29;
+            if((m_ == 2) and !bisiesto(a_))
+                d_ = 28;
+        }
 
 		comprueba_fecha(d_, m_, a_);
 	}
+	else
+        throw Fecha::Invalida("Entrada Incorrecta en Constructor de cadena .");
+
 }
 //FIN CONSTRUCTORES
 
@@ -160,11 +173,6 @@ bool Fecha::operator -(int decremento)
 /*------------------FIN OPERADORES---------------------*/
 
 /*--------------------MODIFICADORAS--------------------*/
-bool bisiesto(int a)
-{
-	return !(a%4) && ((a%100) || !(a%400));
-}
-
 Fecha& Fecha::sumadias(int incmt_d)
 {
 	int dm[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

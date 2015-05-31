@@ -45,7 +45,7 @@ LibroDigital::LibroDigital(const Autores& a,const Cadena& r,const Cadena& t,cons
 
 ostream& LibroDigital::imp_esp(ostream& out) const
 {
-	out << expiracion_.cadena();
+	out << "A la venta hasta el " << expiracion_.cadena() << ".";
 	return out;
 }
 /*FIN CLASE LIBRODIGITAL*/
@@ -86,6 +86,7 @@ ostream& operator <<(ostream& out, const Articulo& art)
         num_aut++;
     }
 	out << ". " << art.f_publi().anno() << ". " << setprecision(2) << fixed << art.precio() << " €";
+	out << endl << "\t";
 	art.imp_esp(out);
 	return out;
 }
