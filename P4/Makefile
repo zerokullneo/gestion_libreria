@@ -21,7 +21,7 @@ NOMBREPRACTICA = P4
 DIRFECHACADENA=P1
 CADENADIR= ../${DIRFECHACADENA}/Cadena
 FECHADIR = ../${DIRFECHACADENA}/Fecha
-TESTHDR  = ../P2
+TESTHDR  = ..
 LUHNDIR  = ../P2
 
 # ¿Compilador C++ de LLVM (clang++) o de GNU (g++, c++, g++-VERSIÓN)?
@@ -84,11 +84,12 @@ check: catalogo_check
 	./$< ${COMM_SRCS} usuario-pedido.hpp -- -std=c++11 ${INCLUDES}
 	${RM} usuario-pedido.hpp
 
-clean:
+clean cleanDebug:
 	${RM} ${MAIN_EXE} ${MAIN_OBJS} ${TEST_EXE} ${TEST_OBJS} \
-		${LUHNDIR}/luhn.o *.d *~ \#*
+	${LUHNDIR}/luhn.d ${LUHNDIR}/luhn.o *.d *~ \#*
 	${MAKE} -C ${FECHADIR}  clean
 	${MAKE} -C ${CADENADIR} clean
+
 
 ## COMPILACIÓN #################################################################
 

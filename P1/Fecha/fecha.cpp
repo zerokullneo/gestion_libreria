@@ -61,7 +61,8 @@ Fecha::Fecha(const char* string_fecha)
 {
 	char fech[11];
 
-	if((string_fecha[1] != '/' and string_fecha[3] != '/')  and (string_fecha[2] != '/' and string_fecha[4] != '/') and (string_fecha[1] != '/' and string_fecha[4] != '/') and (string_fecha[2] != '/' and string_fecha[5] != '/')) //(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)<0)
+	//if((string_fecha[1] != '/' and string_fecha[3] != '/')  and (string_fecha[2] != '/' and string_fecha[4] != '/') and (string_fecha[1] != '/' and string_fecha[4] != '/') and (string_fecha[2] != '/' and string_fecha[5] != '/'))
+        if(sscanf(string_fecha,"%i/%i/%i", &d_, &m_, &a_)<0)
         throw(Fecha::Invalida("Entrada Incorrecta en Constructor de cadena ."));
 	else
 	{

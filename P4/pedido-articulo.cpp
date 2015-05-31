@@ -52,7 +52,7 @@ bool OrdenaArticulos::operator()(Articulo* A1, Articulo* A2)const
 
 void Pedido_Articulo::pedir(Pedido& pedido, Articulo& articulo, double precio, unsigned cantidad)
 {
-	articulo.stock() = articulo.stock() - cantidad;
+	//articulo.stock() = articulo.stock() - cantidad;
 	Pedido_Articulo_[&pedido].insert(std::make_pair(&articulo,LineaPedido(precio,cantidad)));
 	Articulo_Pedido_[&articulo].insert(std::make_pair(&pedido,LineaPedido(precio,cantidad)));
 }

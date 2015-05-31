@@ -35,6 +35,7 @@ Tarjeta::Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad):
 tarjeta_(tjt), titular_(&usuario), f_caducidad_(f_cad), titular_facial_((usuario.nombre() + " " + usuario.apellidos()))
 {
     const Fecha f_hoy;
+    //cout << f_hoy << "-" << f_cad << endl;
     if((f_hoy > f_cad) == true)
         throw Caducada(f_cad);
 

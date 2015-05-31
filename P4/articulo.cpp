@@ -48,7 +48,7 @@ ostream& LibroDigital::imp_esp(ostream& out) const
 	out << expiracion_.cadena();
 	return out;
 }
-/*FIN CLASE INFORMEDIGITAL*/
+/*FIN CLASE LIBRODIGITAL*/
 
 /*CLASE LIBRO - */
 Libro::Libro(const Autores& a,const Cadena& r,const Cadena& t,const Fecha& f,double p,unsigned int pg,unsigned int s):ArticuloAlmacenable(a,r,t,f,p,s),paginas_(pg)
@@ -67,7 +67,7 @@ Cederron::Cederron(const Autores& a, const Cadena& r,const Cadena& t,const Fecha
 {
 }
 
-ostream& Cederron :: imp_esp(ostream& out) const
+ostream& Cederron::imp_esp(ostream& out) const
 {
 	out << tamano_ << " MB, " << this->stock() << " unidades.";
 	return out;
@@ -76,7 +76,16 @@ ostream& Cederron :: imp_esp(ostream& out) const
 
 ostream& operator <<(ostream& out, const Articulo& art)
 {
-	out << "[" << art.referencia() << "] \"" << art.titulo() << "\", " << art.f_publi().anno()
-	<< ". " << setprecision(2) << fixed << art.precio() << " €";
+    Articulo::Autores::const_iterator aut = art.autores().begin();
+    size_t num_aut = 1;
+	out << "[" << art.referencia() << "] \"" << art.titulo() << "\", de ";
+	for(;aut != art.autores().end(); ++aut)
+    {
+        out << (*aut)->apellidos();
+        if(num_aut != art.autores().size() ) out << ", ";
+        num_aut++;
+    }
+	out << ". " << art.f_publi().anno() << ". " << setprecision(2) << fixed << art.precio() << " €";
+	art.imp_esp(out);
 	return out;
 }

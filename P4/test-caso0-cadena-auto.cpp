@@ -50,7 +50,7 @@ FCTMF_SUITE_BGN(test_cadena) {
   FCT_TEST_BGN(Ctor: por copia de otra sub-Cadena) {
     const Cadena a("Casa de muchos, casa de sucios"); // fuente de copias
     const Cadena b(a, 16, 4);				// normal
-    const Cadena c(a, 16, 4);//Cadena::npos);		// ¿Existe npos público?
+    const Cadena c(a, 16, Cadena::npos);		// ¿Existe npos público?
     const Cadena d(a, 0);				// 2 parámetros [npos]
     const Cadena e(a, 0, 0);				// SubCadena vacía
     const Cadena f(a, 16, 40);			// tamaño muy grande

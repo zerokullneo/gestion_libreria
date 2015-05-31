@@ -61,7 +61,7 @@ class Articulo
         };
    //protected:
         //Constructores -
-       Articulo(const Autores& aut, const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk=1);
+        Articulo(const Autores& aut, const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk=1);
 
         //Métodos observadores
         Cadena referencia()const{return referencia_;}
@@ -77,8 +77,8 @@ class Articulo
         //modifica el atributo stock_ con el nuevo valor indicado en stk.
         void stock(unsigned int& stk){stock_ = stk;}
         unsigned int& stock(){return stock_;}
-        ostream& imp_esp(ostream&) const;
-        ~Articulo(){};
+        virtual ostream& imp_esp(ostream&) const = 0;
+        virtual ~Articulo(){};
 
     private:
         Autores autores_;
@@ -97,7 +97,7 @@ class ArticuloAlmacenable: public Articulo
         //Método Modificador del stock del artículo.
         unsigned int& stock(){return stockAA_;}
 
-    protected:
+    //protected:
         //Constructores -
         ArticuloAlmacenable(const Autores& a, const Cadena& r, const Cadena& t, const Fecha& f, double p, unsigned int s=1);
         ~ArticuloAlmacenable() {}

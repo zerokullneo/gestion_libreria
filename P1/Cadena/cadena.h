@@ -43,7 +43,7 @@ class Cadena
 		typedef const char* const_iterator;
 		typedef std::reverse_iterator<iterator> reverse_iterator;
         typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-		static size_t npos;//numero de posiciones a copiar.
+		static const size_t npos = -1;//numero de posiciones a copiar.
 
 	    /*Constructores*/
 		//Constructor predeterminado texto_[0]=' ';

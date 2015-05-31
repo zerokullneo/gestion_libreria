@@ -30,7 +30,6 @@ using namespace std;
 //Constructor de conversión
 Cadena::Cadena(unsigned int longitud, char caracter):tamano_(longitud)
 {
-	npos = -1;
 	texto_= new char[tamano_ + 1];
 
 	if(texto_ == NULL)
@@ -47,7 +46,6 @@ Cadena::Cadena(unsigned int longitud, char caracter):tamano_(longitud)
 //Constructor de espacios vacíos.
 Cadena::Cadena(unsigned int tamano):tamano_(tamano)
 {
-	npos = -1;
 	texto_ = new char[tamano_ + 1];
 
 	if(texto_ == NULL)
@@ -64,7 +62,6 @@ Cadena::Cadena(unsigned int tamano):tamano_(tamano)
 //Constructor de copia de un objeto Cadena
 Cadena::Cadena(const Cadena& frase):tamano_(frase.length())
 {
-	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
 		cerr << "Cadena: Cadena& fallo de memoria." << endl;
@@ -83,7 +80,6 @@ Cadena::Cadena(Cadena&& frase): texto_(frase.texto_), tamano_(frase.tamano_)
 //Constructor de copia de una cadena a bajo nivel.
 Cadena::Cadena(const char* texto): tamano_(strlen(texto))
 {
-	npos = -1;
 	texto_ = new char[tamano_ + 1];
 	if(texto_ == NULL)
 		cerr << "Cadena: const char* fallo de memoria." << endl;
@@ -94,7 +90,6 @@ Cadena::Cadena(const char* texto): tamano_(strlen(texto))
 //Constructor de una sub-cadena de bajo nivel char*.
 Cadena::Cadena(const char* texto, size_t n): tamano_(n)
 {
-    npos = -1;
     texto_= new char[tamano_ + 1];
     if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
@@ -107,15 +102,20 @@ Cadena::Cadena(const char* texto, size_t n): tamano_(n)
 }
 
 //Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
-Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n): tamano_(n)
+Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)//: tamano_(n)
 {
-    npos = pos + tamano_;
+    frase.at(pos);
+    if(n == npos)
+        tamano_ = (frase.length() - pos);
+    else
+        tamano_ = n;
+
     texto_= new char[tamano_+1];
     if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i < npos; i++)
+        for(unsigned int i = pos; i < (pos + tamano_); i++)
             texto_[i-pos] = frase[i];
         texto_[tamano_] = '\0';
     }
@@ -124,13 +124,13 @@ Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n): tamano_(n)
 //Constructor de uns sub-cadena de un objeto Cadena de un tamaño determinado.
 Cadena::Cadena(const Cadena& frase, unsigned int pos): tamano_(frase.length() - pos)
 {
-    npos = frase.length() - pos;
+    frase.at(pos);
     texto_= new char[tamano_ + 1];
     if(texto_ == NULL or tamano_ < 0)
         cerr << "Cadena: const char* fallo de memoria." << endl;
     else
     {
-        for(unsigned int i = pos; i < frase.length(); i++)
+        for(unsigned int i = pos; i < tamano_; i++)
             texto_[i-pos] = frase[i];
         texto_[tamano_] = '\0';
     }

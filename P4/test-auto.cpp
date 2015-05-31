@@ -5,7 +5,7 @@
  */
 #include <iomanip>
 #include <locale>
-#include "fct.h"
+#include "../P2/fct.h"
 using namespace std;
 
 #include "test-auto.h"
