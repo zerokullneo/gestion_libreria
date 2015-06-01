@@ -36,21 +36,12 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     if(tarjeta_->titular() != &U)
         throw Impostor(U);
 
-    /*for(auto stk = U.compra().begin(); stk != U.compra().end(); stk++)
-        if(stk->second > stk->first->stock())
-        {
-            U.compra(*stk->first,0);
-            throw SinStock(*stk->first);
-        }*/
-
     if(tarjeta_->caducidad() < fecha_pedido_)
         throw Tarjeta::Caducada(tarjeta_->caducidad());
 
     Usuario::Tarjetas t(U.tarjetas());
 
     Usuario::Articulos A(U.compra());
-
-    //bool NoHayStock = false;
 
     Usuario::Articulos::iterator i;
 
@@ -59,32 +50,43 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
         LibroDigital* LD = dynamic_cast<LibroDigital*>(i->first);
         ArticuloAlmacenable* AA = dynamic_cast<ArticuloAlmacenable*>(i->first);
         //Comprobar si se trata de un puntero a un objeto a LibroDigital
-        if(LD != 0)
+        if(LD)
         {
-            if(LD->f_expir() > fecha_pedido_)
+            if(fecha_pedido_ <= LD->f_expir())
             {
+                U.compra(*(i->first),(*i).second);
                 //añadir el precio del articulo al total_
                 total_ += (*(i->first)).precio() * (*i).second;
                 //Asociar Pedido con Articulo
-                P_A.pedir(*(i->first),*this,(i->first)->precio(),(*i).second);
+                P_A.pedir(*this,(*(i->first)),(*(i->first)).precio(),(*i).second);
             }
             else
-            U.compra(*(i->first),0);
+            {
+                U.compra(*i->first,0);
+                LD->f_expir();
+            }
+        }
+        else if(AA)
+        {
+            if(AA->stock() < (*i).second)
+            {
+                U.compra(*i->first,0);
+                throw SinStock(*i->first);
+            }
+            else
+            {
+                U.compra(*(i->first),(*i).second);
+                //añadir el precio del articulo al total_
+                total_ += (*(i->first)).precio() * (*i).second;
+                //Asociar Pedido con Articulo
+                P_A.pedir(*this,(*(i->first)),(*(i->first)).precio(),(*i).second);
+                //Actualizacion de el stock
+                AA->stock() -= (*i).second;
+            }
         }
         else
         {
-            if(AA->stock() < (*i).second)
-                throw SinStock(*i->first);
-            else
-            {
-                //Actualizacion de el stock
-                //(*i->first).stock() = (*i->first).stock() - (*i).second;
-                AA->stock() -= (*i).second;
-                //añadir el precio del articulo al total_
-                total_ += (*(i->first)).precio() * (*i).second;
-                //Asociar Pedido con Articulo
-                P_A.pedir(*(i->first),*this,(i->first)->precio(),(*i).second);
-            }
+            LD->f_expir();
         }
     }
     if(!U.n_articulos())
@@ -93,12 +95,6 @@ Pedido::Pedido(Usuario_Pedido& U_P, Pedido_Articulo& P_A, Usuario& U, const Tarj
     //Vaciar el Carrito
     for(Usuario::Articulos::iterator j = A.begin(); j != A.end(); j++)
         U.compra(*(j->first),0);
-
-    //Puntero Art_ptr apunta a A.end() o bien al primer articulo sin stock
-    //Lanzar La excepcion SinStock
-    //if(NoHayStock)
-        //{Articulo* Art_ptr = (--i)->first;
-        //throw SinStock(*Art_ptr);}
 
     //Asociar usuario con Pedido
     U_P.asocia(U,*this);

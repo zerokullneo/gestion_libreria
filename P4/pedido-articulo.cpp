@@ -52,7 +52,6 @@ bool OrdenaArticulos::operator()(Articulo* A1, Articulo* A2)const
 
 void Pedido_Articulo::pedir(Pedido& pedido, Articulo& articulo, double precio, unsigned cantidad)
 {
-	//articulo.stock() = articulo.stock() - cantidad;
 	Pedido_Articulo_[&pedido].insert(std::make_pair(&articulo,LineaPedido(precio,cantidad)));
 	Articulo_Pedido_[&articulo].insert(std::make_pair(&pedido,LineaPedido(precio,cantidad)));
 }
@@ -83,7 +82,7 @@ ostream& operator <<(ostream& out, const Pedido_Articulo::ItemsPedido& I)
 
 		for (Pedido_Articulo::ItemsPedido::const_iterator i = I.begin(); i!=I.end(); ++i)
 		{
-			out << i->first->precio() << "€\t" << i->second.cantidad();
+			out << i->first->precio() << " €\t" << i->second.cantidad();
 			out << "\t[" << i->first->referencia() << "] \"" << i->first->titulo() << "\"\n";
 			precio_total+=i->second.precio_venta() * i->second.cantidad();
 		}
@@ -108,7 +107,7 @@ ostream& operator <<(ostream& out, const Pedido_Articulo::Pedidos& P)
 
 		for(Pedido_Articulo::Pedidos::const_iterator i = P.begin(); i!=P.end(); ++i)
 		{
-			out << i->second.precio_venta() << " € " << "\t" << i->second.cantidad() << "\t" << i->first->fecha() << endl;
+			out << i->second.precio_venta() << " €" << "\t" << i->second.cantidad() << "\t" << i->first->fecha() << endl;
 			precio_total += (i->second).precio_venta() * i->second.cantidad();
 			cantidad_total += i->second.cantidad();
 		}
@@ -136,7 +135,7 @@ void Pedido_Articulo::mostrarVentasArticulos(ostream& out)const
 {
 	for(map<Articulo*,Pedidos>::const_iterator i = Articulo_Pedido_.begin(); i != Articulo_Pedido_.end(); ++i)
 	{
-		out << "Ventas de " << "[" << i->first->referencia() << "] \"" << i->first->titulo() << "\"\t" << i->first->precio() << " € ";
+		out << "Ventas de " << "[" << i->first->referencia() << "] \"" << i->first->titulo() << "\"\t" << i->first->precio() << " €";
 		out	<< i->second << endl << endl;
 	}
 }

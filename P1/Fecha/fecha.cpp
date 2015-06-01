@@ -383,12 +383,12 @@ bool operator >(const Fecha& fec1, const Fecha& fec2)
 
 bool operator <=(const Fecha& fec1, const Fecha& fec2)
 {
-	return ((fec1.dia() <= fec2.dia()) or ((fec1.dia() > fec2.dia() and (fec1.mes() <= fec2.mes())) or ((fec1.mes() > fec2.mes()) and fec1.anno() <= fec2.anno())));
+	return (fec1.anno() < fec2.anno() or ((fec1.anno() == fec2.anno() and fec1.mes() < fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() <= fec2.dia())));
 }
 
 bool operator >=(const Fecha& fec1, const Fecha& fec2)
 {
-	return ((fec1.dia() >= fec2.dia()) or ((fec1.dia() < fec2.dia() and (fec1.mes() >= fec2.mes())) or ((fec1.mes() < fec2.mes()) and fec1.anno() >= fec2.anno())));
+	return ((fec1.anno() > fec2.anno()) or ((fec1.anno() == fec2.anno() and fec1.mes() > fec2.mes()) or (fec1.mes() == fec2.mes() and fec1.dia() >= fec2.dia())));
 }
 
 bool operator !=(const Fecha& fec1, const Fecha& fec2)

@@ -23,6 +23,7 @@
 using namespace std;
 
 namespace {
+    const Fecha fHoy;
   // Para pruebas de Autor
   const Cadena sNombreAutor1 = "Nobuo",
     sApellidosAutor1 = "Uematsu",
@@ -65,10 +66,10 @@ namespace {
                  stockCederron);
   LibroDigital eBookNoExpirado(autores, sReferencia_eBook,
                                    sTitulo_eBook, fecha_eBook,
-                                   precio_eBook, Fecha() + 7);
+                                   precio_eBook, fHoy + 7);//Fecha()
   LibroDigital eBookExpirado(autores, sReferencia_eBook,
                                  sTitulo_eBook, fecha_eBook,
-                                 precio_eBook, Fecha() - 7);
+                                 precio_eBook, fHoy - 7);//Fecha()
 
   // Parte común
   bool bPrimera = true;
@@ -82,11 +83,10 @@ FCTMF_FIXTURE_SUITE_BGN(test_p4) {
   }
 
   FCT_SETUP_BGN() {
-    const Fecha fHoy;
     pUsuarioPedido = new Usuario("fjord", "Franz", "Jordan",
                                  "Rue del Percebe, 13", Clave("supersecreta"));
     pTarjetaPedido = new Tarjeta(Numero("11234567890126"), *pUsuarioPedido,
-                                 fHoy + 7);
+                                 fHoy + 7);//Fecha()
   }
   FCT_SETUP_END();
 

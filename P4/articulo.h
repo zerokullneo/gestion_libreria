@@ -68,15 +68,15 @@ class Articulo
         Cadena titulo()const{return titulo_;}
         Fecha f_publi()const{return f_publi_;}
         double precio()const{return precio_;}
-        unsigned int stock()const{return stock_;}
+        virtual unsigned int stock()const{return stock_;}
         const Autores& autores()const{return autores_;}
 
         //Métodos modificadores modifica el atributo precio_ con el nuevo valor indicado en pvp.
         void precio(double& pvp){precio_ = pvp;}
         double& precio(){return precio_;}
         //modifica el atributo stock_ con el nuevo valor indicado en stk.
-        void stock(unsigned int& stk){stock_ = stk;}
-        unsigned int& stock(){return stock_;}
+        virtual void stock(unsigned int& stk){stock_ = stk;}
+        virtual unsigned int& stock(){return stock_;}
         virtual ostream& imp_esp(ostream&) const = 0;
         virtual ~Articulo(){};
 
@@ -93,14 +93,15 @@ class ArticuloAlmacenable: public Articulo
 {
     public:
         //Método Observador del stock del artículo.
-        unsigned int stock()const{return stockAA_;}
+         unsigned int stock()const{return stockAA_;}
         //Método Modificador del stock del artículo.
-        unsigned int& stock(){return stockAA_;}
+         void stock(unsigned int& stk){stockAA_ = stk;}
+         unsigned int& stock(){return stockAA_;}
 
     //protected:
         //Constructores -
         ArticuloAlmacenable(const Autores& a, const Cadena& r, const Cadena& t, const Fecha& f, double p, unsigned int s=1);
-        ~ArticuloAlmacenable() {}
+        virtual ~ArticuloAlmacenable() {}
 
     private:
         unsigned int stockAA_;

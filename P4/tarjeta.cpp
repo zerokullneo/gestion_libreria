@@ -35,7 +35,6 @@ Tarjeta::Tarjeta(const Numero& tjt, Usuario& usuario, const Fecha& f_cad):
 tarjeta_(tjt), titular_(&usuario), f_caducidad_(f_cad), titular_facial_((usuario.nombre() + " " + usuario.apellidos()))
 {
     const Fecha f_hoy;
-    //cout << f_hoy << "-" << f_cad << endl;
     if((f_hoy > f_cad) == true)
         throw Caducada(f_cad);
 
@@ -60,13 +59,12 @@ Tarjeta::~Tarjeta()
 
 /*CLASE NUMERO*/
 Numero::Numero(const Cadena& n)
-{//enum Razon{LONGITUD, DIGITOS, NO_VALIDO};
-    Cadena::iterator n_end = n.end();
-
+{
     if(n.length() <=12)
         throw Incorrecto(LONGITUD);
     else
     {
+        Cadena::iterator n_end = n.end();
         n_end = remove_if(n.begin(), n.end(), EsBlanco());//deja los espacios en blanco al final "  "
         *n_end = '\0';//se tiene que poner el final de cadena en el iterador.
 
@@ -77,7 +75,7 @@ Numero::Numero(const Cadena& n)
     if(strlen(n.c_str()) < 13 or strlen(n.c_str()) > 19)
         throw Incorrecto(LONGITUD);
 
-    if(luhn(n, strlen(n.c_str())) == false)
+    if(not luhn(n, strlen(n.c_str())))
         numero_ = n.c_str();
     else
         throw Incorrecto(NO_VALIDO);

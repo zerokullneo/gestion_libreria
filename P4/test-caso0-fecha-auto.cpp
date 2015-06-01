@@ -127,8 +127,8 @@ FCTMF_FIXTURE_SUITE_BGN(test_fecha) {
   FCT_TEST_END();
 
   FCT_TEST_BGN(Ctor: cadena 0/2/4) {
-    const Fecha f = "0/11/2010";
-    chk_eq_fecha(f, diaSistema, 11, 2010);
+    const Fecha f = "0/12/2010";
+    chk_eq_fecha(f, diaSistema, 12, 2010);
   }
   FCT_TEST_END();
 
