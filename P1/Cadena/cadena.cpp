@@ -102,7 +102,7 @@ Cadena::Cadena(const char* texto, size_t n): tamano_(n)
 }
 
 //Constructor de una sub-cadena desde una posicion sobre un objeto Cadena.
-Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)//: tamano_(n)
+Cadena::Cadena(const Cadena& frase, unsigned int pos, size_t n)
 {
     frase.at(pos);
     if(n == npos)
@@ -183,12 +183,12 @@ Cadena& Cadena::operator =(Cadena&& frase) noexcept
 
 char& Cadena::operator [](unsigned int i) noexcept
 {
-	return *(texto_+i);
+    return texto_[i];
 }
 
 char Cadena::operator [](unsigned int i) const noexcept
 {
-	return *(texto_+i);
+    return texto_[i];
 }
 
 Cadena operator +(const Cadena& texto1,const Cadena& texto2)
@@ -287,22 +287,22 @@ char& Cadena::at(unsigned int i) throw(out_of_range)
 /*OPERACIONES SOBRE ITERADORES*/
 Cadena::iterator Cadena::begin() const noexcept
 {
-    return &texto_[0]; //iterator(begin());
+    return &texto_[0];
 }
 
 Cadena::iterator Cadena::end() const noexcept
 {
-    return &texto_[tamano_]; //iterator(end());
+    return &texto_[tamano_];
 }
 
 Cadena::const_iterator Cadena::cbegin() noexcept
 {
-    return &texto_[0]; //const_iterator(begin());
+    return &texto_[0];
 }
 
 Cadena::const_iterator Cadena::cend() noexcept
 {
-    return &texto_[tamano_]; //const_iterator(end());
+    return &texto_[tamano_];
 }
 
 Cadena::reverse_iterator Cadena::rbegin() const noexcept

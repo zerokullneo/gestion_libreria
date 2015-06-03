@@ -37,8 +37,12 @@ class Usuario_Pedido
 {
 	public:
 		typedef set<Pedido*> Pedidos;
+
+        //métodos asociativos
 		void asocia(Usuario& u, Pedido& p);
 		void asocia(Pedido& p,Usuario& u);
+
+        //métodos observadores
 		Pedidos pedidos(Usuario& u);
 		Usuario* cliente(Pedido& p);
 
@@ -49,6 +53,7 @@ class Usuario_Pedido
 
 inline void Usuario_Pedido::asocia(Usuario& u, Pedido& p)
 {
+    //asociación de usuario-pedido en ambas direcciones
 	Usuario_Pedidos_[&u].insert(&p);
 	Pedido_Usuario_.insert(make_pair(&p,&u));
 }

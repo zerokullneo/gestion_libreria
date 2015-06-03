@@ -62,30 +62,33 @@ identificador_(id), nombre_(nom), apellidos_(apll), direccion_(dir), contrasenia
 
 void Usuario::es_titular_de(Tarjeta& T) noexcept
 {
+    //insertamos el par Numero-Tarjeta en el map de tarjetas_
     tarjetas_.insert(pair<Numero,Tarjeta*>(T.tarjeta(),&T));
 }
 
 void Usuario::no_es_titular_de(Tarjeta& T) noexcept
 {
+    //eliminamos el par de tarjetas_ dada la tarjeta T
     tarjetas_.erase(T.tarjeta());
+    //anulamos el titular de T
     T.anula_titular();
 }
 
 void Usuario::compra(Articulo& A, unsigned i) noexcept
 {
-    if(i == 0)
+    if(i == 0)//si se recibe un 0 como cantidad se vacía el carro.
         articulos_.erase(&A);
     else
     {
+        //si no existe el Articulo se inserta en el par y se indica la cantidad
         if(!articulos_.insert(pair<Articulo*,unsigned>(&A,i)).second)
-        {
             articulos_[&A] = i;
-        }
     }
 }
 
 Usuario::~Usuario()
 {
+    //eliminación de usuario y de todas sus Tarjetas
     id_.erase(identificador_);
     for(Usuario::Tarjetas::const_iterator it=tarjetas_.begin(); it!=tarjetas_.end(); it++)
         (it->second)->anula_titular();

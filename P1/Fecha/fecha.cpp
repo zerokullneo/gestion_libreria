@@ -22,6 +22,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "fecha.h"
+#include <string.h>
 
 using namespace std;
 
@@ -64,20 +65,8 @@ Fecha::Fecha(int dia, int mes, int year):d_(dia),m_(mes),a_(year)
 //Constructor de conversión de Cadena a Fecha.
 Fecha::Fecha(const char* string_fecha)
 {
-	char fech[11];
-
-	if((string_fecha[1] == '/' and string_fecha[3] == '/') or (string_fecha[2] == '/' and string_fecha[4] == '/') or (string_fecha[1] == '/' and string_fecha[4] == '/')
-    or (string_fecha[2] == '/' and string_fecha[5] == '/'))
+    if(sscanf(string_fecha,"%d/%d/%d", &d_, &m_, &a_))
 	{
-		strncpy(fech, string_fecha,strlen(string_fecha));
-		char *fecha=fech;
-		fecha = strtok(fecha,"/");
-		d_ = atoi(fecha);
-		fecha = strtok(NULL, "/");
-		m_ = atoi(fecha);
-		fecha = strtok(NULL, "/");
-		a_ = atoi(fecha);
-
         if(!a_ or a_ == 0)
             this->default_a_();
         if(!m_ or m_ == 0)
@@ -393,10 +382,7 @@ bool operator >=(const Fecha& fec1, const Fecha& fec2)
 
 bool operator !=(const Fecha& fec1, const Fecha& fec2)
 {
-	if ((fec1.dia() == fec2.dia()) and (fec1.mes() == fec2.mes()) and (fec1.anno() == fec2.anno()))
-	    return false;
-	else
-	    return true;
+	return not ((fec1.dia() == fec2.dia()) and (fec1.mes() == fec2.mes()) and (fec1.anno() == fec2.anno()));
 }
 
 ostream& operator <<(ostream& os, const Fecha& fec)
@@ -453,14 +439,17 @@ Fecha operator - (const Fecha& fec, int decremento)
 
 long int operator - (const Fecha& f1, const Fecha& f2)
 {
-    /*int bisiestos = ((f1.anno()-f2.anno()) / 4);
-    int meses = abs(f1.mes() - f2.mes()) / 2;
-    long int total_dias = ((f1.anno()-f2.anno())*365+bisiestos)+(abs(f1.mes()-f2.mes())*30+meses)+(abs(f1.dia()-f2.dia()));
-    cout << endl << total_dias << endl;
-    return total_dias;*/
-
     tm minuendo{0,0,0,f1.dia(),f1.mes()-1, f1.anno()-1900,0,0,0};
     tm sustraendo{0,0,0,f2.dia(),f2.mes()-1, f2.anno()-1900,0,0,0};
     long diferencia = difftime(mktime(&minuendo),mktime(&sustraendo)) / 86400;
     return diferencia;
 }
+
+/*long int operator -(const Fecha& f1, const Fecha$ f2)
+{
+    int bisiestos = ((f1.anno()-f2.anno()) / 4);
+    int meses = abs(f1.mes() - f2.mes()) / 2;
+    long int total_dias = ((f1.anno()-f2.anno())*365+bisiestos)+(abs(f1.mes()-f2.mes())*30+meses)+(abs(f1.dia()-f2.dia()));
+    cout << endl << total_dias << endl;
+    return total_dias;
+}*/

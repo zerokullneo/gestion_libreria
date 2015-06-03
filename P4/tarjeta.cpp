@@ -43,13 +43,13 @@ tarjeta_(tjt), titular_(&usuario), f_caducidad_(f_cad), titular_facial_((usuario
 
 void Tarjeta::anula_titular() noexcept
 {
-    titular_ = 0;
+    titular_ = 0;//puntero nulo sobre el titular
 }
 
 Tarjeta::~Tarjeta()
 {
     Usuario *user = const_cast<Usuario*>(titular_);
-    if(user)
+    if(user)//se desasigna al usuario eliminado de las tarjetas.
     {
         this->anula_titular();
         user->no_es_titular_de(*this);
@@ -64,21 +64,22 @@ Numero::Numero(const Cadena& n)
         throw Incorrecto(LONGITUD);
     else
     {
-        Cadena::iterator n_end = n.end();
-        n_end = remove_if(n.begin(), n.end(), EsBlanco());//deja los espacios en blanco al final "  "
+        Cadena c(n);
+        Cadena::iterator n_end = c.end();
+        n_end = remove_if(c.begin(), c.end(), EsBlanco());//deja los espacios en blanco al final "  "
         *n_end = '\0';//se tiene que poner el final de cadena en el iterador.
 
-        if(n_end != find_if(n.begin(), n.end(), EsDigito()))
+        if(n_end != find_if(c.begin(), c.end(), EsDigito()))
             throw Incorrecto(DIGITOS);
-    }
 
-    if(strlen(n.c_str()) < 13 or strlen(n.c_str()) > 19)
+    if(strlen(c.c_str()) < 13 or strlen(c.c_str()) > 19)
         throw Incorrecto(LONGITUD);
 
-    if(not luhn(n, strlen(n.c_str())))
-        numero_ = n.c_str();
+    if(not luhn(c, strlen(c.c_str())))
+        numero_ = c.c_str();
     else
         throw Incorrecto(NO_VALIDO);
+    }
 }
 /*FIN CLASE NUMERO*/
 

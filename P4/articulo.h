@@ -59,10 +59,6 @@ class Articulo
             public:
             Autores_vacios(){};
         };
-   //protected:
-        //Constructores -
-        Articulo(const Autores& aut, const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk=1);
-
         //Métodos observadores
         Cadena referencia()const{return referencia_;}
         Cadena titulo()const{return titulo_;}
@@ -79,6 +75,10 @@ class Articulo
         virtual unsigned int& stock(){return stock_;}
         virtual ostream& imp_esp(ostream&) const = 0;
         virtual ~Articulo(){};
+
+   protected:
+        //Constructores -
+        Articulo(const Autores& aut, const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk=1);
 
     private:
         Autores autores_;
@@ -98,7 +98,7 @@ class ArticuloAlmacenable: public Articulo
          void stock(unsigned int& stk){stockAA_ = stk;}
          unsigned int& stock(){return stockAA_;}
 
-    //protected:
+    protected:
         //Constructores -
         ArticuloAlmacenable(const Autores& a, const Cadena& r, const Cadena& t, const Fecha& f, double p, unsigned int s=1);
         virtual ~ArticuloAlmacenable() {}

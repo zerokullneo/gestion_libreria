@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="P4/test-auto.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P4/pedido.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="811" topLine="54" />
-		</Cursor>
-	</File>
-	<File name="P1/Cadena/cadena.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1412" topLine="26" />
-		</Cursor>
-	</File>
-	<File name="P4/test-caso0-fecha-auto.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3015" topLine="111" />
-		</Cursor>
-	</File>
-	<File name="P4/Makefile" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2991" topLine="66" />
-		</Cursor>
-	</File>
-	<File name="P4/articulo.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1651" topLine="23" />
+			<Cursor1 position="2213" topLine="62" />
 		</Cursor>
 	</File>
 	<File name="P4/test-caso0-cadena-auto.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -31,64 +11,34 @@
 			<Cursor1 position="1114" topLine="30" />
 		</Cursor>
 	</File>
-	<File name="P1/Cadena/cadena.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2277" topLine="58" />
-		</Cursor>
-	</File>
-	<File name="P4/articulo.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4188" topLine="86" />
-		</Cursor>
-	</File>
-	<File name="P4/tarjeta.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1202" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="P4/test-caso4-consola.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3244" topLine="66" />
-		</Cursor>
-	</File>
-	<File name="P1/Fecha/fecha.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2550" topLine="61" />
-		</Cursor>
-	</File>
-	<File name="P4/pedido.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2213" topLine="42" />
-		</Cursor>
-	</File>
-	<File name="P4/test-caso1-auto.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1624" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="P4/usuario-pedido.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="31" />
-		</Cursor>
-	</File>
-	<File name="P4/test-caso4-auto.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3759" topLine="123" />
-		</Cursor>
-	</File>
-	<File name="P2/fct.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="23026" topLine="837" />
-		</Cursor>
-	</File>
 	<File name="P4/usuario.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="39" />
+			<Cursor1 position="0" topLine="83" />
 		</Cursor>
 	</File>
-	<File name="P4/usuario.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P1/Fecha/fecha.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2398" topLine="72" />
+			<Cursor1 position="2342" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="P4/articulo.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1651" topLine="53" />
+		</Cursor>
+	</File>
+	<File name="P4/test-caso0-fecha-auto.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12171" topLine="498" />
+		</Cursor>
+	</File>
+	<File name="P1/Cadena/cadena.cpp" open="1" top="1" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4680" topLine="166" />
+		</Cursor>
+	</File>
+	<File name="P1/Fecha/fecha.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2550" topLine="19" />
 		</Cursor>
 	</File>
 	<File name="P2/luhn.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -96,24 +46,79 @@
 			<Cursor1 position="232" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="P1/Fecha/fecha.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P4/Makefile" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="892" topLine="0" />
+			<Cursor1 position="2991" topLine="66" />
 		</Cursor>
 	</File>
-	<File name="P4/pedido.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="P1/Cadena/cadena.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2590" topLine="53" />
+			<Cursor1 position="1046" topLine="26" />
 		</Cursor>
 	</File>
-	<File name="P4/test-caso3-auto.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="P4/pedido.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13055" topLine="371" />
+			<Cursor1 position="1730" topLine="44" />
 		</Cursor>
 	</File>
-	<File name="P4/pedido-articulo.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="P4/test-auto.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4762" topLine="112" />
+			<Cursor1 position="811" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="P4/test-caso4-auto.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2766" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="P4/pedido-articulo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1913" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="P4/tarjeta.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2104" topLine="47" />
+		</Cursor>
+	</File>
+	<File name="P4/usuario.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1957" topLine="83" />
+		</Cursor>
+	</File>
+	<File name="P4/test-caso1-auto.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1624" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="P2/fct.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23026" topLine="837" />
+		</Cursor>
+	</File>
+	<File name="P4/test-caso4-consola.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3244" topLine="66" />
+		</Cursor>
+	</File>
+	<File name="P4/usuario-pedido.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="P4/test-caso3-auto.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="13041" topLine="376" />
+		</Cursor>
+	</File>
+	<File name="P4/pedido-articulo.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1605" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="P4/articulo.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2530" topLine="107" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

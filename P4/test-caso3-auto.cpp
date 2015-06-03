@@ -150,7 +150,7 @@ FCTMF_FIXTURE_SUITE_BGN(test_p3_clases) {
   FCT_TEST_END();
 
   FCT_TEST_BGN(PEDIDO - tarjeta caducada) {
-    pU->compra(articulo1, 1);//4649
+    pU->compra(articulo1, 4649);//4649
     caducar(*pTarjetaU, fAyer);
     try {
       Pedido(*pAsocUsuarioPedido, *pAsocPedidoArticulo, *pU, *pTarjetaU, fHoy);

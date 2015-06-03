@@ -27,7 +27,7 @@
 Articulo::Articulo(const Autores& aut, const Cadena& refr, const Cadena& tit, const Fecha& fec, double pvp, unsigned int stk):
 autores_(aut),referencia_(refr), titulo_(tit), f_publi_(fec), precio_(pvp), stock_(stk)
 {
-	if(autores_.empty())
+	if(autores_.empty())//excepción en caso que no se hayan asignado autores_
 		throw Autores_vacios();
 }
 /*FIN CLASE ARTICULO*/
@@ -81,8 +81,8 @@ ostream& operator <<(ostream& out, const Articulo& art)
 	out << "[" << art.referencia() << "] \"" << art.titulo() << "\", de ";
 	for(;aut != art.autores().end(); ++aut)
     {
-        out << (*aut)->apellidos();
-        if(num_aut != art.autores().size() ) out << ", ";
+        out << (*aut)->apellidos();//muestra los apellidos de cada autor
+        if(num_aut != art.autores().size() ) out << ", ";//muestra una coma por cada autor hasta uno antes del último
         num_aut++;
     }
 	out << ". " << art.f_publi().anno() << ". " << setprecision(2) << fixed << art.precio() << " €";

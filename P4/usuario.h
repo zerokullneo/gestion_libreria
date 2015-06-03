@@ -55,8 +55,11 @@ class Clave
                 Razon r_;
         };
 
+        //constructor
         Clave(const char* clav);
+        //método observador
         Cadena clave()const{return clave_;}
+        //método verificador
         bool verifica(const char* pass) const noexcept;
 
     private:
